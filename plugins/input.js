@@ -21,11 +21,14 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       backgroundColor: theme('colors.white.DEFAULT'),
       padding: 'calc(var(--tw-input-size) / 4) calc(var(--tw-input-size) / 3)',
       border: '1px solid var(--tw-input-color)',
-      borderRadius: theme('borderRadius.lg'),
+      borderRadius: theme('borderRadius.xl'),
       transition: '200ms ease',
       userSelect: 'initial',
       '&:focus': {
         boxShadow: '0 0 0 1px var(--tw-input-color)',
+      },
+      '&::placeholder': {
+        color: 'var(--tw-input-color)',
       },
       '&:disabled': {
         pointerEvents: 'none',
@@ -63,7 +66,11 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         const parsed = parseColor(value)
 
         return {
-          '--tw-input-color': value,
+          '--tw-input-color': formatColor({
+            mode: 'rgba',
+            color: parsed.color,
+            alpha: 0.5,
+          }),
           '--tw-input-hovered': formatColor({
             mode: 'rgba',
             color: parsed.color,

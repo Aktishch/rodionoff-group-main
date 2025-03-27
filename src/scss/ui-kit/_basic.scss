@@ -6,20 +6,17 @@
   color.channel($hex, "blue");
 }
 
-$colors: ("primary": #af1a4c,
-  "second": #d7a751,
+$colors: ("primary": #7F4996,
+  "second": #2980BA,
   "black": #000,
-  "white": #fff,
-  "gray": #b2b2b2,
-  "grey": #f6f7f9,
-  "dark": #303030,
-  "red": #be1b1b,
-  "green": #27ae60);
+  "white": #FFF,
+  "grey": #F6F6F6,
+  "glass": #C7D9F0,
+  "red": #BE1B1B);
 
 @layer base {
   :root {
-    --font-alt : "SF Pro Display", Arial, sans-serif;
-    --font-base: "Inter", Helvetica, sans-serif;
+    --font-base: "Montserrat", Helvetica, sans-serif;
 
     @each $key,
     $value in $colors {
@@ -34,7 +31,7 @@ $colors: ("primary": #af1a4c,
 
     scrollbar: {
       width: thin;
-      color: theme("colors.primary.DEFAULT") theme("colors.black.DEFAULT");
+      color: theme("colors.white.DEFAULT") theme("colors.primary.DEFAULT");
     }
   }
 
@@ -72,10 +69,6 @@ $colors: ("primary": #af1a4c,
 
   ol {
     @apply list-decimal list-inside;
-  }
-
-  picture {
-    @apply rounded-inherit;
   }
 
   img {

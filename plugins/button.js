@@ -24,7 +24,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '--tw-btn-fill': 'color-mix(in srgb, var(--tw-btn-color) 80%, var(--tw-btn-hovered))',
       color: 'var(--tw-btn-color)',
       fontSize: theme('fontSize.base'),
-      fontWeight: theme('fontWeight.semibold'),
+      fontWeight: theme('fontWeight.extrabold'),
       textAlign: 'center',
       display: 'flex',
       alignItems: 'center',
@@ -101,6 +101,30 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '&-light': {
         '--tw-btn-hovered': theme('colors.white.DEFAULT'),
       },
+      '&-gradient': {
+        backgroundImage: `linear-gradient(90.49deg, ${theme('colors.second.DEFAULT')} 0.42%, ${theme('colors.transparent')} 99.68%)`,
+
+        '@media (hover)': {
+          '&:hover': {
+            color: 'var(--tw-btn-color)',
+            background: 'var(--tw-btn-accent)',
+            boxShadow: `0 2px 2px 0 ${formatColor({
+              mode: 'rgba',
+              color: parseColor(theme('colors.black.DEFAULT')).color,
+              alpha: 0.1,
+            })}`,
+          },
+        },
+
+        '&:active': {
+          boxShadow: `inset 0 4px 4px ${formatColor({
+            mode: 'rgba',
+            color: parseColor(theme('colors.black.DEFAULT')).color,
+            alpha: 0.3,
+          })}`,
+          transform: 'translateY(0.25rem)',
+        },
+      },
       '&-swipe': {
         zIndex: 1,
         overflow: 'hidden',
@@ -162,7 +186,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       btn: (constant) => {
         return {
           '--tw-btn-size': `${constant / 16}rem`,
-          borderRadius: theme('borderRadius.md'),
+          borderRadius: theme('borderRadius.xl'),
           height: 'var(--tw-btn-size)',
           paddingInline: `calc(var(--tw-btn-size) / 2)`,
         }

@@ -4,5 +4,5 @@ export default (): void => {
   if (!preloader) return
 
   preloader.classList.add('invisible', 'opacity-0')
-  setTimeout((): void => preloader.remove(), 500)
+  setTimeout((): void => preloader.remove(), 700)
 }

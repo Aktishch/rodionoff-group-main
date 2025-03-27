@@ -1,0 +1,39 @@
+<% var error = _.template(require('../components/error.html').default) %>
+
+<dialog class="w-full max-w-xl px-4 py-12 text-black bg-grey rounded-xl sm:px-14">
+  <h3 class="mb-2 text-xl font-extrabold uppercase sm:text-2xl">
+    Оставьте контактные данные
+  </h3>
+  <p class="text-sm sm:text-base mb-7">
+    и наши эксперты свяжутся с вами в ближайшее время
+  </p>
+  <form data-form="submit">
+    <input type="hidden" value="Тема" name="theme">
+    <div class="flex flex-col gap-5 sm:gap-7">
+      <label data-label>
+        <div class="relative">
+          <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+          <%= error({text: 'Введите ваше имя'}) %>
+        </div>
+      </label>
+      <label data-label>
+        <div class="relative">
+          <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+          <%= error({text: 'Введите ваш номер'}) %>
+        </div>
+      </label>
+      <label data-label>
+        <div class="relative">
+          <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+          <%= error({text: 'Заполните это поле'}) %>
+        </div>
+      </label>
+      <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+    </div>
+  </form>
+  <div class="flex mt-7 sm:mt-10">
+    <a class="text-xs text-left sm:text-sm underline-offset-4 hover:underline opacity-60 hover:opacity-80" draggable="false" href="" target="_blank">
+      Отправляя форму, Вы даете согласие на обработку <br class="hidden sm:block"> Ваших персональных данных
+    </a>
+  </div>
+</dialog>

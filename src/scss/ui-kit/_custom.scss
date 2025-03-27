@@ -23,36 +23,4 @@
       }
     }
   }
-
-  .swiper {
-    &-pagination {
-      @apply flex items-center justify-center static gap-4;
-
-      & &-bullet {
-        @apply bg-current rounded-full size-3 !m-0 duration-200;
-      }
-    }
-
-    &-button {
-
-      &-prev,
-      &-next {
-        &::after {
-          @apply hidden;
-        }
-
-        svg {
-          width    : 1em;
-          min-width: 1em;
-          height   : 1em;
-
-          @apply block object-none;
-        }
-      }
-    }
-  }
-
-  #air-datepicker-global-container {
-    z-index: 1100;
-  }
 }
