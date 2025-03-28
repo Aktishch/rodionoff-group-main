@@ -8,15 +8,23 @@
         text: 'О компании'
       },
       {
-        href: '#services',
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
         text: 'Услуги'
       },
       {
-        href: '#cases',
+        listing: [
+          'Пункт 1',
+          'Пункт 1',
+          'Пункт 1'
+        ],
         text: 'Кейсы'
       },
       {
-        href: null,
+        href: '#articles',
         text: 'Статьи'
       },
       {
@@ -33,11 +41,180 @@
   var error = _.template(require('./components/error.html').default)
   var title = _.template(require('./components/title.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
-  var footer = _.template(require('./includes/footer.html').default)({data, picture})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
 %>
 
 <%= header %>
 
 <!-- <%= data.title %> -->
+
+<section class="container relative pt-44 xl:pt-80 max-md:pb-0">
+  <div class="absolute inset-0 overflow-hidden md:overflow-visible md:pt-32">
+    <picture>
+      <source srcset="img/pictures/primal-img-desktop.svg" media="(min-width: 767.98px)">
+      <img class="block w-full" draggable="false" loading="auto" src="img/pictures/primal-img-mobile.svg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <h1 class="text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black mb-10 sm:mb-12 anim anim-up duration-500" data-anim>
+      Развиваем идеи <br class="hidden md:block"> и технологии
+    </h1>
+    <p class="sm:text-lg lg:text-xl mb-20 anim anim-up duration-500 delay-100" data-anim>
+      Юридический и инвестиционный консалтинг <br class="hidden sm:block"> для российских технологических компаний
+    </p>
+    <div class="relative z-10 duration-500 delay-200 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-2xl w-full max-w-96 lg:max-w-full xl:max-w-[950px] rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Получите план действий по вашей ситуации</b>
+          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Решения для роста и защиты бизнеса -->
+
+<section class="container relative max-sm:pt-20" id="about">
+  <div class="absolute inset-0 overflow-hidden">
+    <%= picture({src: 'img/pictures/about-checks', format: 'svg', className: 'image hidden md:block top-24 xl:h-auto', data: null}) %>
+    <div class="absolute top-52 lg:top-24 lg:left-0 -right-7 lg:right-auto w-56 lg:w-96 xl:w-[625px] -scale-x-100 lg:transform-none">
+      <%= picture({src: 'img/pictures/about-shield', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+    <div class="absolute bottom-96 md:bottom-0 -right-20 lg:right-14 w-[600px] lg:w-[795px] -rotate-45 lg:rotate-0">
+      <%= picture({src: 'img/pictures/about-arrow', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Решения для роста <br class="sm:hidden"> и защиты бизнеса', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="w-full lg:max-w-[760px] lg:ml-auto anim anim-up duration-500" data-anim>
+      <p class="sm:text-lg lg:text-xl mb-8 sm:mb-10 lg:mb-12">
+        Взаимосвязанные практики <br class="sm:hidden"> с гарантией достижения результата, индивидуальным подходом <br class="sm:hidden"> и сопровождение
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 9; i++) { %>
+      <div class="min-h-32 sm:min-h-[155px] anim anim-up duration-500" data-anim>
+        <div class="card shadow-2xl">
+          <div class="card-content p-5">
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl ml-auto sm:mb-1', data: null}) %>
+            <div class="flex items-end justify-between gap-6 mt-auto">
+              <h4 class="font-bold sm:text-lg lg:text-xl">
+                Получение статуса резидента Сколково и других ИНТЦ
+              </h4>
+              <%= icon({id: 'arrow-diagonal', className: 'icon text-2.5xl sm:text-3xl opacity-10', data: null}) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Видим задачи глубже и иначе других -->
+
+<% var tasks = [
+  {
+    id: 'folder',
+    title: 'Уникальный <br> набор практик',
+    text: 'Комплексно решаем задачи российского технологического бизнеса: от налогов и отчетности до венчурных сделок и связей с государством.',
+  },
+  {
+    id: 'user',
+    title: 'Богатый опыт',
+    text: '12 лет опыта в сочетании с глубоким пониманием российского права, локального рынка и специфики каждой отрасли.',
+  },
+  {
+    id: 'hands',
+    title: 'Деловые связи',
+    text: 'Сеть уникальных контактов высокого уровня в деловых кругах.',
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute inset-0 overflow-hidden">
+    <%= picture({src: 'img/pictures/tasks-img', format: 'svg', className: 'hidden lg:block w-full', data: null}) %>
+    <div class="absolute left-10 xl:left-36 bottom-0 w-[340px]">
+      <%= picture({src: 'img/pictures/tasks-fly', format: 'svg', className: 'hidden lg:block w-full', data: null}) %>
+    </div>
+    <div class="absolute -right-6 lg:right-10 xl:right-20 top-2 lg:top-28 w-52 lg:w-[470px]">
+      <%= picture({src: 'img/pictures/tasks-star', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Видим задачи <br class="sm:hidden"> глубже и иначе <br class="sm:hidden"> других', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-10 text-white">
+      <% _.forEach((tasks), (item) => { %>
+      <div class="anim anim-up duration-500 lg:pt-32 lg:first:pt-0 lg:last:pt-64" data-anim>
+        <div class="card gradient-main shadow-2xl min-h-56 lg:min-h-[300px] h-auto">
+          <%= icon({id: item.id, className: 'icon absolute -top-6 -right-6 text-9xl sm:text-[148px] opacity-10', data: null}) %>
+          <div class="card-content relative p-5">
+            <h3 class="font-extrabold text-xl sm:text-2xl mb-10"><%= item.title %></h3>
+            <p class="sm:text-lg lg:text-xl mt-auto"><%= item.text %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Запишитесь на консультацию к эксперту -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 container">
+    <%= picture({src: 'img/pictures/consultation-stars', format: 'svg', className: 'image lg:w-1/2', data: null}) %>
+    <div class="relative size-full hidden lg:flex items-end">
+      <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-[460px] ml-40 xl:ml-48', data: null}) %>
+    </div>
+  </div>
+  <div class="relative flex flex-col lg:flex-row lg:justify-between gap-8">
+    <div class="w-full lg:max-w-96">
+      <%= title({text: 'Запишитесь на консультацию <br> к эксперту', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+      <p class="sm:text-lg lg:text-xl anim anim-up duration-500" data-anim>
+        Расскажите о вашей ситуации — наши эксперты подготовят эффективные решения <br class="hidden lg:block"> и ответят на ваши вопросы
+      </p>
+    </div>
+    <div class="duration-500 anim anim-left w-full lg:max-w-[560px]" data-anim>
+      <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+        <div class="px-5 py-5 sm:px-10 lg:px-16 sm:py-9 lg:py-12 card-content">
+          <form data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 sm:gap-7">
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                  <%= error({text: 'Заполните это поле'}) %>
+                </div>
+              </label>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+            </div>
+          </form>
+          <div class="flex mt-7 sm:mt-10">
+            <a class="text-xs text-left sm:text-sm underline-offset-4 hover:underline opacity-60 hover:opacity-80" draggable="false" href="" target="_blank">
+              Отправляя форму, Вы даете согласие на обработку <br class="hidden sm:block"> Ваших персональных данных
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%= footer %>

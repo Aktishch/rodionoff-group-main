@@ -19,7 +19,7 @@
 
     &-custom &__content {
       &>.f-button.is-close-btn {
-        @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
+        @apply top-2 right-2 bg-white text-black rounded-full border border-solid border-inherit bg-transparent shadow-md;
       }
     }
   }
