@@ -49,7 +49,7 @@
 <!-- <%= data.title %> -->
 
 <section class="container relative pt-44 xl:pt-80 max-md:pb-0">
-  <div class="absolute inset-0 overflow-hidden md:overflow-visible md:pt-32">
+  <div class="absolute inset-0 overflow-hidden md:overflow-visible md:pt-32 pointer-events-none">
     <picture>
       <source srcset="img/pictures/primal-img-desktop.svg" media="(min-width: 767.98px)">
       <img class="block w-full" draggable="false" loading="auto" src="img/pictures/primal-img-mobile.svg" alt="">
@@ -65,7 +65,7 @@
     <div class="relative z-10 duration-500 delay-200 anim anim-up" data-anim>
       <div class="card bg-white/20 md:bg-white/50 shadow-2xl w-full max-w-96 lg:max-w-full xl:max-w-[950px] rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
         <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
-          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Получите план действий по вашей ситуации</b>
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Получите план действий <br class="sm:hidden"> по вашей ситуации</b>
           <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
             <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
           </div>
@@ -79,7 +79,7 @@
 <!-- Решения для роста и защиты бизнеса -->
 
 <section class="container relative max-sm:pt-20" id="about">
-  <div class="absolute inset-0 overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <%= picture({src: 'img/pictures/about-checks', format: 'svg', className: 'image hidden md:block top-24 xl:h-auto', data: null}) %>
     <div class="absolute top-52 lg:top-24 lg:left-0 -right-7 lg:right-auto w-56 lg:w-96 xl:w-[625px] -scale-x-100 lg:transform-none">
       <%= picture({src: 'img/pictures/about-shield', format: 'png', className: 'block w-full', data: null}) %>
@@ -136,7 +136,7 @@
 ] %>
 
 <section class="container relative">
-  <div class="absolute inset-0 overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <%= picture({src: 'img/pictures/tasks-img', format: 'svg', className: 'hidden lg:block w-full', data: null}) %>
     <div class="absolute left-10 xl:left-36 bottom-0 w-[340px]">
       <%= picture({src: 'img/pictures/tasks-fly', format: 'svg', className: 'hidden lg:block w-full', data: null}) %>
@@ -165,8 +165,8 @@
 
 <!-- Запишитесь на консультацию к эксперту -->
 
-<section class="container relative overflow-hidden">
-  <div class="absolute inset-0 container">
+<section class="container relative">
+  <div class="absolute inset-0 container pointer-events-none">
     <%= picture({src: 'img/pictures/consultation-stars', format: 'svg', className: 'image lg:w-1/2', data: null}) %>
     <div class="relative size-full hidden lg:flex items-end">
       <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-[460px] ml-40 xl:ml-48', data: null}) %>
@@ -179,7 +179,7 @@
         Расскажите о вашей ситуации — наши эксперты подготовят эффективные решения <br class="hidden lg:block"> и ответят на ваши вопросы
       </p>
     </div>
-    <div class="duration-500 anim anim-left w-full lg:max-w-[560px]" data-anim>
+    <div class="duration-500 anim anim-up w-full lg:max-w-[560px]" data-anim>
       <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
         <div class="px-5 py-5 sm:px-10 lg:px-16 sm:py-9 lg:py-12 card-content">
           <form data-form="submit">
@@ -206,14 +206,155 @@
               <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
             </div>
           </form>
-          <div class="flex mt-7 sm:mt-10">
-            <a class="text-xs text-left sm:text-sm underline-offset-4 hover:underline opacity-60 hover:opacity-80" draggable="false" href="" target="_blank">
+          <div class="flex mt-5">
+            <a class="text-sm sm:text-base text-left underline-offset-4 hover:underline" draggable="false" href="" target="_blank">
               Отправляя форму, Вы даете согласие на обработку <br class="hidden sm:block"> Ваших персональных данных
             </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Несколько цифр о нашей работе -->
+
+<% var result = [
+  {
+    title: '572',
+    text: 'проекта с 2013 года'
+  },
+  {
+    title: '24',
+    text: 'отраслевых эксперта <br> в команде'
+  },
+  {
+    title: '2 млрд ₽',
+    text: 'суммарный экономический <br> эффект, полученный <br> нашими клиентами'
+  },
+  {
+    title: '>50',
+    text: 'клиентов получили статус <br> участника проекта «Сколково» <br> или успешно его подтверждают <br> с нашей помощью'
+  }
+] %>
+
+<section class="container relative sm:overflow-hidden">
+  <div class="absolute inset-0 md:flex md:items-center md:justify-center pointer-events-none">
+    <div class="w-full">
+      <picture>
+        <source srcset="img/pictures/result-img-desktop.svg" media="(min-width: 767.98px)">
+        <img class="block w-full" draggable="false" loading="auto" src="img/pictures/result-img-mobile.svg" alt="">
+      </picture>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Несколько цифр <br class="sm:hidden"> о нашей работе', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="mb-8 lg:mb-0 lg:pb-36 text-right lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:text-center">
+      <h2 class="font-black text-8xl sm:text-9xl lg:leading-tight tracking-wider anim anim-up duration-500" data-anim>
+        12 лет
+      </h2>
+      <p class="font-thin text-5xl sm:text-6xl anim anim-up duration-500" data-anim>
+        безупречной <br> репутации
+      </p>
+    </div>
+    <div class="relative flex flex-col items-start gap-5 sm:items-stretch sm:gap-10 lg:gap-16">
+      <% _.forEach((result), (item) => { %>
+      <div class="duration-500 sm:w-max sm:even:ml-auto anim anim-right sm:odd:anim-right sm:even:anim-left" data-anim>
+        <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20">
+          <div class="px-5 py-3 card-content sm:py-5 sm:px-8 lg:px-10">
+            <h3 class="font-black text-3xl sm:text-4xl lg:text-[40px] lg:leading-tight uppercase tracking-wider"><%= item.title %></h3>
+            <p class="text-base sm:text-lg lg:text-xl"><%= item.text %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Нам доверяют -->
+
+<section class="container relative">
+  <div class="absolute -top-40 left-0 right-0 hidden md:block pointer-events-none">
+    <%= picture({src: 'img/pictures/clients-img', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Нам доверяют', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <% for (var i = 0; i < 20; i++) { %>
+      <div class="duration-500 anim anim-up" data-anim>
+        <div class="pack pack-[65]">
+          <%= picture({src: 'img/pictures/test', format: 'png', className: 'image object-scale-down', data: null}) %>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- О нас пишут передовые бизнес-СМИ -->
+
+<section class="container relative">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-[440px] md:-top-20 right-0 w-full max-w-56 md:max-w-[430px]">
+      <picture>
+        <source srcset="img/pictures/news-img-desktop.svg" media="(min-width: 767.98px)">
+        <img class="block w-full" draggable="false" loading="auto" src="img/pictures/news-img-mobile.svg" alt="">
+      </picture>
+    </div>
+    <div class="absolute -top-4 md:top-20 right-0 w-full max-w-48 md:max-w-[595px]">
+      <%= picture({src: 'img/pictures/news-phone', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative flex flex-col xl:flex-row xl:items-end gap-5 sm:gap-7 lg:gap-10">
+    <div class="w-full lg:max-w-[760px]">
+      <%= title({text: 'О нас пишут <br class="md:hidden"> передовые <br class="md:hidden"> бизнес-СМИ', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="grid md:grid-cols-2 gap-5 sm:gap-7 lg:gap-10">
+        <% for (var i = 0; i < 4; i++) { %>
+        <div class="anim anim-up duration-500 min-h-48 md:min-h-[215px]" data-anim>
+          <div class="card shadow-2xl">
+            <div class="card-content p-5">
+              <p class="sm:text-lg lg:text-xl mb-8 sm:mb-10 lg:mb-12">
+                9 способов, как максимально быстро протестировать бизнес-идею
+              </p>
+              <div class="flex items-center justify-between gap-4 mt-auto">
+                <div class="w-full max-w-40 shrink-0 opacity-70">
+                  <%= picture({src: 'img/pictures/sber', format: 'svg', className: 'block w-full', data: null}) %>
+                </div>
+                <%= icon({id: 'arrow-diagonal', className: 'icon text-2.5xl sm:text-3xl opacity-10', data: null}) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <div class="flex flex-col anim anim-up duration-500" data-anim>
+      <b class="font-black text-2xl sm:text-2.5xl lg:text-3xl">>1 000 000</b>
+      <span class="text-sm sm:text-lg lg:text-xl">просмотров статей</span>
+    </div>
+  </div>
+</section>
+
+<!-- Последние новости и статьи -->
+
+<section class="container relative">
+  <%= title({text: 'Последние новости <br class="sm:hidden"> и статьи', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+    <% for (var i = 0; i < 3; i++) { %>
+    <div class="anim anim-up duration-500" data-anim>
+      <a class="pack pack-sm bg-grey rounded-xl shadow-2xl" data-waved="light" draggable="false" href="" target="_blank">
+        <%= loader %>
+        <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image', data: null}) %>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 flex items-end justify-between gap-4 text-white p-5">
+          <h4 class="text-xl sm:text-2xl font-extrabold">
+            Статья 1
+          </h4>
+          <%= icon({id: 'arrow-diagonal', className: 'icon text-2.5xl sm:text-3xl', data: null}) %>
+        </div>
+      </a>
+    </div>
+    <% } %>
   </div>
 </section>
 

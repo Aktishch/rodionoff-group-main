@@ -34,9 +34,9 @@
       <a class="w-[84px] sm:w-28 lg:w-32 shrink-0" data-waved="light" draggable="false" href="/">
         <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
       </a>
-      <nav class="items-center hidden gap-8 lg:flex xl:gap-11">
+      <nav class="items-center hidden lg:flex  gap-6 xl:gap-11">
         <% _.forEach((data.nav), (item) => { %>
-        <% if (item.href) { %>
+        <% if (item.href || item.href === null) { %>
         <a class="p-1 font-normal rounded btn hover:text-primary hover:bg-transparent" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
         <% } else if (item.listing) { %>
         <div class="relative group/accordion" data-accordion data-close-click data-close-scroll>
@@ -78,7 +78,7 @@
         </div>
         <nav class="flex flex-col items-start gap-8 mb-10">
           <% _.forEach((data.nav), (item) => { %>
-          <% if (item.href) { %>
+          <% if (item.href  || item.href === null) { %>
           <a class="font-bold rounded btn hover:text-primary hover:bg-transparent" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
           <% } else if (item.listing) { %>
           <div class="group/accordion" data-accordion data-close-click>
