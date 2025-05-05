@@ -1,7 +1,7 @@
 import { dialog } from './fancybox'
 import { validation } from './utils'
 
-export const formSubmitHandler = (event: Event): void => {
+const formSubmitHandler = (event: Event): void => {
   const form = event.target as HTMLFormElement
 
   switch (form.dataset.form) {
@@ -31,7 +31,7 @@ export const formSubmitHandler = (event: Event): void => {
         })
         .then((response): void => {
           dialog.close()
-          response.status ? dialog.open('./dialogs/dialog-success.php') : dialog.open('./dialogs/dialog-error.php')
+          dialog.open(response.status ? './dialogs/dialog-success.php' : './dialogs/dialog-error.php')
           form.reset()
           submitBtn.disabled = false
         })

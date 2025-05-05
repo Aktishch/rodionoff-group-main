@@ -1,0 +1,239 @@
+<%
+  var data = {
+    title: 'Инвестиции',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
+  var consultation = _.template(require('./includes/consultation.html').default)({picture, loader, error, subtitle})
+  var clients = _.template(require('./includes/clients.html').default)({picture, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<% var primal = [
+  '<b>2 млрд рублей</b> привлеченного финансирования',
+  '<b>Полный цикл:</b> от упаковки до поиска потенциальных инвесторов',
+  '<b>До 15 экспертов</b> в каждом проекте'
+] %>
+
+<section class="container relative pt-44 xl:pt-80 overflow-hidden">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/investments-bg', format: 'jpg', className: 'image object-right sm:object-center', data: null}) %>
+    <div class="absolute bottom-0 -right-20 md:right-10 opacity-50 md:opacity-100 w-72 md:w-[485px]">
+      <%= picture({src: 'img/pictures/investments-img', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Помогаем компаниям привлекать инвестиции', className: 'mb-3 anim anim-up duration-500', data: 'data-anim'}) %>
+    <h3 class="font-bold sm:text-lg lg:text-2xl mb-16 lg:mb-20 anim anim-up duration-500 delay-100" data-anim>
+      и выходить на новый уровень
+    </h3>
+    <ul class="flex flex-col gap-1.5 sm:text-lg lg:text-xl anim anim-up duration-500 delay-200" data-anim>
+      <% _.forEach((primal), (item) => { %>
+      <li class="flex items-center">
+        <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <p><%= item %></p>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
+
+<!-- 7 Шагов к успещному привлечению инвестиций -->
+
+<% var stages = [
+  {
+    title: 'Финансовое <br> моделирование',
+    icon: 'img/stages/1'
+  },
+  null,
+  null,
+  null,
+  {
+    title: 'Экспресс-оценка <br> компании',
+    icon: 'img/stages/2'
+  },
+  null,
+  null,
+  null,
+  {
+    title: 'Поиск потенциальных <br> инвесторов',
+    icon: 'img/stages/3'
+  },
+  null,
+  {
+    title: 'Подготовка <br> инвестиционного <br> предложения',
+    icon: 'img/stages/4'
+  },
+  null,
+  {
+    title: 'Подготовка <br> к due-dilligence',
+    icon: 'img/stages/5'
+  },
+  null,
+  null,
+  null,
+  {
+    title: 'Структурирование <br> сделки',
+    icon: 'img/stages/6'
+  },
+  null,
+  null,
+  null,
+  {
+    title: 'Юридическое <br> сопровождение <br> сделки',
+    icon: 'img/stages/7'
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/stages-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: '7 Шагов к успещному привлечению инвестиций', className: 'mb-8 sm:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-3xl lg:ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Методика, которая позволяет подготовить компанию к внешнему финансированию, найти инвестора и заключить безопасную сделку.
+    </p>
+    <div class="flex justify-between relative xl:py-12">
+      <div class="absolute inset-0 hidden xl:block">
+        <%= picture({src: 'img/pictures/line', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="sm:hidden shrink-0 w-6">
+        <%= picture({src: 'img/pictures/arrow', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="relative grow">
+        <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
+          <% _.forEach((stages), (item) => { %>
+          <% if (item !== null) { %>
+          <div class="anim anim-up duration-500" data-anim>
+            <div class="card shadow-2xl z-10">
+              <div class="card-content flex-row items-center justify-between gap-4 pl-5">
+                <h4 class="font-bold sm:text-lg lg:text-xl"><%= item.title %></h4>
+                <div class="w-24 sm:w-36 shrink-0 -mt-4 sm:-mt-6 -mr-4 sm:-mr-5">
+                  <%= picture({src: item.icon, format: 'svg', className: 'block w-full', data: null}) %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } else { %>
+          <span class="hidden xl:block"></span>
+          <% } %>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Получите экспресс-оценку инвестиционной привлекательности вашего бизнеса -->
+
+<%= consultation %>
+
+<!-- Кейсы из практики -->
+
+<section class="container overflow-hidden" id="cases">
+  <%= subtitle({text: 'Кейсы из практики', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="relative" data-slider="cases">
+    <div class="swiper w-full lg:max-w-[800px] xl:max-w-[960px] lg:mx-auto" data-slider-swiper="cases">
+      <div class="swiper-wrapper">
+        <% for (var i = 0; i < 6; i++) { %>
+        <div class="h-auto overflow-hidden swiper-slide rounded-xl">
+          <div class="card">
+            <div class="card-content">
+              <ul class="flex flex-col gap-5 px-5 pt-16 pb-5 sm:px-7 lg:px-10 lg:pt-10 sm:pb-7 lg:pb-10 sm:gap-8">
+                <li class="flex flex-col items-start gap-3 lg:flex-row lg:justify-between sm:gap-6 lg:gap-10">
+                  <div class="flex items-center w-full shrink-0 lg:max-w-40">
+                    <span class="shrink-0 size-1.5 rounded-full gradient-main mr-3 sm:mr-5"></span>
+                    <h4 class="font-bold sm:text-lg lg:text-xl">
+                      Компания <%= i %>
+                    </h4>
+                  </div>
+                  <p class="w-full max-w-[660px] text-sm sm:text-base">
+                    Известная сеть оптик
+                  </p>
+                </li>
+                <li class="flex flex-col items-start gap-3 lg:flex-row lg:justify-between sm:gap-6 lg:gap-10">
+                  <div class="flex items-center w-full shrink-0 lg:max-w-40">
+                    <span class="shrink-0 size-1.5 rounded-full gradient-main mr-3 sm:mr-5"></span>
+                    <h4 class="font-bold sm:text-lg lg:text-xl">
+                      Запрос
+                    </h4>
+                  </div>
+                  <p class="w-full max-w-[660px] text-sm sm:text-base">
+                    300 млн рублей на кэшаут одного из учредителей
+                  </p>
+                </li>
+              </ul>
+              <div class="flex flex-col items-start gap-3 p-5 mt-auto text-white lg:flex-row lg:justify-between sm:gap-6 lg:gap-10 sm:p-7 lg:p-10 gradient-main rounded-xl">
+                <div class="flex items-center w-full text-xl shrink-0 lg:max-w-40">
+                  <%= icon({id: 'lightning', className: 'icon mr-3 sm:mr-5', data: null}) %>
+                  <b>Решение</b>
+                </div>
+                <p class="w-full max-w-[660px] text-sm sm:text-base">
+                  Проведен анализ возможных структур сделки, после чего выбрано решение о продажи нескольких торговых точках группе разрозненных частных инвесторов. Это позволило не получить инвестора с блокирующей долей в капитале, при этом привлечь значительное финансирование.
+                  <br><br>
+                  Были разработан полный пакет материалов - презентации, финансовая модель, проведена оценка каждой торговой точки. Юристы компании сопроводили каждую сделку.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <button class="absolute rounded-full left-3 lg:left-0 top-8 size-8 lg:size-14 swiper-button-prev btn btn-second lg:top-1/2" data-slider-prev="cases" data-waved="dark">
+      <%= icon({id: 'arrow-left', className: 'text-2xl lg:text-5xl', data: null}) %>
+    </button>
+    <button class="absolute rounded-full right-3 lg:right-0 top-8 size-8 lg:size-14 swiper-button-next btn btn-primary lg:top-1/2" data-slider-next="cases" data-waved="dark">
+      <%= icon({id: 'arrow-right', className: 'text-2xl lg:text-5xl', data: null}) %>
+    </button>
+  </div>
+</section>
+
+<!-- Нам доверяют -->
+
+<%= clients %>
+
+<%= footer %>

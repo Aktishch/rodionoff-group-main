@@ -4,7 +4,9 @@ module.exports = plugin(
   ({ addComponents, theme }) => {
     let anim = {
       '.anim': {
-        transition: '300ms ease',
+        transitionProperty: 'transform, opacity, visibility',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'ease',
       },
     }
     Object.entries(theme('anim')).map(([key, value]) => {

@@ -1,4 +1,4 @@
-export type FormLabel = HTMLLabelElement | HTMLDivElement
+type FormLabel = HTMLLabelElement | HTMLDivElement
 
 export const validation = (form: HTMLFormElement): boolean => {
   const labels = form.querySelectorAll('*[data-label]') as NodeListOf<FormLabel>

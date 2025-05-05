@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="autor" content="aktishch@gmail.com">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
@@ -20,14 +19,14 @@
 
     <!-- Прелоадер -->
 
-    <div class="fixed inset-0 z-50 flex flex-col items-center justify-center duration-500 delay-200 bg-white" data-preloader>
+    <div class="fixed inset-0 z-50 flex flex-col items-center justify-center transition-[opacity,_visibility] duration-500 delay-200 bg-white" data-preloader>
       <%= preloader %>
     </div>
 
     <% if (data.status) { %>
     <!-- Шапка документа -->
 
-    <header class="container fixed top-0 left-0 right-0 z-30 flex items-center justify-between gap-5 pt-5 pb-5 duration-300 bg-white bg-opacity-0 lg:pt-10 xl:pt-20" data-header>
+    <header class="container fixed top-0 left-0 right-0 z-30 flex items-center justify-between gap-5 pt-5 pb-5 transition-[background-color,_padding-top] duration-300 bg-white bg-opacity-0 lg:pt-10 xl:pt-20" data-header>
       <button class="text-black rounded btn btn-primary lg:hidden" data-sidebar-open="menu" data-waved="dark">
         <%= icon({id: 'burger', className: 'icon text-3xl', data: null}) %>
       </button>
@@ -42,9 +41,9 @@
         <div class="relative group/accordion" data-accordion data-close-click data-close-scroll>
           <button class="p-1 font-normal rounded btn hover:text-primary hover:bg-transparent" data-accordion-toggle data-waved="dark">
             <%= item.text %>
-            <%= icon({id: 'arrow-bottom', className: 'icon text-xxs ml-3 duration-300 group-[[data-accordion=active]]/accordion:rotate-180', data: null}) %>
+            <%= icon({id: 'arrow-bottom', className: 'icon text-xxs ml-3 transition-transform group-[[data-accordion=active]]/accordion:rotate-180', data: null}) %>
           </button>
-          <div class="absolute z-10 top-8 left-0 <%= item.text === 'Услуги' ? 'w-80' : 'w-32' %>" data-accordion-content>
+          <div class="absolute z-10 top-8 left-0 w-80" data-accordion-content>
             <div class="bg-white shadow-md rounded-xl p-3 flex flex-col items-start gap-2">
               <% for (var i = 0; i < item.listing.length; i++) { %>
               <a class="btn btn-primary text-left text-black font-normal rounded-md hover:text-white hover:bg-primary py-1 px-2" data-waved="light" draggable="false" href=""><%= item.listing[i] %></a>
@@ -63,8 +62,8 @@
 
     <!-- Меню -->
 
-    <div class="fixed inset-0 z-40 bg-black/50 duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
-      <div class="flex flex-col bg-white overflow-auto w-full pt-5 px-4 pb-10 max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
+    <div class="fixed inset-0 z-40 bg-black/50 transition-[opacity,_visibility] duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
+      <div class="flex flex-col bg-white overflow-auto w-full pt-5 px-4 pb-10 max-w-[375px] h-full transition-[opacity,_visibility,_transform] duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex items-center justify-between gap-5 mb-10">
           <button class="text-black rounded btn btn-primary" data-sidebar-close="menu" data-waved="dark">
             <%= icon({id: 'close', className: 'icon text-3xl', data: null}) %>
@@ -84,7 +83,7 @@
           <div class="group/accordion" data-accordion data-close-click>
             <button class="font-bold rounded btn hover:text-primary hover:bg-transparent group-[[data-accordion=active]]/accordion:text-primary" data-accordion-toggle data-waved="dark">
               <%= item.text %>
-              <%= icon({id: 'arrow-bottom', className: 'icon text-xxs ml-3 duration-300 group-[[data-accordion=active]]/accordion:rotate-180', data: null}) %>
+              <%= icon({id: 'arrow-bottom', className: 'icon text-xxs ml-3 transition-transform group-[[data-accordion=active]]/accordion:rotate-180', data: null}) %>
             </button>
             <div data-accordion-content>
               <div class="pt-4 flex flex-col items-start gap-2">

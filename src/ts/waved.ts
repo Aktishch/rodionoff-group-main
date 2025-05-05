@@ -1,11 +1,11 @@
 import { Coordinates, touchDevice } from './utils'
 
-export type WavedCircle = {
+type WavedCircle = {
   positionY: number
   positionX: number
 }
 
-export const setWaved = (event: Event): void => {
+const setWaved = (event: Event): void => {
   if ((event.target as HTMLElement).closest('[data-waved]')) {
     const item = (event.target as HTMLElement).closest('[data-waved]') as HTMLElement
 

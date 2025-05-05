@@ -16,11 +16,7 @@
         text: 'Услуги'
       },
       {
-        listing: [
-          'Пункт 1',
-          'Пункт 1',
-          'Пункт 1'
-        ],
+        href: '#cases',
         text: 'Кейсы'
       },
       {
@@ -46,13 +42,13 @@
 
 <!-- <%= data.title %> -->
 
-<% var icons = ['loader', 'burger', 'close', 'telephone', 'email', 'telegram', 'arrow-bottom', 'arrow-right', 'arrow-diagonal', 'folder', 'user', 'hands'] %>
+<% var icons = ['loader', 'burger', 'close', 'telephone', 'email', 'telegram', 'arrow-bottom', 'arrow-left' ,'arrow-right', 'arrow-diagonal', 'folder', 'user', 'hands', 'lightning'] %>
 
 <section class="container flex items-center justify-center grow">
   <ul class="grid w-full grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
     <% _.forEach((icons), (item) => { %>
     <li class="flex items-center">
-      <%= icon({id: item, className: 'icon text-base mr-2', data: false}) %>
+      <%= icon({id: item, className: 'icon text-base mr-2', data: null}) %>
       id: <%= item %>
     </li>
     <% }) %>

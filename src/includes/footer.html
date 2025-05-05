@@ -13,9 +13,9 @@
     <div class="relative group/accordion" data-accordion data-close-click data-close-scroll>
       <button class="font-normal rounded btn hover:text-primary hover:bg-transparent" data-accordion-toggle data-waved="dark">
         <%= item.text %>
-        <%= icon({id: 'arrow-bottom', className: 'icon text-xxs ml-3 duration-300 group-[[data-accordion=active]]/accordion:rotate-180', data: null}) %>
+        <%= icon({id: 'arrow-bottom', className: 'icon text-xxs ml-3 transition-transform group-[[data-accordion=active]]/accordion:rotate-180', data: null}) %>
       </button>
-      <div class="absolute z-10 top-8 left-0 <%= item.text === 'Услуги' ? 'w-80' : 'w-32' %>" data-accordion-content>
+      <div class="absolute z-10 top-8 left-0 w-80" data-accordion-content>
         <div class="bg-white shadow-md rounded-xl p-3 flex flex-col items-start gap-2">
           <% for (var i = 0; i < item.listing.length; i++) { %>
           <a class="btn btn-primary text-left text-black font-normal rounded-md hover:text-white hover:bg-primary py-1 px-2" data-waved="light" draggable="false" href=""><%= item.listing[i] %></a>

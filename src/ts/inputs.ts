@@ -1,4 +1,4 @@
-export const inputName = (event: Event): void => {
+const inputName = (event: Event): void => {
   const input = event.target as HTMLInputElement
   const regExp: RegExp = /[0-9.,!@#$%^&*()-=_+`~{}/?<>|'"]/
 

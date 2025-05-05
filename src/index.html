@@ -16,11 +16,7 @@
         text: 'Услуги'
       },
       {
-        listing: [
-          'Пункт 1',
-          'Пункт 1',
-          'Пункт 1'
-        ],
+        href: '#cases',
         text: 'Кейсы'
       },
       {
@@ -40,7 +36,9 @@
   var preloader = require('./components/preloader.html').default
   var error = _.template(require('./components/error.html').default)
   var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
+  var clients = _.template(require('./includes/clients.html').default)({picture, subtitle})
   var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
 %>
 
@@ -56,9 +54,7 @@
     </picture>
   </div>
   <div class="relative">
-    <h1 class="text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black mb-10 sm:mb-12 anim anim-up duration-500" data-anim>
-      Развиваем идеи <br class="hidden md:block"> и технологии
-    </h1>
+    <%= title({text: 'Развиваем идеи <br class="hidden md:block"> и технологии', className: 'mb-8 sm:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
     <p class="sm:text-lg lg:text-xl mb-20 anim anim-up duration-500 delay-100" data-anim>
       Юридический и инвестиционный консалтинг <br class="hidden sm:block"> для российских технологических компаний
     </p>
@@ -89,7 +85,7 @@
     </div>
   </div>
   <div class="relative">
-    <%= title({text: 'Решения для роста <br class="sm:hidden"> и защиты бизнеса', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <%= subtitle({text: 'Решения для роста <br class="sm:hidden"> и защиты бизнеса', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
     <div class="w-full lg:max-w-[760px] lg:ml-auto anim anim-up duration-500" data-anim>
       <p class="sm:text-lg lg:text-xl mb-8 sm:mb-10 lg:mb-12">
         Взаимосвязанные практики <br class="sm:hidden"> с гарантией достижения результата, индивидуальным подходом <br class="sm:hidden"> и сопровождение
@@ -146,7 +142,7 @@
     </div>
   </div>
   <div class="relative">
-    <%= title({text: 'Видим задачи <br class="sm:hidden"> глубже и иначе <br class="sm:hidden"> других', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <%= subtitle({text: 'Видим задачи <br class="sm:hidden"> глубже и иначе <br class="sm:hidden"> других', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
     <div class="grid lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-10 text-white">
       <% _.forEach((tasks), (item) => { %>
       <div class="anim anim-up duration-500 lg:pt-32 lg:first:pt-0 lg:last:pt-64" data-anim>
@@ -174,7 +170,7 @@
   </div>
   <div class="relative flex flex-col lg:flex-row lg:justify-between gap-8">
     <div class="w-full lg:max-w-96">
-      <%= title({text: 'Запишитесь на консультацию <br> к эксперту', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+      <%= subtitle({text: 'Запишитесь на консультацию <br> к эксперту', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
       <p class="sm:text-lg lg:text-xl anim anim-up duration-500" data-anim>
         Расскажите о вашей ситуации — наши эксперты подготовят эффективные решения <br class="hidden lg:block"> и ответят на ваши вопросы
       </p>
@@ -248,7 +244,7 @@
     </div>
   </div>
   <div class="relative">
-    <%= title({text: 'Несколько цифр <br class="sm:hidden"> о нашей работе', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <%= subtitle({text: 'Несколько цифр <br class="sm:hidden"> о нашей работе', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
     <div class="mb-8 lg:mb-0 lg:pb-36 text-right lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:text-center">
       <h2 class="font-black text-8xl sm:text-9xl lg:leading-tight tracking-wider anim anim-up duration-500" data-anim>
         12 лет
@@ -274,23 +270,7 @@
 
 <!-- Нам доверяют -->
 
-<section class="container relative">
-  <div class="absolute -top-40 left-0 right-0 hidden md:block pointer-events-none">
-    <%= picture({src: 'img/pictures/clients-img', format: 'svg', className: 'block w-full', data: null}) %>
-  </div>
-  <div class="relative">
-    <%= title({text: 'Нам доверяют', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-      <% for (var i = 0; i < 20; i++) { %>
-      <div class="duration-500 anim anim-up" data-anim>
-        <div class="pack pack-[65]">
-          <%= picture({src: 'img/pictures/test', format: 'png', className: 'image object-scale-down', data: null}) %>
-        </div>
-      </div>
-      <% } %>
-    </div>
-  </div>
-</section>
+<%= clients %>
 
 <!-- О нас пишут передовые бизнес-СМИ -->
 
@@ -308,7 +288,7 @@
   </div>
   <div class="relative flex flex-col xl:flex-row xl:items-end gap-5 sm:gap-7 lg:gap-10">
     <div class="w-full lg:max-w-[760px]">
-      <%= title({text: 'О нас пишут <br class="md:hidden"> передовые <br class="md:hidden"> бизнес-СМИ', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+      <%= subtitle({text: 'О нас пишут <br class="md:hidden"> передовые <br class="md:hidden"> бизнес-СМИ', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
       <div class="grid md:grid-cols-2 gap-5 sm:gap-7 lg:gap-10">
         <% for (var i = 0; i < 4; i++) { %>
         <div class="anim anim-up duration-500 min-h-48 md:min-h-[215px]" data-anim>
@@ -339,13 +319,13 @@
 <!-- Последние новости и статьи -->
 
 <section class="container relative">
-  <%= title({text: 'Последние новости <br class="sm:hidden"> и статьи', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <%= subtitle({text: 'Последние новости <br class="sm:hidden"> и статьи', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
   <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
     <% for (var i = 0; i < 3; i++) { %>
     <div class="anim anim-up duration-500" data-anim>
       <a class="pack pack-sm bg-grey rounded-xl shadow-2xl" data-waved="light" draggable="false" href="" target="_blank">
         <%= loader %>
-        <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image', data: null}) %>
+        <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'pack-image image', data: null}) %>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 flex items-end justify-between gap-4 text-white p-5">
           <h4 class="text-xl sm:text-2xl font-extrabold">
             Статья 1

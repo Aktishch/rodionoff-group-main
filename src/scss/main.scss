@@ -19,4 +19,12 @@
   &-glass {
     background-image: linear-gradient(123.12deg, theme("colors.white.DEFAULT / 0.2") 25.96%, theme("colors.glass.DEFAULT / 0.3") 72.48%);
   }
+
+  &-text {
+    background-image: linear-gradient(90.49deg, theme("colors.second.DEFAULT") 0.42%, theme("colors.primary.DEFAULT") 99.68%);
+
+    -webkit-text-fill-color: transparent;
+
+    @apply bg-clip-text;
+  }
 }

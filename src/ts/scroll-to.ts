@@ -1,6 +1,6 @@
 import { scrolledPage } from './utils'
 
-export const scrollToElement = (block: HTMLElement): void => {
+const scrollToElement = (block: HTMLElement): void => {
   if (!block) return
 
   const header = document.querySelector('*[data-header]') as HTMLElement

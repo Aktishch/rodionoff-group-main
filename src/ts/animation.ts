@@ -1,13 +1,13 @@
 import { Coordinates, scrolledPage } from './utils'
 
-export const setOffset = (element: HTMLElement): Coordinates => {
+const setOffset = (element: HTMLElement): Coordinates => {
   return {
     top: element.getBoundingClientRect().top + scrolledPage().top,
     left: element.getBoundingClientRect().left + scrolledPage().left,
   } as Coordinates
 }
 
-export const setAnimation = (): void => {
+const setAnimation = (): void => {
   const items = document.querySelectorAll('*[data-anim]') as NodeListOf<HTMLElement>
 
   items.forEach((item: HTMLElement): void => {
