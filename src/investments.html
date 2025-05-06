@@ -167,6 +167,349 @@
   </div>
 </section>
 
+<!-- Финансовая модель, как фундамент переговоров с инвестором -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-1', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 1.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Финансовая модель, как фундамент переговоров с инвестором', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Грамотно подготовленная финансовая модель позволяет ясно понимать потребности и перспективы вашего бизнеса. Точно определить размер необходимого финансирования и убедительно показать инвестору потенциал роста. Без неё поиск инвестора превращается в неопределенность, а переговоры — в риск потерять привлекательные условия сделки.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="relative w-full lg:grow anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-1-bg', format: 'png', className: 'block w-full', data: null}) %>
+        <div class="hidden xl:block bg-white rounded-xl shadow-md absolute z-10 left-0 -top-36 w-full max-w-[270px] p-5">
+          <h4 class="font-bold text-xl mb-5">
+            Стоимость доли инвестора, ₽
+          </h4>
+          <div class="pack pack-sm bg-grey">
+            <%= loader %>
+            <%= picture({src: 'img/pictures/stage-1-img-1', format: 'jpg', className: 'image', data: null}) %>
+          </div>
+        </div>
+        <div class="hidden xl:block bg-white rounded-xl shadow-md absolute z-10 left-32 -bottom-24 w-full max-w-[295px] p-5">
+          <h4 class="font-bold text-xl mb-5">
+            Финансовый результат по проекту, ₽
+          </h4>
+          <div class="pack pack-sm bg-grey">
+            <%= loader %>
+            <%= picture({src: 'img/pictures/stage-1-img-2', format: 'jpg', className: 'image', data: null}) %>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-5 lg:gap-12 w-full lg:max-w-[360px] lg:shrink-0">
+        <% for (var i = 0; i < 2; i++) { %>
+        <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+              <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                >20 значимых показателей для инвестора
+              </h4>
+              <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+            </button>
+            <div data-accordion-content>
+              <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Экспресс-оценка стоимости компании -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-2', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 2.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Экспресс-оценка стоимости компании', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Экспресс-оценка позволяет компании войти в переговоры с инвесторами с пониманием реального диапазона справедливой оценки и аргументируя свою позицию.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="flex flex-col gap-5 lg:gap-12 w-full lg:max-w-[360px] lg:shrink-0 order-2 lg:order-1">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+              <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                >20 значимых показателей для инвестора
+              </h4>
+              <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+            </button>
+            <div data-accordion-content>
+              <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <div class="relative w-full lg:grow order-1 lg:order-1 anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-2-bg', format: 'png', className: 'block w-full', data: null}) %>
+        <div class="hidden xl:block bg-white rounded-xl shadow-md absolute z-10 -right-16 -top-16 w-full max-w-[285px] p-5">
+          <h4 class="font-bold text-xl mb-5">
+            Макроэкономические предпосылки
+          </h4>
+          <div class="pack pack-sm bg-grey">
+            <%= loader %>
+            <%= picture({src: 'img/pictures/stage-2-img-1', format: 'jpg', className: 'image', data: null}) %>
+          </div>
+        </div>
+        <div class="hidden xl:block bg-white rounded-xl shadow-md absolute z-10 -right-16 bottom-7 w-full max-w-[265px] p-5">
+          <h4 class="font-bold text-xl mb-5">
+            Обменные курсы
+          </h4>
+          <div class="pack pack-sm bg-grey">
+            <%= loader %>
+            <%= picture({src: 'img/pictures/stage-2-img-2', format: 'jpg', className: 'image', data: null}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Получите экспресс-оценку инвестиционной привлекательности вашего бизнеса -->
+
+<%= consultation %>
+
+<!-- Точный выбор инветора -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-3', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 3.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Точный выбор инветора', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Подбор пула инвесторов — ключевой этап на пути к успешному финансированию. Мы не стучимся в случайные двери, а точно определяем инвесторов, заинтересованных именно в вашем сегменте и типе проектов.
+      <br><br>
+      Анализируя инвестиционные стратегии фондов и бизнес-ангелов, мы готовим для вас список тех, кто уже ищет подобные проекты, и знаем, какие материалы необходимо представить, чтобы быстро получить отклик и приступить к переговорам.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="relative w-full lg:max-w-[445px] xl:-ml-14 xl:-mt-80 anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-3-bg', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="grid xl:grid-cols-2 gap-5 lg:gap-12 w-full lg:max-w-[360px] xl:max-w-[760px] lg:shrink-0">
+        <% for (var i = 0; i < 2; i++) { %>
+        <div>
+          <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+            <div class="card-content p-5">
+              <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+                <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                  >20 значимых показателей для инвестора
+                </h4>
+                <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+              </button>
+              <div data-accordion-content>
+                <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                  Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Подготовка инвестиционного предложения -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-4', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 4.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Подготовка инвестиционного предложения', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Качественный питчдэк — визитная карточка вашего проекта перед инвестором. От того, насколько точно и убедительно будет изложена суть проекта, зависит, захочет ли инвестор продолжить диалог или сразу откажется.
+      <br><br>
+      Мы создаем сильное инвестиционное предложение, подчеркивающее ключевые преимущества проекта, раскрывающее его потенциал и соответствуем ожиданиям профессиональных инвесторов.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="relative w-full lg:grow lg:-ml-60 xl:-ml-96 xl:-mt-80 anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-4-bg', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex flex-col gap-5 lg:gap-12 w-full lg:max-w-[360px] lg:shrink-0">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+              <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                >20 значимых показателей для инвестора
+              </h4>
+              <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+            </button>
+            <div data-accordion-content>
+              <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Подготовка к due diligence -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-5', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 5.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Подготовка к due diligence', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Прекрасный проект на бумаге может стать проблемным активом для инвестора. Именно поэтому каждый инвестиционный проект подвергается аудиту.
+      <br><br>
+      Due diligence — это процедура составления объективного представления об объекте инвестирования, всестороннее исследование деятельности компании, комплексная проверка её финансового состояния и положения на рынке, выявление и оценка рисков.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="relative w-full lg:grow lg:-ml-40 xl:-ml-80 xl:-mt-40 anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-5-bg', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex flex-col gap-5 lg:gap-12 w-full lg:max-w-[360px] lg:shrink-0">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+              <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                >20 значимых показателей для инвестора
+              </h4>
+              <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+            </button>
+            <div data-accordion-content>
+              <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Структурирование сделки -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-6', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 6.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Структурирование сделки', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      От того, какую форму примет ваша сделка с инвестором, зависит эффективность и будущая выгода всех сторон.
+      <br><br>
+      Сегодня существует несколько видов венчурных инструментов: от классического входа инвестора в капитал и конвертируемых займов до более современных форматов, таких как SAFE (Simple Agreement for Future Equity), FAST (Founder-friendly Agreement for Simple Transactions) и опционные соглашения.
+      <br><br>
+      Мы поможем выбрать именно ту структуру сделки, которая наиболее полно отвечает вашим интересам.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="relative w-full lg:grow lg:-ml-40 xl:-ml-80 xl:-mt-52 anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-6-bg', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex flex-col gap-5 lg:gap-12 w-full lg:max-w-[360px] lg:shrink-0">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+              <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                >20 значимых показателей для инвестора
+              </h4>
+              <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+            </button>
+            <div data-accordion-content>
+              <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Юридическое сопровождение сделки -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-28 w-72">
+    <%= picture({src: 'img/pictures/stage-7', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col items-start mb-8 sm:mb-12 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Шаг 7.', className: 'gradient-text', data: null}) %>
+      <%= subtitle({text: 'Юридическое сопровождение сделки', className: null, data: null}) %>
+    </div>
+    <p class="sm:text-lg lg:text-xl w-full lg:max-w-[760px] ml-auto mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500" data-anim>
+      Грамотное юридическое сопровождение инвестиционной сделки — это не только гарантия защиты ваших интересов, но и фундамент стабильного развития компании. Правильно структурированная сделка обеспечивает спокойствие и уверенность всех сторон.
+      <br><br>
+      Для этого необходима командная работа разноплановых специалистов: корпоративных юристов, экспертов по интеллектуальной собственности и налоговых консультантов, которые обеспечат четкость и прозрачность на каждом этапе сотрудничества с инвестором.
+    </p>
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-0">
+      <div class="relative w-full lg:grow lg:-ml-56 xl:-ml-96 xl:-mt-80 anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/stage-7-bg', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="grid xl:grid-cols-2 gap-5 lg:gap-12 w-full lg:max-w-[360px] xl:max-w-[760px] lg:shrink-0">
+        <% for (var i = 0; i < 2; i++) { %>
+        <div>
+          <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+            <div class="card-content p-5">
+              <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+                <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                  >20 значимых показателей для инвестора
+                </h4>
+                <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+              </button>
+              <div data-accordion-content>
+                <p class="text-sm sm:text-base pt-3 sm:pt-5">
+                  Мы рассчитываем ключевые показатели, которые позволят оценить перспективы проекта для инвестора - от выручки и капитальных затрат до IRR и NPV.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Получите экспресс-оценку инвестиционной привлекательности вашего бизнеса -->
 
 <%= consultation %>
@@ -232,8 +575,114 @@
   </div>
 </section>
 
+<!-- 12 лет развиваем идеи и технологии -->
+
+<% var idea = [
+  {
+    title: 'Концепция 360',
+    text: 'Решаем задачи комплексно, совмещая бизнес-компетенции с юридической практикой'
+  },
+  {
+    title: 'Опыт',
+    text: 'Более 13 лет консультируем бизнес по всему миру.'
+  },
+  {
+    title: 'Деловые связи',
+    text: 'Сеть уникальных контактов на всех уровнях необходимых бизнесу.'
+  },
+  {
+    title: 'Набор компетенций',
+    text: 'Юридический бутик, бизнес и корпоративное  консультирование, стратегические коммуникации.'
+  }
+] %>
+
+<section class="container relative sm:overflow-hidden">
+  <div class="hidden sm:block absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/idea-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: '12 лет развиваем идеи и технологии', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="relative">
+      <div class="lg:absolute lg:inset-0 lg:flex lg:items-center lg:justify-center mb-8 lg:mb-0">
+        <div class="w-full lg:max-w-[585px]">
+          <%= picture({src: 'img/pictures/logo-string', format: 'png', className: 'block w-full sm:max-w-[465px]', data: null}) %>
+          <p class="text-base sm:text-lg lg:text-xl">
+            - консалтинговая компания предлагающая эталонные юридические и бизнес-решения для технологических и инновационных компаний по всему миру.
+            <br><br>
+            Наша кросс-дисциплинарная команда обладает компетенциями как в области финансов и венчурных инвестиций, так и в области корпоративного права и налогообложения.
+          </p>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-2 lg:gap-x-20 xl:gap-x-40 gap-y-5 sm:gap-y-10 lg:gap-y-96 relative">
+        <% _.forEach((idea), (item) => { %>
+        <div class="anim anim-right sm:odd:anim-right sm:even:anim-left duration-500" data-anim>
+          <div class="bg-transparent border border-solid shadow-2xl card h-auto gradient-glass backdrop-blur-sm border-white/20">
+            <div class="card-content py-3 sm:py-5 px-5 sm:px-7 lg:px-10">
+              <h3 class="font-black text-3xl sm:text-4xl lg:text-[40px] lg:leading-tight uppercase tracking-wider"><%= item.title %></h3>
+              <p class="text-base sm:text-lg lg:text-xl"><%= item.text %></p>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+</section>
+
 <!-- Нам доверяют -->
 
 <%= clients %>
+
+<!-- Будем на связи -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/feedback-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Будем на связи', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="lg:flex lg:items-center lg:justify-between lg:gap-8">
+      <div class="duration-500 anim anim-right w-full lg:max-w-[560px]" data-anim>
+        <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+          <div class="px-5 py-5 sm:px-10 xl:px-16 sm:py-9 lg:py-12 card-content">
+            <form data-form="submit">
+              <input type="hidden" value="Тема" name="theme">
+              <div class="flex flex-col gap-5 sm:gap-7">
+                <label data-label>
+                  <div class="relative">
+                    <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                    <%= error({text: 'Введите ваше имя'}) %>
+                  </div>
+                </label>
+                <label data-label>
+                  <div class="relative">
+                    <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                    <%= error({text: 'Введите ваш номер'}) %>
+                  </div>
+                </label>
+                <label data-label>
+                  <div class="relative">
+                    <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                    <%= error({text: 'Заполните это поле'}) %>
+                  </div>
+                </label>
+                <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+              </div>
+            </form>
+            <div class="flex mt-5">
+              <a class="text-sm sm:text-base text-left underline-offset-4 hover:underline" draggable="false" href="" target="_blank">
+                Отправляя форму, Вы даете согласие на обработку <br class="hidden sm:block"> Ваших персональных данных
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block duration-500 anim anim-left w-full lg:max-w-[600px]" data-anim>
+        <%= picture({src: 'img/pictures/news-phone', format: 'png', className: 'block w-full -scale-x-100', data: null}) %>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%= footer %>
