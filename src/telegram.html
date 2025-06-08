@@ -1,0 +1,287 @@
+<%
+  var data = {
+    title: 'Телеграм',
+    status: false,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- Фон -->
+
+<div class="fixed inset-0 bg-grey">
+  <%= loader %>
+  <picture>
+    <source srcset="img/pictures/taxes-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+    <source srcset="img/pictures/taxes-bg-desktop.jpg" media="(min-width: 767.98px)">
+    <source srcset="img/pictures/taxes-bg-mobile.webp" type="image/webp">
+    <img class="image" draggable="false" loading="lazy" src="img/pictures/taxes-bg-mobile.jpg" alt="">
+  </picture>
+</div>
+
+<!-- <%= data.title %> -->
+
+<section class="container flex flex-col relative gap-5 sm:gap-10">
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <div class="flex flex-col items-center justify-center text-center gap-10 mb-7 sm:mb-8">
+          <div class="w-full max-w-24 sm:max-w-40 rounded-full border border-solid border-r-primary p-2">
+            <div class="pack pack-xl rounded-inherit bg-grey">
+              <%= loader %>
+              <%= picture({src: 'img/pictures/logo-main', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center justify-center gap-5 text-2xl sm:text-3xl lg:text-4xl mb-2">
+              <h1 class="font-semibold">
+                Rodionoff group
+              </h1>
+              <%= icon({id: 'checkbox', className: 'icon text-primary', data: null}) %>
+            </div>
+            <p class="text-sm sm:text-base opacity-60">
+              Более 180 подписчиков
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-5 sm:hap-8">
+          <div class="bg-grey py-3 px-4 font-medium text-center text-sm sm:text-base rounded-xl">
+            Канал про гранты, господдержку и резидентство в «Сколково»
+          </div>
+          <div class="bg-grey py-3 px-4 font-medium text-center text-sm sm:text-base rounded-xl">
+            Практические советы, как привлечь финансирование от государства для своего проекта
+          </div>
+          <div class="bg-grey py-3 px-4 font-medium text-center text-sm sm:text-base rounded-xl">
+            Делимся секретами, как привлекли 2 млрд рублей грантов и субсидий
+          </div>
+          <div class="bg-grey py-3 px-4 font-medium text-center text-sm sm:text-base rounded-xl">
+            Честно рассказываем о внутрянке господдержки — наиболее эффективных программах и подводных камнях отчётности
+          </div>
+          <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup">Подписаться</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Как презентовать свой стартап Президенту?
+        </h2>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Познакомиться с нами
+          </li>
+          <li>
+            Получить комплексный консалтинг в области господдержки для бизнеса
+          </li>
+          <li>
+            Пройти отбор и войти в Атлас АСИ
+          </li>
+          <li>
+            Ваш проект на столе у Президента
+          </li>
+        </ol>
+        <p class="text-sm sm:text-base mb-5">
+          Сегодня состоялась встреча Владимира Путина с главой АСИ Светланой Чупшевой
+        </p>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/101">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Прогноз по господдержке на 2025 год
+        </h2>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Государство продолжит увеличивать налоговую нагрузку, одновременно предоставляя льготы в наиболее чувствительных областях - промышленность, искусственный интеллект, информационная безопасность, разработка ПО
+          </li>
+          <li>
+            Исходя из первого пункта, значение налоговых льгот от «Сколково» и других инновационных центров будут расти. Экономия позволит существенно увеличить чистую прибыль компании
+          </li>
+          <li>
+            В 2025 грантов будет меньше. Это стало понятно, когда уже осенью победителям грантов давали обещание перевести деньги, как появятся средства в бюджете
+          </li>
+        </ol>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/63">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Сколько грантов можно получить за год
+        </h2>
+        <p class="text-sm sm:text-base mb-5">
+          Например, вы небольшая IT-компания
+        </p>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Став резидентом «Сколково», вы можете получать до 4 млн рублей микрогрантов ежегодно, пока не наберете 16 млн рублей выделенной помощи. Деньги целевые (маркетинг, защита интеллектуальной собственности, участие в выставках, разработка прототипа и т.д.), на ваш расчетный счет не попадают. Вероятность одобрения выше 70%
+          </li>
+          <li>
+            Ежегодно проводятся грантовые программы от ФСИ. Если вы компания без оборота или с 1–2 млн выручки, то тут вы можете претендовать на сумму до 4 млн рублей. Если оборот выше, то сумма гранта будет плюс-минус равняться ему с предельной отсечкой в 50 млн рублей (в зависимости от грантовой программы). Вероятность одобрения от 5 до 20% в зависимости от проекта и качества проработки заявки
+          </li>
+          <li>
+            Если вы разрабатываете решения для систем БАС, космоса, энергетики и других стратегически важных отраслей экономики, то можно попробовать получить поддержку от Фонда НТИ или других институтов поддержки. Суммы тут нередко достигают и 50 млн рублей, но программы редкие, сложные и требуют сложной отчетности
+          </li>
+        </ol>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/71">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Сколково или Московский инновационный кластер (МИК)
+        </h2>
+        <p class="text-sm sm:text-base mb-5">
+          Два популярных инновационных центра, зачастую между которыми происходит выбор. Но мы всегда рекомендуем получить статус резидента Сколково. Почему так?
+          <br><br>
+          Преимущества Сколково:
+        </p>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Нет необходимости арендовать недвижимость, когда в МИКе необходимо арендовать офис или место в коворкинге, что несет затраты от 20 тысяч рублей в месяц
+          </li>
+          <li>
+            Нет обязательств по инвестициям в НИОКР, когда в МИКе 10% выручки компании должны быть направлены на НИОКР, из которых 10% должен быть потрачен в рамках экосистемы центра или МГУ
+          </li>
+          <li>
+            Нет четкой привязки к KPI, когда в МИКе вы можете лишиться статуса, если не выполните хотя бы 30% заявленных целей
+          </li>
+        </ol>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/66">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Про сроки получения статуса резидента «Сколково»
+        </h2>
+        <p class="text-sm sm:text-base mb-5">
+          В минувшую пятницу сразу три наших клиента получили долгожданный статус резидента «Сколково». Долгожданный, потому что не обошлось без сложностей
+        </p>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Штукатурные станции «MIXER20» — успешно прошли комиссию с первого раза, однако клиент подал финальный пакет документов только спустя полгода после положительного решения от «Сколково». Итого — почти год от старта работ до результата
+          </li>
+          <li>
+            Мультисервисная платформа для предприятий HoReCa «Jetti Platform» — начали работу в сентябре. Получили отказ от первой комиссии в ноябре. Вторая попытка после доработки материалов оказалась успешной. Итого — 4 месяца работы
+          </li>
+        </ol>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/68">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Как Сколково помогает найти инвесторов?
+        </h2>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Согласно статистике, для привлечения 1 инвестора нужно 30 встреч. Проблема лишь в том, как быстро достучаться до такого количества потенциальных инвесторов и стать им интересным
+          </li>
+          <li>
+            С 6 декабря Сколково организует масштабную питч-сессию для стартапов
+          </li>
+          <li>
+            Это отличный шанс презентовать ваши продукты и сервисы представителям инвестиционных компаний и корпоративных партнеров «Сколково»
+          </li>
+        </ol>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/59">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <h2 class="font-semibold text-xl sm:text-2xl mb-5">
+          Как одна строчка в уставе может обанкротить компанию
+        </h2>
+        <ol class="flex flex-col gap-2 text-sm sm:text-base mb-5">
+          <li>
+            Статья 26 Закона об ООО прямо предусматривает, что участник компании вправе выйти из компании путём отчуждения своей доли в пользу компании независимо от согласия других её участников или самой компании, если это предусмотрено уставом компании
+          </li>
+          <li>
+            Простым языком - учредитель, партнер или инвестор могут в любой момент по своему желанию реализовать свою долю другим участникам ООО, которые ОБЯЗАНЫ ее выкупить в течение 3 месяцев, если не предусмотрено другого
+          </li>
+          <li>
+            Эта опция весьма опасна для бизнеса, поскольку выход участника из компании влечёт для компании непредвиденные расходы по выплате такому участнику действительной стоимости его доли, что может создать в бизнесе кассовый разрыв или иным образом нарушить финансово-экономические планы компании. В отдельных случаях такой резкий выход из доли компании может ее обанкротить
+          </li>
+        </ol>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup/87">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+  <div class="anim anim-up duration-500" data-anim>
+    <div class="card bg-white w-full sm:max-w-2xl sm:mx-auto">
+      <div class="card-content gap-5 py-6 sm:py-10 px-4 sm:px-8 lg:px-10">
+        <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-stretch text-center sm:text-left gap-10">
+          <div class="w-full max-w-24 rounded-full border border-solid border-r-primary p-2">
+            <div class="pack pack-xl rounded-inherit bg-grey">
+              <%= loader %>
+              <%= picture({src: 'img/pictures/logo-main', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center justify-center mb-2">
+              <h2 class="font-semibold text-xl sm:text-2xl">
+                Rodionoff group
+              </h2>
+              <%= icon({id: 'checkbox', className: 'icon text-primary text-xl sm:text-2xl ml-2', data: null}) %>
+            </div>
+            <p class="text-sm sm:text-base opacity-60">
+              Более 180 подписчиков
+            </p>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-lg btn-fill btn-gradient uppercase w-full" data-waved="light" draggable="false" href="https://t.me/rodionoffgroup">Продолжение в канале</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= footer %>

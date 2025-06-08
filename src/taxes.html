@@ -1,0 +1,433 @@
+<%
+  var data = {
+    title: 'Налоги',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var cases = _.template(require('./includes/cases.html').default)({icon, subtitle})
+  var clients = _.template(require('./includes/clients.html').default)({picture, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<% var taxes = [
+  'Отменяем акты и требования',
+  'Снимаем блокировки со счетов',
+  'Оспариваем решения после проверок'
+] %>
+
+<section class="container relative pt-44 xl:pt-80 sm:pb-0">
+  <div class="container absolute inset-0 py-0 overflow-hidden bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/taxes-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/taxes-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/taxes-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/taxes-bg-mobile.jpg" alt="">
+    </picture>
+    <div class="relative size-full">
+      <div class="absolute top-10 lg:top-auto lg:bottom-0 -right-40 lg:-right-24 w-96 md:w-[580px]">
+        <%= picture({src: 'img/pictures/taxes-img', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+  </div>
+  <div class="relative">
+    <h1 class="text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black mb-10 sm:mb-12 anim anim-up duration-500" data-anim>
+      Решаем <br> налоговые <br class="xl:hidden"> споры
+    </h1>
+    <ul class="flex flex-col gap-1.5 font-bold sm:text-lg lg:text-xl mb-20 xl:mb-24 anim anim-up duration-500 delay-100" data-anim>
+      <% _.forEach((taxes), (item) => { %>
+      <li class="flex items-center">
+        <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <%= item %>
+      </li>
+      <% }) %>
+    </ul>
+    <div class="relative z-10 duration-500 delay-200 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-2xl w-full max-w-96 lg:max-w-full xl:max-w-[950px] rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Получите план действий по вашей ситуации</b>
+          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 150+ клиентов -->
+
+<% var about = [
+  {
+    title: '8 лет опыта',
+    text: 'урегулирования споров с ФНС'
+  },
+  {
+    title: '500 млн ₽',
+    text: 'экономии ежегодно'
+  },
+  {
+    title: '>250 млн ₽',
+    text: 'отмененных требований и актов'
+  },
+  {
+    title: '95% дел',
+    text: 'решаются в досудебном порядке'
+  }
+] %>
+
+<section class="container relative sm:overflow-hidden" id="about">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/about-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/about-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/about-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/about-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <div class="mb-8 text-right lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:text-left">
+      <h2 class="font-black text-8xl sm:text-9xl lg:text-[155px] lg:leading-tight tracking-wider anim anim-up duration-500" data-anim>
+        150+
+      </h2>
+      <p class="font-thin text-5xl sm:text-6xl lg:text-[80px] anim anim-up duration-500" data-anim>
+        клиентов
+      </p>
+    </div>
+    <div class="relative flex flex-col items-start gap-5 sm:items-stretch sm:gap-10 lg:gap-16">
+      <% _.forEach((about), (item) => { %>
+      <div class="duration-500 sm:w-max sm:even:ml-auto anim anim-right sm:odd:anim-right sm:even:anim-left" data-anim>
+        <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20">
+          <div class="px-5 py-3 card-content sm:py-5 sm:px-8 lg:px-10">
+            <h3 class="font-black text-3xl sm:text-4xl lg:text-[40px] lg:leading-tight uppercase tracking-wider"><%= item.title %></h3>
+            <p class="text-base sm:text-lg lg:text-xl"><%= item.text %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- В каких ситуациях мы помогаем? -->
+
+<section class="container relative" id="services">
+  <div class="absolute top-64 md:top-72 right-0 h-[610px] md:h-auto md:-bottom-44 w-44 md:w-96 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/situations-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/situations-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/situations-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/situations-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'В каких ситуациях мы помогаем?', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 6; i++) { %>
+      <div class="duration-700 ease-linear anim anim-increase" data-anim>
+        <div class="shadow-2xl card group/accordion" data-accordion data-close-click>
+          <div class="p-5 card-content">
+            <button class="flex items-center justify-between text-left md:flex-col md:items-stretch md:justify-stretch md:gap-6 md:pointer-events-none" data-accordion-toggle>
+              <div class="order-2 md:order-1 md:ml-auto">
+                <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-7xl', data: null}) %>
+              </div>
+              <h3 class="order-1 font-bold sm:text-lg lg:text-xl gradient-text md:order-2">
+                Оспаривание актов, требований и решений о начислении налогов
+              </h3>
+            </button>
+            <div class="md:group-[[data-accordion]]/accordion:!h-auto" data-accordion-content>
+              <p class="pt-6 text-sm sm:text-base">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- В чем наша уникальность? -->
+
+<% var uniqueness = [
+  {
+    id: 'experience',
+    title: 'Опыт работы',
+    text: 'Практики, которые знают, как общаться с налоговой и судами, сдавать отчеты и успешно проходить проверки. <br> Юристы и специалисты, в том числе, с многолетним опытом работы в УФНС.'
+  },
+  {
+    id: 'knowledge',
+    title: 'Знаем больше других',
+    text: 'Ежедневно отслеживаем изменения в НК РФ и судебную практику для формирования наиболее эффективных стратегий решения проблем.'
+  },
+  {
+    id: 'complexity',
+    title: 'Решаем сложные и невозможные задачи',
+    text: 'Беремся за ситуации, где другие разводят руками. Знаем, как действовать и защитить российского предпринимателя.'
+  }
+] %>
+
+<section class="container relative">
+  <%= subtitle({text: 'В чем наша уникальность?', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-7 lg:gap-10">
+    <% _.forEach((uniqueness), (item) => { %>
+    <div class="duration-700 ease-linear anim anim-increase" data-anim>
+      <div class="z-10 text-white shadow-2xl card gradient-main">
+        <div class="absolute -top-2 md:top-1 -right-1 md:-right-5">
+          <%= icon({id: item.id, className: 'icon opacity-10 text-[110px] md:text-[140px]', data: null}) %>
+        </div>
+        <div class="relative p-5 card-content">
+          <h3 class="pr-24 mb-16 text-xl font-extrabold sm:text-2xl sm:mb-20 lg:mb-28 md:pr-20"><%= item.title %></h3>
+          <p class="sm:text-xl md:mt-auto"><%= item.text %></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Слышим. Находим решение. Действуем! -->
+
+<% var ways = [
+  {
+    margin: null,
+    src: 'img/numbers/1',
+    title: 'Консультация',
+    text: 'Проводим анализ ситуации, определяем потенциальные риски и формируем план действий. <br> По итогам вводной консультации вы получите основные ответы на вопросы и оцените варианты решений.'
+  },
+  {
+    margin: 'lg:ml-auto lg:-mt-36 xl:-mt-60',
+    src: 'img/numbers/2',
+    title: 'Защита ваших интересов',
+    text: 'Реализуем наиболее эффективную стратегию действий в максимально сжатые сроки.'
+  },
+  {
+    margin: 'lg:mx-auto',
+    src: 'img/numbers/3',
+    title: 'Остаемся на связи',
+    text: 'Уведомляем вас обо всех действиях и изменениях в процессе. <br> Предоставляем еженедельные отчеты.'
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute top-0 left-0 md:bottom-0 h-[655px] md:h-auto w-44 md:w-72 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/ways-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/ways-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/ways-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/ways-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Слышим. Находим решение. Действуем!', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex mb-8 duration-500 lg:pl-12 sm:mb-10 lg:mb-12 anim anim-up" data-anim>
+      <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+        <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <p class="sm:text-lg lg:text-xl">
+        Мы сделали процесс решения проблем с налоговой службой предельно комфортным для Клиента.
+        <br>
+        Вы просто рассказываете о вашей задаче и компании – все остальное делаем мы.
+      </p>
+    </div>
+    <div class="flex justify-between gap-5">
+      <div class="w-5 shrink-0 lg:hidden">
+        <%= picture({src: 'img/pictures/arrow', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex flex-col gap-5 sm:gap-10 lg:gap-24 grow">
+        <% _.forEach((ways), (item, key) => { %>
+        <div class="relative w-full lg:max-w-[460px] <%= item.margin %>">
+          <% if (key === 0) { %>
+          <div class="hidden lg:block absolute top-32 xl:top-10 left-full w-[375px] clip-path clip-path-right duration-1000 ease-linear" data-anim>
+            <%= picture({src: 'img/pictures/line-first', format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+          <% } else if (key === 1) { %>
+          <div class="hidden lg:block absolute top-24 right-full w-[164px] clip-path clip-path-left duration-1000 ease-linear" data-anim>
+            <%= picture({src: 'img/pictures/line-last', format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+          <% } %>
+          <div class="duration-500 anim anim-fade" data-anim>
+            <div class="z-10 shadow-2xl card">
+              <div class="absolute -top-2 sm:top-0 -right-2 w-[74px] sm:w-20">
+                <%= picture({src: item.src, format: 'svg', className: 'block w-full', data: null}) %>
+              </div>
+              <div class="relative p-5 card-content">
+                <h3 class="pr-20 text-xl font-extrabold sm:text-2xl gradient-text mb-7 sm:mb-10 lg:mb-14"><%= item.title %></h3>
+                <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Найдем решение налогового спора в течение часа -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 flex items-center justify-center bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/time-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/time-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/time-bg-mobile.webp" type="image/webp">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/time-bg-mobile.jpg" alt="">
+    </picture>
+    <div class="w-full max-w-[435px] relative xl:mr-40 hidden lg:block">
+      <%= picture({src: 'img/pictures/time-img', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative flex flex-col gap-8 lg:flex-row lg:justify-between">
+    <div class="w-full lg:max-w-[400px]">
+      <%= subtitle({text: 'Найдем решение налогового спора <br class="hidden lg:block"> в течение часа', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="flex duration-500 anim anim-up" data-anim>
+        <div class="w-3 mr-3 shrink-0 sm:hidden">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <p class="sm:text-lg lg:text-xl">
+          Расскажите о вашей ситуации — наши эксперты подготовят эффективные решения <br class="hidden lg:block"> и ответят на ваши вопросы
+        </p>
+      </div>
+    </div>
+    <div class="duration-500 anim anim-left w-full lg:max-w-[560px]" data-anim>
+      <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+        <div class="px-5 py-5 sm:px-10 lg:px-16 sm:py-9 lg:py-12 card-content">
+          <form data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 sm:gap-7">
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                  <%= error({text: 'Заполните это поле'}) %>
+                </div>
+              </label>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+            </div>
+          </form>
+          <p class="text-xs mt-7 sm:mt-10 sm:text-sm opacity-60">
+            Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Последние кейсы -->
+
+<%= cases %>
+
+<!-- Нам доверяют -->
+
+<%= clients %>
+
+<!-- Налоги — это то, в чем мы разбираемся лучше всего -->
+
+<section class="container relative pb-0 lg:overflow-hidden">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/best-bg-desktop.webp" media="(min-width: 767.98px)" type="image/webp">
+      <source srcset="img/pictures/best-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <source srcset="img/pictures/best-bg-mobile.webp" type="image/webp">
+      <img class="image md:object-top" draggable="false" loading="lazy" src="img/pictures/best-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Налоги — это то, в чем мы разбираемся лучше всего', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="w-full lg:max-w-[540px] container max-lg:pb-0 pt-0 lg:pt-24 px-0 lg:ml-auto">
+      <div class="duration-500 lg:mb-16 anim anim-right lg:anim-left" data-anim>
+        <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20">
+          <div class="px-5 py-5 sm:px-7 lg:px-10 card-content">
+            <div class="sm:text-lg lg:text-xl">
+              <p>
+                Наш фокус — безопасность и комфорт предприятия, собственника и его команды.
+              </p>
+              <br>
+              <p>
+                Многолетний опыт и сотни кейсов позволяют разрешать споры и находить выход из любой ситуации.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative -mt-5 lg:mt-0 ml-auto lg:ml-0 sm:mr-auto lg:mr-0 -mb-2 lg:mb-0 lg:absolute lg:-left-40 xl:left-0 lg:bottom-0 w-full max-w-[280px] sm:max-w-[500px] anim anim-right duration-500" data-anim>
+        <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-full', data: null}) %>
+        <div class="absolute inset-0 flex items-end justify-end px-2 py-5 md:py-3 md:px-3">
+          <div class="text-right text-white">
+            <h4 class="font-bold sm:text-lg lg:text-xl">
+              Родионов Иван Игоревич
+            </h4>
+            <p>
+              управляющий партнер
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="duration-500 shadow-2xl anim anim-right lg:anim-left rounded-xl" data-anim>
+        <button class="w-full px-4 text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить консультацию</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= footer %>

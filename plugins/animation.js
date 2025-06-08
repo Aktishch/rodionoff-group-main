@@ -9,6 +9,14 @@ module.exports = plugin(
         transitionTimingFunction: 'ease',
       },
     }
+    let clipPath = {
+      '.clip-path': {
+        transitionProperty: 'clip-path',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'ease',
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+      },
+    }
     Object.entries(theme('anim')).map(([key, value]) => {
       anim = {
         ...anim,
@@ -19,7 +27,16 @@ module.exports = plugin(
         },
       }
     })
+    Object.entries(theme('clipPath')).map(([key, value]) => {
+      clipPath = {
+        ...clipPath,
+        [`.clip-path-${key}:not([data-anim="show"])`]: {
+          clipPath: `${value}`,
+        },
+      }
+    })
     addComponents(anim)
+    addComponents(clipPath)
   },
   {
     theme: {
@@ -32,6 +49,12 @@ module.exports = plugin(
         down: 'translateY(-3.5rem)',
         left: 'translateX(3.5rem)',
         right: 'translateX(-3.5rem)',
+      },
+      clipPath: {
+        up: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+        down: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)',
+        left: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
+        right: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
       },
     },
   }

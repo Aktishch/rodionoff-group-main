@@ -1,0 +1,58 @@
+<section class="container overflow-hidden" id="cases">
+  <%= subtitle({text: 'Кейсы из практики', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="relative" data-slider="cases">
+    <div class="swiper w-full lg:max-w-[800px] xl:max-w-[960px] lg:mx-auto" data-slider-swiper="cases">
+      <div class="swiper-wrapper">
+        <% for (var i = 0; i < 6; i++) { %>
+        <div class="h-auto overflow-hidden swiper-slide rounded-xl">
+          <div class="card">
+            <div class="card-content">
+              <ul class="flex flex-col gap-5 px-5 pt-16 pb-5 sm:px-7 lg:px-10 lg:pt-10 sm:pb-7 lg:pb-10 sm:gap-8">
+                <li class="flex flex-col items-start gap-3 lg:flex-row lg:justify-between sm:gap-6 lg:gap-10">
+                  <div class="flex items-center w-full shrink-0 lg:max-w-40">
+                    <span class="shrink-0 size-1.5 rounded-full gradient-main mr-3 sm:mr-5"></span>
+                    <h4 class="font-bold sm:text-lg lg:text-xl">
+                      Компания <%= i %>
+                    </h4>
+                  </div>
+                  <p class="w-full max-w-[660px] text-sm sm:text-base">
+                    Известная сеть оптик
+                  </p>
+                </li>
+                <li class="flex flex-col items-start gap-3 lg:flex-row lg:justify-between sm:gap-6 lg:gap-10">
+                  <div class="flex items-center w-full shrink-0 lg:max-w-40">
+                    <span class="shrink-0 size-1.5 rounded-full gradient-main mr-3 sm:mr-5"></span>
+                    <h4 class="font-bold sm:text-lg lg:text-xl">
+                      Запрос
+                    </h4>
+                  </div>
+                  <p class="w-full max-w-[660px] text-sm sm:text-base">
+                    300 млн рублей на кэшаут одного из учредителей
+                  </p>
+                </li>
+              </ul>
+              <div class="flex flex-col items-start gap-3 p-5 mt-auto text-white lg:flex-row lg:justify-between sm:gap-6 lg:gap-10 sm:p-7 lg:p-10 gradient-main rounded-xl">
+                <div class="flex items-center w-full text-xl shrink-0 lg:max-w-40">
+                  <%= icon({id: 'lightning', className: 'icon mr-3 sm:mr-5', data: null}) %>
+                  <b>Решение</b>
+                </div>
+                <p class="w-full max-w-[660px] text-sm sm:text-base">
+                  Проведен анализ возможных структур сделки, после чего выбрано решение о продажи нескольких торговых точках группе разрозненных частных инвесторов. Это позволило не получить инвестора с блокирующей долей в капитале, при этом привлечь значительное финансирование.
+                  <br><br>
+                  Были разработан полный пакет материалов - презентации, финансовая модель, проведена оценка каждой торговой точки. Юристы компании сопроводили каждую сделку.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <button class="absolute rounded-full left-3 lg:left-0 top-8 size-8 lg:size-14 swiper-button-prev btn btn-second lg:top-1/2" data-slider-prev="cases" data-waved="dark">
+      <%= icon({id: 'arrow-left', className: 'text-2xl lg:text-5xl', data: null}) %>
+    </button>
+    <button class="absolute rounded-full right-3 lg:right-0 top-8 size-8 lg:size-14 swiper-button-next btn btn-primary lg:top-1/2" data-slider-next="cases" data-waved="dark">
+      <%= icon({id: 'arrow-right', className: 'text-2xl lg:text-5xl', data: null}) %>
+    </button>
+  </div>
+</section>
