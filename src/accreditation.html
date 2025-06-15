@@ -83,22 +83,22 @@
 
 <% var advantages = [
   {
-    position: '-rotate-[5deg] lg:rotate-[22deg] lg:-translate-x-20 -translate-y-20 lg:-translate-y-32 [&:not([data-anim=show])]:-translate-y-40 lg:[&:not([data-anim=show])]:-translate-y-96 lg:[&:not([data-anim=show])]:rotate-[15deg] lg:[&:not([data-anim=show])]:translate-x-0',
+    position: 'lg:rotate-[22deg] lg:-translate-x-20 lg:-translate-y-32 lg:[&:not([data-anim=show])]:-translate-y-96 lg:[&:not([data-anim=show])]:rotate-[15deg] lg:[&:not([data-anim=show])]:translate-x-0',
     title: 'Отсрочка от армии',
     text: 'Для IT-специалистов действует отсрочка от срочной службы и по мобилизации'
   },
   {
-    position: '-rotate-[5deg] lg:rotate-[14deg] lg:translate-x-20 -translate-y-14 lg:-translate-y-20 [&:not([data-anim=show])]:-translate-y-40 lg:[&:not([data-anim=show])]:rotate-[8deg]',
+    position: 'lg:rotate-[14deg] lg:translate-x-20 lg:-translate-y-20 lg:[&:not([data-anim=show])]:rotate-[8deg]',
     title: 'Льготное <br> кредитование',
     text: 'Льготные кредиты по ставке от 1 до 5%'
   },
   {
-    position: '-rotate-[5deg] lg:rotate-[8deg] -translate-y-10 [&:not([data-anim=show])]:-translate-y-40 lg:[&:not([data-anim=show])]:translate-y-3 lg:[&:not([data-anim=show])]:rotate-[2deg] lg:[&:not([data-anim=show])]:translate-x-10',
+    position: 'lg:rotate-[8deg] lg:[&:not([data-anim=show])]:translate-y-3 lg:[&:not([data-anim=show])]:rotate-[2deg] lg:[&:not([data-anim=show])]:translate-x-10',
     title: 'IT-ипотека',
     text: 'Для всех сотрудников компании доступна льготная ипотека по ставке до 6%.'
   },
   {
-    position: '-rotate-[5deg] lg:-rotate-[10deg] lg:-translate-x-40 lg:[&:not([data-anim=show])]:translate-y-full [&:not([data-anim=show])]:translate-x-0 lg:[&:not([data-anim=show])]:-rotate-[5deg]',
+    position: 'lg:-rotate-[10deg] lg:-translate-x-40 lg:[&:not([data-anim=show])]:translate-y-full lg:[&:not([data-anim=show])]:-rotate-[5deg]',
     title: 'Налоговые льготы',
     text: 'Налог на прибыль 5% вместо 25% Страховые взносы 7,6% вместо 30%'
   }
@@ -111,7 +111,7 @@
   </div>
   <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
     <%= subtitle({text: 'Преимущества <br> IT-аккредитации', className: 'anim anim-up duration-500', data: 'data-anim'}) %>
-    <div class="flex flex-col-reverse w-full sm:max-w-[450px] relative mx-auto lg:mx-0">
+    <div class="flex flex-col-reverse gap-5 lg:gap-0 w-full md:max-w-[450px] relative mx-auto lg:mx-0">
       <% _.forEach((advantages), (item) => { %>
       <div class="transition-transform duration-700 <%= item.position %>" data-anim>
         <div class="card h-52 lg:h-64">
@@ -172,7 +172,7 @@
 ] %>
 
 <section class="container">
-  <div class="bg-black text-white rounded-2xl py-5 sm:py-8 px-2 sm:px-4">
+  <div class="gradient-main text-white rounded-2xl py-5 sm:py-8 px-2 sm:px-4">
     <%= subtitle({text: 'Кто может получить IT-аккредитацию?', className: 'mb-8 sm:mb-5 anim anim-up duration-500', data: 'data-anim'}) %>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-[120px] grid-flow-dense gap-2 text-black">
       <% _.forEach((who), (item) => { %>
@@ -300,7 +300,7 @@
 
 <!-- Получите консультацию эксперта -->
 
-<section class="container relative">
+<section class="container relative hidden sm:block">
   <div class="absolute inset-0 container pointer-events-none hidden lg:block">
     <div class="absolute inset-0 md:right-auto bg-grey md:w-[460px]">
       <%= loader %>
