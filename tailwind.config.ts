@@ -25,7 +25,7 @@ module.exports = {
     },
     constants: {
       xs: 36,
-      sm: 45,
+      sm: 40,
       md: 54,
       lg: 60,
       xl: 70,

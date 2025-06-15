@@ -69,9 +69,7 @@
     </div>
   </div>
   <div class="relative">
-    <h1 class="text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black mb-10 sm:mb-12 anim anim-up duration-500" data-anim>
-      Решаем <br> налоговые <br class="xl:hidden"> споры
-    </h1>
+    <%= title({text: 'Решаем <br> налоговые <br class="xl:hidden"> споры', className: 'mb-10 sm:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
     <ul class="flex flex-col gap-1.5 font-bold sm:text-lg lg:text-xl mb-20 xl:mb-24 anim anim-up duration-500 delay-100" data-anim>
       <% _.forEach((taxes), (item) => { %>
       <li class="flex items-center">

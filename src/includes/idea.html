@@ -1,0 +1,52 @@
+<% var idea = [
+  {
+    title: 'Концепция 360',
+    text: 'Решаем задачи комплексно, совмещая бизнес-компетенции с юридической практикой'
+  },
+  {
+    title: 'Опыт',
+    text: 'Более 13 лет консультируем бизнес по всему миру.'
+  },
+  {
+    title: 'Деловые связи',
+    text: 'Сеть уникальных контактов на всех уровнях необходимых бизнесу.'
+  },
+  {
+    title: 'Набор компетенций',
+    text: 'Юридический бутик, бизнес и корпоративное  консультирование, стратегические коммуникации.'
+  }
+] %>
+
+<section class="container relative sm:overflow-hidden">
+  <div class="hidden sm:block absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/idea-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: '12 лет развиваем идеи и технологии', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="relative">
+      <div class="lg:absolute lg:inset-0 lg:flex lg:items-center lg:justify-center mb-8 lg:mb-0">
+        <div class="w-full lg:max-w-[585px]">
+          <%= picture({src: 'img/pictures/logo-string', format: 'png', className: 'block w-full sm:max-w-[465px]', data: null}) %>
+          <p class="text-base sm:text-lg lg:text-xl">
+            - консалтинговая компания предлагающая эталонные юридические и бизнес-решения для технологических и инновационных компаний по всему миру.
+            <br><br>
+            Наша кросс-дисциплинарная команда обладает компетенциями как в области финансов и венчурных инвестиций, так и в области корпоративного права и налогообложения.
+          </p>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-2 lg:gap-x-20 xl:gap-x-40 gap-y-5 sm:gap-y-10 lg:gap-y-96 relative">
+        <% _.forEach((idea), (item) => { %>
+        <div class="anim anim-right sm:odd:anim-right sm:even:anim-left duration-500" data-anim>
+          <div class="bg-transparent border border-solid shadow-2xl card h-auto gradient-glass backdrop-blur-sm border-white/20">
+            <div class="card-content py-3 sm:py-5 px-5 sm:px-7 lg:px-10">
+              <h3 class="font-black text-3xl sm:text-4xl lg:text-[40px] lg:leading-tight uppercase tracking-wider"><%= item.title %></h3>
+              <p class="text-base sm:text-lg lg:text-xl"><%= item.text %></p>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>

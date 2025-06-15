@@ -1,0 +1,416 @@
+<%
+  var data = {
+    title: 'Аккредитация',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var idea = _.template(require('./includes/idea.html').default)({picture, loader, subtitle})
+  var clients = _.template(require('./includes/clients.html').default)({picture, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<section class="container relative pt-44 xl:pt-80">
+  <div class="container absolute inset-0 py-0 overflow-hidden bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/accreditation-bg', format: 'jpg', className: 'image object-bottom', data: null}) %>
+    <div class="relative size-full">
+      <div class="absolute top-12 lg:top-28 -right-24 w-80 lg:w-[580px] opacity-80 lg:opacity-100">
+        <%= picture({src: 'img/pictures/accreditation-img', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Аккредитация IT компаний в Минцифры', className: 'break-words w-full md:max-w-[650px] anim anim-up duration-500', data: 'data-anim'}) %>
+    <h3 class="text-2xl/tight sm:text-3xl/tight tracking-wider uppercase font-black mb-10 sm:mb-12 anim anim-up duration-500" data-anim>
+      За 30 дней
+    </h3>
+    <p class="text-xl mb-20 anim anim-up duration-500 delay-100" data-anim>
+      Налоговые преференции, отсрочка от армии и льготная ипотека
+    </p>
+    <div class="relative z-10 duration-500 delay-200 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-2xl w-full max-w-96 lg:max-w-full xl:max-w-[950px] rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Получите план действий по вашей ситуации</b>
+          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Преимущества IT-аккредитации -->
+
+<% var advantages = [
+  {
+    position: '-rotate-[5deg] lg:rotate-[22deg] lg:-translate-x-20 -translate-y-20 lg:-translate-y-32 [&:not([data-anim=show])]:-translate-y-40 lg:[&:not([data-anim=show])]:-translate-y-96 lg:[&:not([data-anim=show])]:rotate-[15deg] lg:[&:not([data-anim=show])]:translate-x-0',
+    title: 'Отсрочка от армии',
+    text: 'Для IT-специалистов действует отсрочка от срочной службы и по мобилизации'
+  },
+  {
+    position: '-rotate-[5deg] lg:rotate-[14deg] lg:translate-x-20 -translate-y-14 lg:-translate-y-20 [&:not([data-anim=show])]:-translate-y-40 lg:[&:not([data-anim=show])]:rotate-[8deg]',
+    title: 'Льготное <br> кредитование',
+    text: 'Льготные кредиты по ставке от 1 до 5%'
+  },
+  {
+    position: '-rotate-[5deg] lg:rotate-[8deg] -translate-y-10 [&:not([data-anim=show])]:-translate-y-40 lg:[&:not([data-anim=show])]:translate-y-3 lg:[&:not([data-anim=show])]:rotate-[2deg] lg:[&:not([data-anim=show])]:translate-x-10',
+    title: 'IT-ипотека',
+    text: 'Для всех сотрудников компании доступна льготная ипотека по ставке до 6%.'
+  },
+  {
+    position: '-rotate-[5deg] lg:-rotate-[10deg] lg:-translate-x-40 lg:[&:not([data-anim=show])]:translate-y-full [&:not([data-anim=show])]:translate-x-0 lg:[&:not([data-anim=show])]:-rotate-[5deg]',
+    title: 'Налоговые льготы',
+    text: 'Налог на прибыль 5% вместо 25% Страховые взносы 7,6% вместо 30%'
+  }
+] %>
+
+<section class="container relative overflow-hidden pb-0">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/advantages-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+    <%= subtitle({text: 'Преимущества <br> IT-аккредитации', className: 'anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex flex-col-reverse w-full sm:max-w-[450px] relative mx-auto lg:mx-0">
+      <% _.forEach((advantages), (item) => { %>
+      <div class="transition-transform duration-700 <%= item.position %>" data-anim>
+        <div class="card h-52 lg:h-64">
+          <div class="absolute inset-0 bg-grey">
+            <%= picture({src: 'img/pictures/advantages-card', format: 'jpg', className: 'image', data: null}) %>
+          </div>
+          <div class="card-content justify-end relative p-5">
+            <h4 class="font-extrabold text-xl lg:text-2xl mb-3 lg:mb-5"><%= item.title %></h4>
+            <p class="lg:text-xl"><%= item.text %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Кто может получить IT-аккредитацию? -->
+
+<% var who = [
+  {
+    size: '',
+    title: 'Сервисы по работе с данными'
+  },
+  {
+    size: 'sm:col-2 sm:row-2',
+    title: 'Разработчики ПО'
+  },
+  {
+    size: 'sm:row-2',
+    title: 'Разработчики мобильных приложений'
+  },
+  {
+    size: 'sm:row-2',
+    title: 'Платежные системы,',
+    text: 'в том числе работающие с криптовалютой и ЦФА'
+  },
+  {
+    size: '',
+    title: 'Веб-студии'
+  },
+  {
+    size: '',
+    title: 'SaaS-сервисы'
+  },
+  {
+    size: 'lg:row-2',
+    title: 'Маркетплейсы'
+  },
+  {
+    size: '',
+    title: 'Разработчики игр'
+  },
+  {
+    size: '',
+    title: 'Агрегаторы'
+  }
+] %>
+
+<section class="container">
+  <div class="bg-black text-white rounded-2xl py-5 sm:py-8 px-2 sm:px-4">
+    <%= subtitle({text: 'Кто может получить IT-аккредитацию?', className: 'mb-8 sm:mb-5 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-[120px] grid-flow-dense gap-2 text-black">
+      <% _.forEach((who), (item) => { %>
+      <div class="<%= item.size %>">
+        <div class="pack bg-grey rounded-lg h-full">
+          <%= loader %>
+          <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image', data: null}) %>
+          <div class="absolute inset-0 flex flex-col p-5">
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl absolute top-5 right-5', data: null}) %>
+            <h4 class="font-bold sm:text-lg/tight lg:text-xl/tight mt-auto"><%= item.title %></h4>
+            <% if (item.text) { %>
+            <p class="text-sm/tight sm:text-base/tight"><%= item.text %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Три условия получения IT-аккредитации -->
+
+<% var conditions = [
+  {
+    src: 'img/conditions/1',
+    text: 'Выручка от IT-деятельности <b>не меньше 30%</b>'
+  },
+  {
+    src: 'img/conditions/2',
+    text: 'Профильный <b>IT-ОКВЭД</b> в качестве основного'
+  },
+  {
+    src: 'img/conditions/3',
+    text: 'На сайте компании <b>размещена информация</b> о её деятельности в сфере IT'
+  }
+] %>
+
+<section class="container">
+  <%= subtitle({text: 'Три условия получения IT-аккредитации', className: 'mb-8 sm:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+    <% _.forEach((conditions), (item) => { %>
+    <div class="flex flex-col items-center anim anim-up duration-500" data-anim>
+      <div class="relative z-10 -mb-3 sm:-mb-6">
+        <%= picture({src: item.src, format: 'png', className: 'icon text-8xl', data: null}) %>
+      </div>
+      <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20 w-full min-h-24 sm:min-h-32">
+        <div class="card-content p-5">
+          <p class="sm:text-lg lg:text-xl mt-auto"><%= item.text %></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Как мы работаем? -->
+
+<% var stages = [
+  {
+    icon: 'img/numbers/1',
+    title: 'Аудит деятельности',
+    text: 'Оценим вероятность получения IT-аккредитации и дадим рекомендации.'
+  },
+  {
+    icon: 'img/numbers/2',
+    title: 'Подготовка пакета документов',
+    text: 'От заявления в ФНС до необходимых анкет и аннотаций.'
+  },
+  {
+    icon: 'img/numbers/3',
+    title: 'Оптимизация сайта',
+    text: 'Составляем ТЗ для внесения правок вашим разработчиками.'
+  },
+  {
+    icon: 'img/numbers/4',
+    title: 'Подача заявки в Минцифры',
+    text: 'Подаем пакет документов и коммуницируем с Министерством.'
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute top-0 left-0 bottom-0 right-0 lg:right-auto w-full lg:max-w-5xl bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/accreditation-stages-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Как мы работаем?', className: 'mb-8 sm:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex flex-col xl:flex-row xl:justify-between gap-5">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 xl:grow">
+        <% _.forEach((stages), (item) => { %>
+        <div class="anim anim-up duration-500" data-anim>
+          <div class="card shadow-2xl">
+            <div class="card-content gap-5 relative p-5">
+              <div class="sm:ml-auto absolute sm:relative -top-4 sm:-top-10 -right-4 sm:-right-10">
+                <%= picture({src: item.icon, format: 'svg', className: 'icon text-8xl sm:text-9xl', data: null}) %>
+              </div>
+              <h4 class="font-bold text-xl pr-24 sm:pr-0"><%= item.title %></h4>
+              <p><%= item.text %></p>
+              <button class="btn btn-primary btn-sm btn-fill btn-gradient rounded-full mt-auto" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Заявка</button>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <div class="w-full md:max-w-[300px] mx-auto xl:mx-0 xl:shrink-0 anim anim-up duration-500" data-anim>
+        <div class="card shadow-2xl text-white gradient-main">
+          <div class="card-content gap-5 relative p-5">
+            <div class="sm:ml-auto absolute sm:relative -top-4 sm:-top-10 -right-4 sm:-right-10">
+              <%= picture({src: 'img/numbers/5-white', format: 'svg', className: 'icon text-8xl sm:text-9xl', data: null}) %>
+            </div>
+            <h4 class="font-bold text-xl pr-24 sm:pr-0">
+              Гарантируем результат
+            </h4>
+            <p>
+              Если не получите аккредитацию, вернем деньги.
+            </p>
+            <button class="btn btn-white btn-sm btn-contur rounded-full mt-auto" data-waved="dark" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Оставить заявку</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Получите консультацию эксперта -->
+
+<section class="container relative">
+  <div class="absolute inset-0 container pointer-events-none hidden lg:block">
+    <div class="absolute inset-0 md:right-auto bg-grey md:w-[460px]">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/consultation-bg', format: 'jpg', className: 'image', data: null}) %>
+    </div>
+    <div class="relative size-full flex items-end">
+      <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-[425px] ml-56', data: null}) %>
+    </div>
+  </div>
+  <div class="relative flex flex-col lg:flex-row lg:justify-between gap-8">
+    <div class="w-full lg:max-w-[600px]">
+      <%= subtitle({text: 'Получите консультацию эксперта', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+      <p class="sm:text-lg lg:text-xl w-full lg:max-w-96 anim anim-up duration-500" data-anim>
+        Ответим на вопросы. <br>
+        Дадим рекомендации. <br>
+        Приступим к задаче.
+      </p>
+    </div>
+    <div class="duration-500 anim anim-up w-full lg:max-w-[560px]" data-anim>
+      <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+        <div class="px-5 py-5 sm:px-10 xl:px-16 sm:py-9 lg:py-12 card-content">
+          <form data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 sm:gap-7">
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                  <%= error({text: 'Заполните это поле'}) %>
+                </div>
+              </label>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+            </div>
+          </form>
+          <p class="text-xs mt-5 sm:text-sm opacity-60">
+            Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 лет развиваем идеи и технологии -->
+
+<%= idea %>
+
+<!-- Нам доверяют -->
+
+<%= clients %>
+
+<!-- Получите IT-аккредитацию за 30 дней -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/accreditation-feedback-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Получите IT-аккредитацию за 30 дней', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="lg:flex lg:items-center lg:justify-between lg:gap-8">
+      <div class="duration-500 anim anim-right w-full lg:max-w-[560px]" data-anim>
+        <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+          <div class="px-5 py-5 sm:px-10 xl:px-16 sm:py-9 lg:py-12 card-content">
+            <form data-form="submit">
+              <input type="hidden" value="Тема" name="theme">
+              <div class="flex flex-col gap-5 sm:gap-7">
+                <label data-label>
+                  <div class="relative">
+                    <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                    <%= error({text: 'Введите ваше имя'}) %>
+                  </div>
+                </label>
+                <label data-label>
+                  <div class="relative">
+                    <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                    <%= error({text: 'Введите ваш номер'}) %>
+                  </div>
+                </label>
+                <label data-label>
+                  <div class="relative">
+                    <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                    <%= error({text: 'Заполните это поле'}) %>
+                  </div>
+                </label>
+                <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+              </div>
+            </form>
+            <p class="text-xs mt-5 sm:text-sm opacity-60">
+              Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block duration-500 anim anim-left w-full lg:max-w-[600px]" data-anim>
+        <%= picture({src: 'img/pictures/accreditation-phone', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= footer %>
