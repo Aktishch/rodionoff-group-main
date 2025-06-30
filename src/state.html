@@ -1,0 +1,307 @@
+<%
+  var data = {
+    title: 'Господдержка',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var cases = _.template(require('./includes/cases.html').default)({icon, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<% var primal = [
+  '<b>Гранты:</b> до 250 млн рублей на разработки, масштабирование и коммерциализацию',
+  '<b>Льготы:</b> 0% налог и НДС, сниженные отчисления в ПФР, субсидии таможенных платежей',
+  '<b>Спецпроекты:</b> участие в региональных и федеральных проектах в рамках национальной стратегии РФ'
+] %>
+
+<section class="relative">
+  <div class="absolute top-0 left-0 bg-grey w-full sm:max-w-lg">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/state-bg', format: 'jpg', className: 'block relative w-full', data: null}) %>
+  </div>
+  <div class="container relative pt-44 xl:pt-80 overflow-hidden">
+    <div class="absolute top-12 md:top-24 xl:top-40 -right-24 lg:right-10 xl:right-16 w-[300px] md:w-[500px] xl:w-[700px]">
+      <%= picture({src: 'img/pictures/state-img', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+    <div class="relative w-full lg:max-w-[730px]">
+      <%= title({text: 'Системная господдержка вашего бизнеса', className: 'break-words mb-14 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+      <ul class="flex flex-col gap-5 sm:text-lg lg:text-xl anim anim-up duration-500 delay-200" data-anim>
+        <% _.forEach((primal), (item) => { %>
+        <li class="flex items-center">
+          <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+            <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+          <p><%= item %></p>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Что такое господдержка -->
+
+<section class="container relative z-10">
+  <%= subtitle({text: 'Что такое господдержка', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+  <p class="sm:text-lg lg:text-xl w-full xl:max-w-[760px] xl:ml-auto mb-8 sm:mb-14 lg:mb-20 anim anim-up duration-500" data-anim>
+    Сегодня государство, профильные министерства и региональные власти предлагают <b>несколько сотен инструментов для развития бизнеса</b>. Системная господдержка — это выявление и классификация экономических стимулов государства путем выстраивания формальных и неформальных коммуникаций с органами власти и институтами развития для достижения целей и интересов бизнеса.
+  </p>
+  <div class="relative gradient-glass rounded-2xl border-2 border-solid border-primary pt-8 sm:pt-12 lg:pt-16 xl:pb-16 px-5 sm:px-10 lg:px-16 anim anim-up duration-500" data-anim>
+    <div class="w-full sm:max-w-[420px] sm:ml-auto">
+      <div class="flex">
+        <%= icon({id: 'quotes', className: 'icon text-3xl mr-4 lg:mr-7', data: null}) %>
+        <div class="flex flex-col sm:text-lg lg:text-xl">
+          <p class="mb-5 sm:mb-12">
+            Нужно создать все условия, чтобы малые и средние компании развивались динамично.
+          </p>
+          <b class="text-right sm:text-left">Владимир Владимирович Путин</b>
+        </div>
+      </div>
+    </div>
+    <div class="xl:absolute bottom-0 left-0 w-full lg:max-w-[695px]">
+      <%= picture({src: 'img/pictures/president-img', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+</section>
+
+<!-- Что можно получить от государства -->
+
+<section class="container relative">
+  <div class="absolute right-0 bottom-0 bg-grey w-full sm:max-w-lg">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/support-bg', format: 'jpg', className: 'block relative w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Что можно получить от государства', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 6; i++) { %>
+      <div class="anim anim-up duration-500" data-anim>
+        <div class="card shadow-2xl">
+          <div class="card-content flex-row items-start justify-between p-5">
+            <div class="grow mr-4 sm:mr-8">
+              <h4 class="font-bold sm:text-lg lg:text-xl mb-2 sm:mb-5">
+                PR и информ-поддержка
+              </h4>
+              <p class="text-xm sm:text-base">
+                Крупнейшие выставки и форумы, круглые столы и комиссии, продвижение законотворческих инициатив и новых национальных проектов.
+              </p>
+            </div>
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl', data: null}) %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Получите консультацию эксперта -->
+
+<section class="container relative hidden sm:block">
+  <div class="absolute inset-0 container pointer-events-none hidden lg:block">
+    <div class="absolute inset-0 md:right-auto bg-grey md:w-[460px]">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/consultation-bg', format: 'jpg', className: 'image', data: null}) %>
+    </div>
+    <div class="relative size-full flex items-end">
+      <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-[425px] ml-56', data: null}) %>
+    </div>
+  </div>
+  <div class="relative flex flex-col lg:flex-row lg:justify-between gap-8">
+    <div class="w-full lg:max-w-[600px]">
+      <%= subtitle({text: 'Получите консультацию эксперта', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+      <p class="sm:text-lg lg:text-xl w-full lg:max-w-96 anim anim-up duration-500" data-anim>
+        Расскажите о вашей ситуации — <br>
+        наши эксперты подготовят эффективные решения <br>
+        и ответят на ваши вопросы
+      </p>
+    </div>
+    <div class="duration-500 anim anim-up w-full lg:max-w-[560px]" data-anim>
+      <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+        <div class="px-5 py-5 sm:px-10 xl:px-16 sm:py-9 lg:py-12 card-content">
+          <form data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 sm:gap-7">
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                  <%= error({text: 'Заполните это поле'}) %>
+                </div>
+              </label>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+            </div>
+          </form>
+          <p class="text-xs mt-5 sm:text-sm opacity-60">
+            Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- С кем мы взаимодействуем -->
+
+<section class="container">
+  <%= subtitle({text: 'С кем мы взаимодействуем', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid grid-cols-2 md:grid-cols-3">
+    <% for (var i = 0; i < 12; i++) { %>
+    <div class="duration-500 anim anim-up" data-anim>
+      <div class="pack pack-[65] md:pack-xs">
+        <%= picture({src: 'img/pictures/test', format: 'png', className: 'image object-scale-down', data: null}) %>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Кейсы из практики -->
+
+<%= cases %>
+
+<!-- О компании -->
+
+<% var about = [
+  {
+    title: '> 12 лет опыта',
+    text: 'Эксперты обладают опытом в сфере стратегического, юридического и GR консалтинга'
+  },
+  {
+    title: '> 1 млрд ₽',
+    text: 'объем господдержки, субсидий и налоговых льгот полученных нашими клиентами за последние 3 года'
+  },
+  {
+    title: '> 20 компаний',
+    text: 'получают системную господдержку с нашей помощью ежегодно'
+  },
+  {
+    title: '> 100 проектов',
+    text: 'реализовано в сфере GR и получения господдержки для МСП'
+  },
+  {
+    title: '> 500 консультаций',
+    text: 'по мерам господдержки для бизнеса за последние 3 года'
+  },
+  {
+    title: '> 10 человек',
+    text: 'команда каждого проекта (аналитики, специалисты по коммуникациям, проектные менеджеры, юристы, финансисты)'
+  }
+] %>
+
+<section class="container relative z-10 sm:overflow-hidden">
+  <%= subtitle({text: 'О компании', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid lg:grid-cols-2 gap-y-5 sm:gap-y-10 lg:gap-y-16 gap-x-16 xl:gap-x-40">
+    <% _.forEach((about), (item) => { %>
+    <div class="anim anim-right sm:odd:anim-right sm:even:anim-left duration-500" data-anim>
+      <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20">
+        <div class="card-content py-3 sm:py-5 px-5 sm:px-7 lg:px-10">
+          <h3 class="font-black text-3xl sm:text-4xl lg:text-[40px] lg:leading-tight uppercase tracking-wider"><%= item.title %></h3>
+          <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Начните получать системную поддержку от государства -->
+
+<section class="relative">
+  <div class="hidden md:block absolute bottom-0 right-0 w-full max-w-lg bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/state-feedback-bg', format: 'jpg', className: 'block relative w-full', data: null}) %>
+  </div>
+  <div class="container relative overflow-hidden">
+    <%= subtitle({text: 'Начните получать <span class="gradient-text">системную поддержку</span> от государства', className: 'mb-8 sm:mb-12 lg:mb-16 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="lg:flex lg:items-center lg:justify-between lg:gap-8">
+      <div class="duration-500 anim anim-right w-full lg:max-w-[560px]" data-anim>
+        <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+          <div class="px-5 py-5 sm:px-10 xl:px-16 sm:py-9 lg:py-12 card-content">
+            <form data-form="submit">
+              <input type="hidden" value="Тема" name="theme">
+              <div class="flex flex-col gap-5 sm:gap-7">
+                <label data-label>
+                  <div class="relative">
+                    <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                    <%= error({text: 'Введите ваше имя'}) %>
+                  </div>
+                </label>
+                <label data-label>
+                  <div class="relative">
+                    <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                    <%= error({text: 'Введите ваш номер'}) %>
+                  </div>
+                </label>
+                <label data-label>
+                  <div class="relative">
+                    <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                    <%= error({text: 'Заполните это поле'}) %>
+                  </div>
+                </label>
+                <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Оставить заявку</button>
+              </div>
+            </form>
+            <p class="text-xs mt-5 sm:text-sm opacity-60">
+              Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block duration-500 anim anim-left w-full lg:max-w-[600px]" data-anim>
+        <%= picture({src: 'img/pictures/state-phone', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= footer %>
