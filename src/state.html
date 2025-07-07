@@ -133,6 +133,201 @@
   </div>
 </section>
 
+<!-- Эффективность господдержки для частного бизнеса -->
+
+<% var efficiency = [
+  {
+    name: {
+      title: 'Объем инвестиций',
+      text: '(на примере технологических компаний)'
+    },
+    first: {
+      value: '94',
+      title: 'млрд ₽',
+      text: 'объем выданных грантов и субсидий за год'
+    },
+    last: {
+      value: '10',
+      title: 'млрд ₽',
+      text: 'объем венчурных инвестиций в России за год'
+    }
+  },
+  {
+    name: {
+      title: 'Кредитная ставка'
+    },
+    first: {
+      value: '6 %',
+      title: 'годовых',
+      text: 'средний размер процентной ставки по льготному кредиту от государства'
+    },
+    last: {
+      value: '35 %',
+      text: 'средний размер процентной ставки по кредиту для бизнеса от банка'
+    }
+  },
+  {
+    name: {
+      title: 'Темпы роста бизнеса'
+    },
+    first: {
+      value: '19 %',
+      title: 'в год',
+      text: 'средний рост выручки компаний с господдержкой'
+    },
+    last: {
+      value: '13 %',
+      title: 'в год',
+      text: 'средний рост выручки компаний без господдержки'
+    }
+  }
+] %>
+
+<section class="container relative">
+  <%= subtitle({text: 'Эффективность господдержки <br class="hidden md:block"> для частного бизнеса', className: 'mb-8 sm:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <p class="sm:text-lg lg:text-xl mb-8 sm:mb-12 lg:mb-16 xl:mb-20 w-full xl:max-w-[760px] ml-auto anim anim-up duration-500" data-anim>
+    В <b>2024 году</b> мы провели масштабное исследование эффективности господдержки и частных инвестиций.
+  </p>
+  <div class="relative">
+    <div class="hidden lg:grid grid-cols-3 absolute inset-0">
+      <span></span>
+      <div class="gradient-glass rounded-2xl border border-second border-solid"></div>
+      <span></span>
+    </div>
+    <div class="flex flex-col gap-5 lg:gap-8 relative">
+      <% _.forEach((efficiency), (item) => { %>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-5 sm:gap-y-10 lg:gap-y-14 gap-x-2 sm:gap-x-6 lg:gap-x-10 xl:gap-x-14 lg:border-b lg:border-dashed lg:border-second/40 lg:last:border-none">
+        <div class="lg:flex lg:flex-col lg:items-start lg:justify-center text-center lg:text-left lg:py-5 col-2 lg:col-1">
+          <h4 class="font-extrabold text-xl sm:text-2xl"><%= item.name.title %></h4>
+          <% if (item.name.text) { %>
+          <p class="text-sm sm:text-base"><%= item.name.text %></p>
+          <% } %>
+        </div>
+        <div class="lg:flex lg:flex-col lg:items-start lg:justify-center gradient-glass lg:!bg-none rounded-lg lg:rounded-none border border-primary border-solid lg:border-none p-2 lg:p-5">
+          <h4>
+            <span class="font-bold text-2xl sm:text-3xl lg:text-4xl"><%= item.first.value %></span>
+            <span class="font-extrabold text-xl sm:text-2xl"><%= item.first.title %></span>
+          </h4>
+          <p class="text-sm sm:text-base"><%= item.first.text %></p>
+        </div>
+        <div class="lg:flex lg:flex-col lg:items-start lg:justify-center py-2 lg:py-5 px-2 lg:px-0">
+          <h4 class="gradient-text">
+            <span class="font-bold text-2xl sm:text-3xl lg:text-4xl"><%= item.last.value %></span>
+            <% if (item.last.title) { %>
+            <span class="font-extrabold text-xl sm:text-2xl"><%= item.last.title %></span>
+            <% } %>
+          </h4>
+          <p class="text-sm sm:text-base"><%= item.last.text %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Пример дорожной карты системной господдержки -->
+
+<% var map = [
+  {
+    position: 'lg:top-5 xl:top-20 lg:left-0',
+    text: 'Формирование <br> GR-стратегии'
+  },
+  {
+    position: 'lg:top-32 xl:top-52 lg:left-9',
+    text: 'Получение статуса резидента <br> Сколково <b>(0% налог <br> на прибыль и НДС)</b>'
+  },
+  {
+    position: 'lg:top-64 xl:top-[370px] lg:left-28',
+    text: 'Включение в реестр <br> Малых Технологических <br> Компаний'
+  },
+  {
+    position: 'lg:top-96 xl:top-[500px] lg:left-80',
+    text: '<b>4 млн ₽ <br> микрогрантов</b> <br> от Сколково'
+  },
+  {
+    position: 'lg:top-64 xl:top-80 lg:left-[415px]',
+    text: 'IT-аккредитация (льготная <br> ипотека и отсрочка <br> от армии для сотрудников)'
+  },
+  {
+    position: 'lg:top-32 xl:top-40 lg:right-[270px] xl:right-[400px]',
+    text: 'Запуск проекта в двух регионах <br> России при поддержке Агентства <br> Стратегических Инициатив'
+  },
+  {
+    position: 'lg:top-0 lg:right-72',
+    text: '<b>8 млн ₽ грант</b> <br> от Фонда Содействия <br> Инновациям'
+  },
+  {
+    position: 'lg:top-32 lg:right-20',
+    text: 'Льготный кредит <br> <b>50 млн ₽ <br> под 5% годовых</b>'
+  },
+  {
+    position: 'lg:top-64 lg:right-12',
+    text: 'Участие <br> в акселераторе <br> SBER500'
+  },
+  {
+    position: 'lg:top-[420px] lg:right-0',
+    text: 'Инвестиции <br> от стратегического инвестора <br> с государственным участием'
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute inset-0">
+    <div class="w-full md:max-w-2xl relative md:mx-auto bg-grey h-full">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/map-bg', format: 'jpg', className: 'image', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Пример дорожной карты <br class="hidden sm:block"> системной господдержки', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex gap-2">
+      <div class="lg:hidden w-5 shrink-0">
+        <%= picture({src: 'img/pictures/state-mobile-line', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex flex-col items-start gap-3 relative grow">
+        <div class="hidden lg:block w-full">
+          <%= picture({src: 'img/pictures/state-desktop-line', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <% _.forEach((map), (item) => { %>
+        <div class="lg:absolute anim anim-up duration-500 <%= item.position %>" data-anim>
+          <div class="card shadow-2xl">
+            <div class="card-content p-3 lg:p-5">
+              <p class="text-sm lg:text-base"><%= item.text %></p>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Как мы работаем? -->
+
+<section class="container relative">
+  <%= subtitle({text: 'Как мы работаем?', className: 'mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid lg:grid-cols-2 gap-5 sm:gap-7 lg:gap-10">
+    <% for (var i = 0; i < 4; i++) { %>
+    <div class="anim anim-up duration-500" data-anim>
+      <div class="card shadow-2xl">
+        <div class="absolute inset-0 opacity-80">
+          <%= picture({src: `img/work/${i + 1}`, format: 'png', className: 'image', data: null}) %>
+        </div>
+        <div class="card-content items-start relative p-5">
+          <h3 class="font-extrabold text-xl sm:text-2xl gradient-text mb-7 lg:mb-12">
+            Отчетность <br> и документация
+          </h3>
+          <p class="text-sm sm:text-base lg:text-xl mt-auto">
+            Оказываем всю необходимую юридическую и технологическую поддержку для реализации проектов.
+            <br><br>
+            Сдаем отчетность, оформляем НМА, проводим экспертизы.
+          </p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
 <!-- Получите консультацию эксперта -->
 
 <section class="container relative hidden sm:block">
