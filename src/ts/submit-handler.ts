@@ -1,6 +1,12 @@
 import { dialog } from './fancybox'
 import { validation } from './utils'
 
+declare global {
+  interface Window {
+    ym: any
+  }
+}
+
 const formSubmitHandler = (event: Event): void => {
   const form = event.target as HTMLFormElement
 
@@ -31,7 +37,14 @@ const formSubmitHandler = (event: Event): void => {
         })
         .then((response): void => {
           dialog.close()
-          dialog.open(response.status ? './dialogs/dialog-success.php' : './dialogs/dialog-error.php')
+
+          if (response.status) {
+            dialog.open('./dialogs/dialog-success.php')
+            window.ym(103598376, 'reachGoal', 'zayavka')
+          } else {
+            dialog.open('./dialogs/dialog-error.php')
+          }
+
           form.reset()
           submitBtn.disabled = false
         })
