@@ -4,6 +4,7 @@ import { validation } from './utils'
 declare global {
   interface Window {
     ym: any
+    metric: number
   }
 }
 
@@ -40,7 +41,8 @@ const formSubmitHandler = (event: Event): void => {
 
           if (response.status) {
             dialog.open('./dialogs/dialog-success.php')
-            window.ym(103598376, 'reachGoal', 'zayavka')
+
+            if (window.metric) window.ym(window.metric, 'reachGoal', 'zayavka')
           } else {
             dialog.open('./dialogs/dialog-error.php')
           }
