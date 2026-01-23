@@ -1,0 +1,279 @@
+<%
+  var data = {
+    title: 'Стать резидентом Сколково',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var preloader = require('./components/preloader.html').default
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<section class="container relative overflow-hidden pt-36 xl:pt-60">
+  <div class="absolute inset-0">
+    <div class="absolute top-0 -right-40 sm:right-0 w-[600px] sm:w-[1000px] lg:w-[1300px]">
+      <%= picture({src: 'img/pictures/resident-blur', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+    <div class="absolute top-60 sm:top-72 -right-32 sm:-right-8 opacity-90 w-[420px] sm:w-[580px] lg:w-[915px]">
+      <%= picture({src: 'img/pictures/resident-img', format: 'jpg', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Как стать резидентом Сколково в 2026 году', className: 'mb-28 xl:mb-5 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex sm:items-center mb-5 sm:mb-10 lg:mb-14 anim anim-up duration-500 delay-100" data-anim>
+      <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+        <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <p class="font-bold sm:text-lg lg:text-xl">
+        Пошаговый путь к лучшим льготам для бизнеса
+      </p>
+    </div>
+    <div class="flex items-center justify-center border border-primary rounded-xl w-full max-w-56 sm:max-w-64 h-10 sm:h-16 px-4 mb-5 sm:mb-9 lg:mb-12 anim anim-up duration-500 delay-200" data-anim>
+      <span class="font-bold gradient-text text-center sm:text-lg lg:text-xl">28 января | 16:00</span>
+    </div>
+    <div class="relative z-10 duration-500 delay-300 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-xl sm:shadow-2xl w-full max-w-96 lg:max-w-[630px] rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-5 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Вебинар</b>
+          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Зарегистрироваться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Уникальные льготы Сколково -->
+
+<% var benefits = [
+  {
+    title: '0%',
+    text: 'налог на прибыль'
+  },
+  {
+    title: '0%',
+    text: 'НДС'
+  },
+  {
+    title: '0%',
+    text: 'налог на имущество'
+  },
+  {
+    title: '30/15%',
+    text: 'страховые взносы'
+  },
+  {
+    title: 'до 30 млн ₽',
+    text: 'гранты в год'
+  }
+] %>
+
+<section class="container overflow-hidden">
+  <div class="flex flex-col xl:flex-row xl:items-center xl:justify-center gap-8 xl:gap-0">
+    <div>
+      <h2 class="font-black uppercase gradient-text text-2xl/tight sm:text-4xl/tight lg:text-6xl/tight xl:text-8xl/tight mb-8 sm:mb-10 anim anim-right duration-500" data-anim>
+        Уникальные льготы Сколково
+      </h2>
+      <div class="flex w-full xl:max-w-lg anim anim-up duration-500" data-anim>
+        <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <p class="sm:text-lg lg:text-xl">
+          Стать резидентом «Сколково» — это получить уникальное конкурентное преимущество, которое сделает ваш бизнес прибыльней, откроет доступ к новым рынкам и сделает бренд сильнее
+        </p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 xl:grid-cols-1 gap-5 w-full xl:max-w-[430px] xl:shrink-0 xl:-ml-9">
+      <% _.forEach((benefits), (item) => { %>
+      <div class="border border-solid shadow-xl sm:shadow-2xl bg-white/20 backdrop-blur-md card gradient-glass border-white/20 anim anim-left duration-500" data-anim>
+        <div class="card-content items-center text-center py-3 sm:py-5 px-4">
+          <h4 class="font-black text-3xl sm:text-4xl"><%= item.title %></h4>
+          <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Для кого мероприятие? -->
+
+<% var events = [
+  {
+    title: 'IT',
+    text: 'Для разработчиков цифровых платформ, ПО, программно-аппаратных комплексов и оборудования'
+  },
+  {
+    title: 'Производство',
+    text: 'Для промышленности во всех сферах: от товаров народного потребления до сложных энерготехнических решений'
+  },
+  {
+    title: 'Селлеры',
+    text: 'Для отечественных производителей товаров в любой категории'
+  },
+  {
+    title: 'Предприниматели',
+    text: 'Кто создает собственный продукт и хочет узнать больше о мерах государственной поддержки'
+  }
+] %>
+
+<section class="container">
+  <div class="card">
+    <div class="hidden md:flex items-center justify-center absolute inset-0">
+      <div class="w-full">
+        <%= picture({src: 'img/pictures/events-blur', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+    <div class="card-content relative py-5 sm:py-7 lg:py-10 px-2 sm:px-5 lg:px-10">
+      <%= subtitle({text: 'Для кого мероприятие?', className: 'mb-8 sm:mb-14 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-2 sm:gap-5">
+        <% _.forEach((events), (item, key) => { %>
+        <div class="anim anim-up duration-500" data-anim>
+          <div class="card bg-white shadow-xl sm:shadow-2xl">
+            <div class="card-content py-5 px-5">
+              <h3 class="font-bold text-xl"><%= item.title %></h3>
+              <div class="w-full sm:w-auto max-w-60 sm:max-w-none ml-auto sm:ml-0 xl:-mr-16">
+                <%= picture({src: `img/events/${key + 1}`, format: 'png', className: 'block w-full', data: null}) %>
+              </div>
+              <p class="sm:text-lg -mt-4 sm:mt-auto"><%= item.text %></p>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Какие вопросы обсудим -->
+
+<% var questions = [
+  'Кто может стать резидентом Сколково в 2026 году?',
+  'Какие правила нужно соблюдать резидентам?',
+  'Как действуют льготы и сколько можно сэкономить?',
+  'Как пройти экспертную комиссию с первого раза?',
+  'Какие риски несут резиденты?'
+] %>
+
+<section class="container relative overflow-hidden">
+  <div class="absolute top-0 -right-20 lg:-right-12 w-64 lg:w-[690px]">
+    <%= picture({src: 'img/pictures/oclock', format: 'png', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Какие вопросы обсудим:', className: 'mb-8 sm:mb-14 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-8 sm:mb-14 lg:mb-20">
+      <div class="flex flex-col gap-2 w-full lg:max-w-lg">
+        <% _.forEach((questions), (item, key) => { %>
+        <div class="anim anim-right duration-500" data-anim>
+          <div class="card shadow-xl rounded-l-full">
+            <div class="card-content flex-row items-center py-3 px-5">
+              <div class="w-9 sm:w-11 shrink-0 mr-5">
+                <%= picture({src: `img/numbers/${key + 1}`, format: 'svg', className: 'block w-full', data: null}) %>
+              </div>
+              <p class="text-sm sm:text-lg lg:text-xl"><%= item %></p>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <div class="text-center w-full lg:max-w-[530px] anim anim-left duration-500" data-anim>
+        <h3 class="font-black text-5xl sm:text-[64px]">
+          120 минут
+        </h3>
+        <p class="font-light text-xl sm:text-2xl lg:text-3xl">
+          эксклюзивной информации от практиков и инсайдеров
+        </p>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient w-full sm:w-auto" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Бесплатная регистрация</button>
+    </div>
+  </div>
+</section>
+
+<!-- Спикер мероприятия -->
+
+<% var speaker = [
+  '> 70 компаний получили статус резидента Сколково',
+  '> 2 млрд ₽ привлеченных субсидий, грантов и господдержки',
+  'Эксперт акселератора Фонда Сколково',
+  'Спикер акселератора университета «ИТМО» и университета «Вернадского»',
+  'Победитель конкурса «Лидеры России»'
+] %>
+
+<section class="container relative">
+  <div class="absolute top-0 lg:-top-96 left-0 pointer-events-none w-full lg:w-[685px]">
+    <%= picture({src: 'img/pictures/speaker-blur', format: 'svg', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Спикер мероприятия:', className: 'mb-8 sm:mb-14 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+      <div class="relative rounded-xl overflow-hidden w-full sm:max-w-md">
+        <div class="-ml-16">
+          <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-full', data: null}) %>
+        </div>
+        <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
+          <div class="card bg-black/30 text-white gradient-glass backdrop-blur-sm border border-solid border-white/50">
+            <div class="card-content py-3 sm:py-5 px-4 sm:px-7 lg:px-10">
+              <h4 class="font-extrabold text-xl sm:text-2xl m-1">
+                Иван Родионов
+              </h4>
+              <p class="sm:text-lg lg:text-xl">
+                управляющий партнер консалтингового агентства Rodionoff group
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col w-full lg:max-w-[600px]">
+        <ul class="flex flex-col gap-5 mb-8">
+          <% _.forEach((speaker), (item) => { %>
+          <li class="flex items-center anim anim-up duration-500" data-anim>
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl mr-5', data: null}) %>
+            <p class="sm:text-lg lg:text-xl"><%= item %></p>
+          </li>
+          <% }) %>
+        </ul>
+        <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient mt-auto" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Задайте ваш вопрос спикеру</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= footer %>
