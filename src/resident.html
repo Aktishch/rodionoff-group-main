@@ -43,18 +43,18 @@
 
 <!-- <%= data.title %> -->
 
-<section class="container relative overflow-hidden pt-36 xl:pt-60">
+<section class="container relative overflow-hidden pt-24 xl:pt-60">
   <div class="absolute inset-0">
     <div class="absolute top-0 -right-40 sm:right-0 w-[600px] sm:w-[1000px] lg:w-[1300px]">
       <%= picture({src: 'img/pictures/resident-blur', format: 'svg', className: 'block w-full', data: null}) %>
     </div>
-    <div class="absolute top-60 sm:top-72 -right-32 sm:-right-8 opacity-90 w-[420px] sm:w-[580px] lg:w-[915px]">
-      <%= picture({src: 'img/pictures/resident-img', format: 'jpg', className: 'block w-full', data: null}) %>
+    <div class="absolute top-72 sm:top-56 -right-8 sm:right-2 opacity-80 w-80 sm:w-[580px] lg:w-[960px]">
+      <%= picture({src: 'img/pictures/resident-img', format: 'png', className: 'block w-full', data: null}) %>
     </div>
   </div>
   <div class="relative">
-    <%= title({text: 'Как стать резидентом Сколково в 2026 году', className: 'mb-28 xl:mb-5 anim anim-up duration-500', data: 'data-anim'}) %>
-    <div class="flex sm:items-center mb-5 sm:mb-10 lg:mb-14 anim anim-up duration-500 delay-100" data-anim>
+    <%= title({text: 'Как стать резидентом Сколково в 2026 году', className: 'mb-2 sm:mb-5 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex sm:items-center mb-36 xl:mb-14 anim anim-up duration-500 delay-100" data-anim>
       <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
         <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
       </div>
@@ -62,14 +62,14 @@
         Пошаговый путь к лучшим льготам для бизнеса
       </p>
     </div>
-    <div class="flex items-center justify-center border border-primary rounded-xl w-full max-w-56 sm:max-w-64 h-10 sm:h-16 px-4 mb-5 sm:mb-9 lg:mb-12 anim anim-up duration-500 delay-200" data-anim>
+    <div class="flex items-center justify-center border border-primary rounded-xl w-full max-w-48 sm:max-w-64 h-10 sm:h-16 px-4 mb-5 sm:mb-9 lg:mb-12 anim anim-up duration-500 delay-200" data-anim>
       <span class="font-bold gradient-text text-center sm:text-lg lg:text-xl">28 января | 16:00</span>
     </div>
     <div class="relative z-10 duration-500 delay-300 anim anim-up" data-anim>
       <div class="card bg-white/20 md:bg-white/50 shadow-xl sm:shadow-2xl w-full max-w-96 lg:max-w-[630px] rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
         <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
-          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-5 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Вебинар</b>
-          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+          <b class="hidden sm:block pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-5 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Вебинар</b>
+          <div class="hidden sm:block absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
             <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
           </div>
           <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Зарегистрироваться</button>
@@ -212,13 +212,18 @@
         </div>
         <% }) %>
       </div>
-      <div class="text-center w-full lg:max-w-[530px] anim anim-left duration-500" data-anim>
-        <h3 class="font-black text-5xl sm:text-[64px]">
-          120 минут
-        </h3>
-        <p class="font-light text-xl sm:text-2xl lg:text-3xl">
-          эксклюзивной информации от практиков и инсайдеров
-        </p>
+      <div class="relative w-full lg:max-w-[530px] anim anim-left duration-500" data-anim>
+        <div class="sm:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-60">
+          <%= picture({src: 'img/pictures/circle', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <div class="text-center relative">
+          <h3 class="font-black text-5xl sm:text-[64px]">
+            120 минут
+          </h3>
+          <p class="font-light text-xl sm:text-2xl lg:text-3xl">
+            эксклюзивной информации от практиков и инсайдеров
+          </p>
+        </div>
       </div>
     </div>
     <div class="flex justify-center">
