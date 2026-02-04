@@ -32,6 +32,7 @@
 
   var icon = _.template(require('./components/icon.html').default)
   var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
   var title = _.template(require('./components/title.html').default)
   var subtitle = _.template(require('./components/subtitle.html').default)
@@ -249,14 +250,13 @@
   <div class="relative">
     <%= subtitle({text: 'Спикер мероприятия:', className: 'mb-8 sm:mb-14 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
     <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
-      <div class="relative rounded-xl overflow-hidden w-full sm:max-w-md">
-        <div class="-ml-16">
-          <%= picture({src: 'img/pictures/consultation-img', format: 'png', className: 'block w-full', data: null}) %>
-        </div>
-        <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
-          <div class="card bg-black/30 text-white gradient-glass backdrop-blur-sm border border-solid border-white/50">
-            <div class="card-content py-3 sm:py-5 px-4 sm:px-7 lg:px-10">
-              <h4 class="font-extrabold text-xl sm:text-2xl m-1">
+      <div class="w-full sm:max-w-md">
+        <div class="pack pack-xxl bg-grey rounded-xl">
+          <%= loader %>
+          <%= picture({src: 'img/pictures/resident', format: 'jpg', className: 'image', data: null}) %>
+          <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+            <div class="bg-white rounded-lg py-4 sm:py-5 px-7 sm:px-10">
+              <h4 class="font-extrabold text-xl sm:text-2xl mb-2">
                 Иван Родионов
               </h4>
               <p class="sm:text-lg lg:text-xl">
