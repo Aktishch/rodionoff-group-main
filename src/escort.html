@@ -219,7 +219,7 @@
 
 <!-- Выявим риски и расскажем, как не иметь проблем с отчетностью -->
 
-<section class="container relative">
+<section class="container relative z-10">
   <%= subtitle({text: 'Выявим риски и расскажем, <br class="hidden sm:block"> как не иметь проблем с отчетностью', className: 'mb-8 sm:mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
   <div class="flex mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500" data-anim>
     <div class="w-3 sm:w-4 shrink-0 mr-2 sm:mr-4 lg:mr-6">
@@ -281,6 +281,344 @@
 
 <!-- Юридическое сопровождение на всех этапах взаимодействия со Сколково -->
 
-<section class="container"></section>
+<% var stages = [
+  {
+    margin: null,
+    text: 'Разъяснения правил и нормативных документов, регулирующих деятельность компании'
+  },
+  {
+    margin: 'xl:ml-40',
+    text: 'Выявление «красных флагов» в деятельности и документации компании'
+  },
+  {
+    margin: 'xl:ml-96',
+    text: 'Методологическая поддержка внутренних департаментов компании'
+  },
+  {
+    margin: 'xl:ml-[565px]',
+    text: 'Минимизация рисков при обязательных проверках с учетом требований Фонда Сколково и особенной российского законодательства'
+  }
+] %>
+
+<section class="container relative">
+  <div class="absolute top-0 xl:top-1/2 left-0 right-0 bottom-0 sm:bottom-auto bg-grey w-full md:max-w-[620px] -scale-x-100 sm:scale-x-100">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/sk-stages-bg', format: 'jpg', className: 'image block sm:relative sm:h-auto', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Юридическое сопровождение на всех этапах взаимодействия со Сколково', className: 'w-full xl:max-w-[630px] xl:ml-auto mb-24 xl:mb-0 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="relative">
+      <div class="hidden xl:block absolute -top-12 right-0 w-full max-w-[960px]">
+        <%= picture({src: 'img/pictures/sk-arrow-stages-desktop', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <div class="flex relative">
+        <div class="xl:hidden shrink-0 w-6 md:w-5 mr-2">
+          <%= picture({src: 'img/pictures/sk-arrow-stages-mobile', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <div class="grow">
+          <div class="flex flex-col gap-12 xl:gap-8 relative">
+            <% _.forEach((stages), (item, key) => { %>
+            <div class="w-full xl:max-w-96 xl:last:max-w-[480px] anim anim-right duration-500 <%= item.margin %>" data-anim>
+              <div class="card shadow-2xl overflow-visible">
+                <div class="absolute -top-16 xl:-top-24 right-0">
+                  <%= picture({src: `img/numbers/${key + 1}`, format: 'svg', className: 'icon text-8xl xl:text-9xl', data: null}) %>
+                </div>
+                <div class="card-content relative p-5">
+                  <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Приведение деятельности в соответствии с правилами фонда  «Сколково» -->
+
+<% var rules = [
+  'Проведение аудита деятельности организации с целью выявления нарушений правил Фонда «Сколково»',
+  'Разработка плана действий по адаптации деятельности, бухотчетности и документации компании',
+  'Разработка устава, договоров, офферт и актов',
+  'Формирование внутренних нормативных актов для ведения деятельности в соответствии с правилами Фонда',
+  'Разработка стратегии коммерциализации продукта/продуктов',
+  'Коммуникация с внутренними отделами Фонда с целью защиты интересов компании'
+] %>
+
+<section class="container relative overflow-hidden">
+  <div class="flex flex-col xl:flex-row xl:justify-between gap-10">
+    <div class="w-full xl:max-w-[610px]">
+      <%= subtitle({text: 'Приведение деятельности в соответствии с правилами фонда  «Сколково»', className: 'anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="absolute xl:static -bottom-16 -right-28 opacity-70 xl:opacity-100 w-full max-w-72 xl:max-w-96 xl:-mt-10 xl:ml-auto xl:mr-14">
+        <%= picture({src: 'img/pictures/sk-rules-img', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+    <ul class="flex flex-col gap-2 relative w-full xl:max-w-lg">
+      <% _.forEach((rules), (item) => { %>
+      <li class="flex items-center anim anim-up duration-500" data-anim>
+        <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl mr-4', data: null}) %>
+        <p class="text-sm sm:text-base"><%= item %></p>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
+
+<!-- Защита интеллектуальной собственности и ведение отчетности о проведении ниокр -->
+
+<% var protection = [
+  {
+    order: 'order-2 xl:order-1',
+    text: 'Оформление необходимых документов, подтверждающих проведение доработки продукта'
+  },
+  {
+    order: 'order-3 xl:order-2',
+    text: 'Подача документов в Роспатент для регистрации прав на интеллектуальную собственность'
+  },
+  {
+    order: 'order-4',
+    text: 'Постановка интеллектуальной собственности на баланс предприятия'
+  },
+  {
+    order: 'order-5',
+    text: 'Оформление трудовых отношений с сотрудниками и подрядчиками'
+  },
+  {
+    order: 'order-6',
+    text: 'Введение специальных режимов, связанных с охраной разных объектов интеллектуальной собственности'
+  },
+  {
+    order: 'order-8',
+    text: 'Регистрация ПО'
+  },
+  {
+    order: 'order-9',
+    text: 'Патентование'
+  },
+  {
+    order: 'order-10',
+    text: 'Документация'
+  },
+  {
+    order: 'order-11',
+    text: 'Документация НИОКР'
+  }
+] %>
+
+<section class="container relative z-10">
+  <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 sm:gap-5">
+    <div class="col-2 lg:col-3 order-1 xl:order-3 pb-6 xl:pb-0 anim anim-up duration-500" data-anim>
+      <%= subtitle({text: 'Защита интеллектуальной собственности и ведение отчетности о проведении ниокр', className: 'xl:text-right anim anim-up duration-500', data: 'data-anim'}) %>
+    </div>
+    <div class="flex items-center justify-center relative xl:col-2 order-7 anim anim-up duration-500" data-anim>
+      <div class="xl:absolute top-0 right-0 w-full xl:max-w-md">
+        <%= picture({src: 'img/pictures/sk-protection-img', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+    <% _.forEach((protection), (item) => { %>
+    <div class="min-h-48 sm:min-h-[300px] xl:min-h-[260px] anim anim-up duration-500 <%= item.order %>" data-anim>
+      <div class="card bg-transparent border border-solid border-black">
+        <div class="card-content p-2 sm:p-5">
+          <p class="text-sm sm:text-base mb-4"><%= item.text %></p>
+          <div class="mt-auto ml-auto">
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-3xl sm:text-4xl', data: null}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Квартальные и годовые отчеты -->
+
+<section class="container relative z-10">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute xl:-top-40 bottom-10 xl:bottom-auto -right-16 xl:right-0 w-[410px] xl:w-full xl:max-w-4xl">
+      <%= picture({src: 'img/pictures/sk-reports-img', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <div class="w-full xl:max-w-[720px] mb-10 sm:mb-12">
+      <%= subtitle({text: 'Квартальные и годовые отчеты', className: 'mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="flex justify-between anim anim-up duration-500" data-anim>
+        <div class="w-3 mr-3 shrink-0 sm:w-4 sm:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <p class="sm:text-lg lg:text-xl grow">
+          По результатам отчетности принимается решение о сохранении статуса резидента Сколково. Ошибки в отчетности приводят к рискам досрочной утраты преференций.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-10">
+      <div class="flex flex-col items-center text-center shrink-0 anim anim-up duration-500" data-anim>
+        <h3 class="font-black gradient-text text-5xl sm:text-6xl lg:text-8xl">
+          5 отчетов
+        </h3>
+        <span class="font-extralight text-4xl sm:text-5xl lg:text-6xl">в год</span>
+      </div>
+      <div class="flex flex-col gap-5 grow">
+        <% for (var i = 0; i < 2; i++) { %>
+        <div class="card shadow-2xl h-auto z-10 group/accordion" data-accordion data-close-click>
+          <div class="card-content p-5">
+            <button class="flex items-center justify-between w-full gap-4" data-accordion-toggle>
+              <h4 class="font-bold sm:text-lg lg:text-xl text-left">
+                4 квартальных отчета
+              </h4>
+              <%= icon({id: 'arrow-right', className: 'icon text-2.5xl sm:text-3xl lg:text-4xl opacity-10 transition-transform rotate-90 group-[[data-accordion=active]]/accordion:-rotate-90', data: null}) %>
+            </button>
+            <div data-accordion-content>
+              <ul class="text-sm sm:text-base list-outside list-disc pl-4 pt-3 sm:pt-5">
+                <li>
+                  Исследовательская деятельность
+                </li>
+                <li>
+                  Коммерциализация деятельности
+                </li>
+                <li>
+                  Интеллектуальная собственность
+                </li>
+                <li>
+                  Финансово-хозяйственная деятельность
+                </li>
+                <li>
+                  Внешнее финансирование
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Камеральные проверки -->
+
+<section class="container relative overflow-hidden sm:overflow-visible">
+  <div class="absolute top-0 xl:top-auto left-0 right-0 bottom-0 sm:bottom-auto xl:-bottom-96 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/pictures/sk-check-bg', format: 'jpg', className: 'image block sm:relative sm:h-auto', data: null}) %>
+  </div>
+  <div class="flex flex-col xl:flex-row sm:items-center xl:justify-between gap-10 relative">
+    <div class="absolute sm:static bottom-0 -right-44 sm:shrink-0 w-96 sm:w-full sm:max-w-[470px]">
+      <%= picture({src: 'img/pictures/sk-check-img', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+    <div class="relative w-full max-w-64 sm:max-w-full xl:max-w-xl">
+      <%= subtitle({text: 'Камеральные проверки', className: 'mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="sm:text-lg lg:text-xl anim anim-up duration-500" data-anim>
+        <p>
+          Финансово-хозяйственная и исследовательская деятельность резидента периодически подвергается дополнительной проверке со стороны Фонда.
+        </p>
+        <br>
+        <p>
+          Аудиторы Сколково изучают приложенную в годовом отчете документацию и могут выставлять определенные требования по уточнению фактов.
+        </p>
+        <br>
+        <p>
+          Мы сопровождаем компанию во время проведения проверок со стороны Сколково, осуществляем коммуникацию с аудиторами Фонда и обеспечиваем прохождение всех формальностей.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Форматы сопровождения -->
+
+<% var escort = [
+  {
+    title: 'Полное <br> сопровождение',
+    text: 'Берем все на себя, чтобы вы не заботились ни о чем'
+  },
+  {
+    title: 'Годовая <br> отчетность',
+    text: 'Подготовка документов'
+  },
+  {
+    title: 'Разовые <br> консультации',
+    text: 'Когда нужны ответы на важные вопросы'
+  }
+] %>
+
+<section class="container relative overflow-hidden">
+  <%= subtitle({text: 'Форматы сопровождения', className: 'mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="mb-10 anim anim-up duration-500" data-anim>
+    <div class="pack pack-xs sm:pack-[25] bg-grey rounded-xl">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image rounded-xl', data: null}) %>
+    </div>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-4 sm:gap-7 lg:gap-10">
+    <% _.forEach((escort), (item, key) => { %>
+    <div class="relative anim anim-up duration-500" data-anim>
+      <% if (key === 2) { %>
+      <div class="absolute lg:top-0 -bottom-1/2 lg:bottom-0 -right-8 lg:-right-28 w-60 lg:w-full h-60 lg:h-auto">
+        <%= picture({src: 'img/pictures/sk-escort-img', format: 'png', className: 'image', data: null}) %>
+      </div>
+      <% } %>
+      <div class="card bg-transparent border border-solid border-black">
+        <div class="card-content p-5">
+          <div class="-mt-10 -mr-10 sm:mb-10 lg:mb-24 ml-auto">
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-8xl sm:text-9xl', data: null}) %>
+          </div>
+          <h4 class="font-extrabold text-xl sm:text-2xl mb-5"><%= item.title %></h4>
+          <p class="sm:text-lg lg:text-xl mt-auto"><%= item.text %></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Контакты для встреч и вопросов -->
+
+<section class="container">
+  <div class="grid lg:grid-cols-2 gap-10">
+    <div class="anim anim-up duration-500" data-anim>
+      <div class="pack pack-md lg:pack-[0] bg-grey rounded-xl h-full">
+        <%= loader %>
+        <div class="absolute inset-0 rounded-inherit" data-yandex-map="55.69212,37.516557"></div>
+      </div>
+    </div>
+    <div>
+      <%= subtitle({text: 'Контакты для встреч и вопросов', className: 'mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="flex flex-col items-start gap-5">
+        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="tel: +7-495-133-03-13">
+          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
+            <%= icon({id: 'telephone', className: 'icon text-white text-2xl', data: null}) %>
+          </div>
+          +7-495-133-03-13
+        </a>
+        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="mailto: ivan@rodionoff.biz">
+          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
+            <%= icon({id: 'email', className: 'icon text-white text-2xl', data: null}) %>
+          </div>
+          ivan@rodionoff.biz
+        </a>
+        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="" target="_blank">
+          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
+            <%= icon({id: 'telegram', className: 'icon text-white text-2xl', data: null}) %>
+          </div>
+          @marina_m_m_o
+        </a>
+        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="" target="_blank">
+          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
+            <%= icon({id: 'telegram', className: 'icon text-white text-2xl', data: null}) %>
+          </div>
+          rodionoff.biz
+        </a>
+        <address class="flex items-center justify-center lg:text-xl">
+          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
+            <%= icon({id: 'point', className: 'icon text-white text-2xl', data: null}) %>
+          </div>
+          ИНТЦ МГУ, Москва, Воробьёвы горы, ​Раменский бульвар 1, ​2 этаж
+        </address>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%= footer %>

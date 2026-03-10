@@ -14,6 +14,7 @@ import sidebar from './ts/sidebar'
 import sliderSwiper from './ts/slider-swiper'
 import submitHandler from './ts/submit-handler'
 import waved from './ts/waved'
+import yandexMap from './ts/yandex-map'
 
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import 'swiper/css/bundle'
@@ -35,6 +36,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   sliderSwiper()
   submitHandler()
   waved()
+  yandexMap()
 }) as EventListener)
 
 window.addEventListener('load', loadMedia as EventListener)
