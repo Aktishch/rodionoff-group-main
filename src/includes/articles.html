@@ -1,0 +1,19 @@
+<section class="container relative z-10">
+  <%= subtitle({text: 'Последние новости <br class="sm:hidden"> и статьи', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+    <% for (var i = 0; i < 3; i++) { %>
+    <div class="anim anim-up duration-500" data-anim>
+      <a class="pack pack-sm bg-grey rounded-xl shadow-2xl" data-waved="light" draggable="false" href="" target="_blank">
+        <%= loader %>
+        <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'pack-image image', data: null}) %>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 flex items-end justify-between gap-4 text-white p-5">
+          <h4 class="text-xl sm:text-2xl font-extrabold">
+            Статья 1
+          </h4>
+          <%= icon({id: 'arrow-diagonal', className: 'icon text-2.5xl sm:text-3xl', data: null}) %>
+        </div>
+      </a>
+    </div>
+    <% } %>
+  </div>
+</section>

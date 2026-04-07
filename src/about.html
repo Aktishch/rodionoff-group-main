@@ -1,0 +1,251 @@
+<%
+  var data = {
+    title: 'О компании',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var team = _.template(require('./includes/team.html').default)({icon, picture, loader, subtitle})
+  var articles = _.template(require('./includes/articles.html').default)({icon, picture, loader, subtitle})
+  var contacts = _.template(require('./includes/contacts.html').default)({icon, loader, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<section class="container lg:flex lg:items-center relative min-h-[600px] pt-52">
+  <div class="flex sm:block justify-end absolute inset-0">
+    <picture>
+      <source srcset="img/pictures/about-img-desktop.webp" media="(min-width: 575.98px)" type="image/webp">
+      <source srcset="img/pictures/about-img-desktop.png" media="(min-width: 575.98px)">
+      <source srcset="img/pictures/about-img-mobile.webp" type="image/webp">
+      <img class="block w-full max-w-80 sm:max-w-full sm:h-full" draggable="false" loading="eager" src="img/pictures/about-img-mobile.png" alt="">
+    </picture>
+  </div>
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute bottom-10 sm:bottom-0 -right-32 sm:right-0 w-[450px] sm:w-full sm:max-w-xl lg:max-w-3xl">
+      <%= picture({src: 'img/pictures/about-build', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Эксперты', className: 'anim anim-up duration-500', data: 'data-anim'}) %>
+    <p class="font-black uppercase text-2xl sm:text-3xl duration-500 delay-200 anim anim-up" data-anim>
+      в юридическом и финансовом <br class="hidden md:block"> консалтинге
+    </p>
+  </div>
+</section>
+
+<!-- Команда -->
+
+<%= team %>
+
+<!-- Наши услуги -->
+
+<section class="container relative z-10">
+  <div class="grid lg:grid-cols-2 gap-2 sm:gap-6 lg:gap-10">
+    <div class="anim anim-up duration-500 lg:order-2" data-anim>
+      <h2 class="text-3xl/tight sm:text-4xl/tight lg:text-5xl/tight lg:leading-tight tracking-wider uppercase font-black">
+        Наши услуги
+      </h2>
+    </div>
+    <% _.forEach((['lg:order-1', 'lg:order-3', 'lg:order-4', 'lg:order-5', 'lg:order-6']), (item) => { %>
+    <div class="anim anim-up duration-500 <%= item %>" data-anim>
+      <div class="card bg-white shadow-2xl">
+        <div class="card-content flex-row justify-between gap-1 p-5">
+          <div class="grow">
+            <h3 class="font-bold sm:text-lg lg:text-xl mb-2 sm:mb-5">
+              Привлечение финансирования
+            </h3>
+            <ul class="list-outside list-disc text-sm sm:text-base pl-4">
+              <li>
+                Гранты
+              </li>
+              <li>
+                Льготное кредитование с господдержкой
+              </li>
+              <li>
+                Привлечение частного капитала
+              </li>
+              <li>
+                Due-dilligence
+              </li>
+            </ul>
+          </div>
+          <div class="shrink-0 w-10">
+            <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Более 500 реализованных кейсов -->
+
+<section class="container relative">
+  <div class="sm:flex sm:items-end absolute inset-0">
+    <div class="w-full">
+      <%= picture({src: 'img/pictures/about-case', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="grid xl:grid-cols-2 gap-10 relative">
+    <div>
+      <h2 class="text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black anim anim-right duration-500" data-anim>
+        Более 500
+      </h2>
+      <h3 class="font-black uppercase text-2xl sm:text-3xl mb-10 sm:mb-12 anim anim-right duration-500" data-anim>
+        реализованных кейсов
+      </h3>
+      <p class="text-sm sm:text-lg lg:text-xl anim anim-right duration-500" data-anim>
+        Уже 13 лет решаем стратегические задачи наших клиентов: от получения налоговых льгот и грантов от государства до структурирования инвестиционных сделок и выхода на зарубежные рынки.
+      </p>
+    </div>
+    <div class="flex flex-col gap-2 sm:gap-5">
+      <% for (var i = 0; i < 4; i++) { %>
+      <div class="card shadow-2xl h-auto anim anim-up duration-500" data-anim>
+        <div class="absolute top-0 right-0 w-full max-w-40 sm:max-w-56">
+          <div class="pack pack-xl opacity-20">
+            <%= picture({src: 'img/pictures/case-img', format: 'png', className: 'image', data: null}) %>
+          </div>
+        </div>
+        <div class="card-content relative py-2 sm:py-5 px-4 sm:px-5">
+          <%= icon({id: 'arrow-right', className: 'icon text-4xl opacity-5 mb-2 sm:mb-5', data: null}) %>
+          <h4 class="font-bold sm:text-lg lg:text-xl">
+            Презентация продукта Президенту Российской Федерации
+          </h4>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Почему мы? -->
+
+<% var about = [
+  {
+    style: 'xl:top-0 xl:left-52 xl:max-w-[485px]',
+    title: 'Комплексное решение задач',
+    text: 'Видим задачи глубже и иначе, чем другие консультанты, благодаря сочетанию глубокого понимания нормативной документации, государственной повестке и регулярному взаимодействию с институтами развития.'
+  },
+  {
+    style: 'xl:top-36 xl:right-0 xl:max-w-96',
+    title: 'Деловые связи',
+    text: 'Обладаем уникальными контактами в профессиональных сообществах. Легко находим недостающую экспертизу, кадры и инсайдерскую информацию.'
+  },
+  {
+    style: 'xl:top-80 xl:left-0 xl:max-w-[340px]',
+    title: 'Богатый опыт',
+    text: 'Более 13 лет консультируем технологический бизнес в решении их стратегических задач. Совокупный объем привлеченной господдержки превышает 3 млрд ₽'
+  },
+  {
+    style: 'xl:bottom-0 xl:left-44 xl:max-w-[420px]',
+    title: 'Надежное партнерство',
+    text: 'Каждый пятый клиент остается с нами навсегда, поскольку видит в этом максимальную эффективность для себя.'
+  },
+  {
+    style: 'xl:bottom-16 xl:right-10 xl:max-w-[420px]',
+    title: 'Глубокое понимание правил',
+    text: 'Знаем не только как получить господдержку и льготы для бизнеса, но и сохранить их на многие годы не имея проблем.'
+  }
+] %>
+
+<section class="container relative z-10">
+  <div class="relative xl:min-h-[870px]">
+    <div class="xl:absolute xl:top-1/2 xl:left-1/2 xl:-translate-y-1/2 xl:-translate-x-1/2 mb-8 xl:mb-0">
+      <h2 class="xl:text-center gradient-text text-4xl/tight sm:text-5xl/tight lg:text-[64px] lg:leading-tight tracking-wider uppercase font-black anim anim-up duration-500" data-anim>
+        Почему <br class="hidden xl:block"> мы?
+      </h2>
+    </div>
+    <div class="flex flex-col gap-5 xl:absolute inset-0">
+      <% _.forEach((about), (item) => { %>
+      <div class="xl:absolute w-full anim anim-up duration-500 <%= item.style %>" data-anim>
+        <div class="bg-transparent border border-solid shadow-2xl card gradient-glass backdrop-blur-sm border-white/20">
+          <div class="card-content py-5 px-6 sm:px-8 lg:px-10">
+            <h3 class="font-black uppercase text-3xl sm:text-4xl mb-2"><%= item.title %></h3>
+            <p class="text-sm sm:text-base"><%= item.text %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Социальная миссия Rodionoff group -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-1/2 right-0 w-full max-w-[700px]">
+    <%= picture({src: 'img/pictures/about-mission', format: 'png', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-5 sm:gap-7 lg:gap-10 relative">
+    <div>
+      <%= subtitle({text: 'Социальная миссия Rodionoff group', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+      <p class="sm:text-lg lg:text-xl anim anim-up duration-500" data-anim>
+        Мы верим, что молодежь – это будущее нашей страны. Поэтому активно участвуем и инвестируем в социальных и благотворительные проекты, направленных на поддержку молодых ученых, студенческих стартапов и школьного предпринимательства
+      </p>
+    </div>
+    <% for (var i = 0; i < 5; i++) { %>
+    <div class="anim anim-up duration-500" data-anim>
+      <div class="pack pack-[65] bg-grey rounded-lg shadow-2xl">
+        <%= loader %>
+        <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
+        <div class="flex items-end absolute inset-0 text-white rounded-inherit p-4">
+          <div class="border border-solid card gradient-glass backdrop-blur-sm border-white/20 bg-white/10 w-full h-auto">
+            <div class="card-content py-2 px-4">
+              <h3 class="font-extrabold sm:text-xl lg:text-2xl">
+                Наставничество для школьных и студенческих команд в рамках клуба Лидеров России «Эльбрус»
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Последние новости и статьи -->
+
+<%= articles %>
+
+<!-- Наши контакты -->
+
+<%= contacts %>
+
+<%= footer %>

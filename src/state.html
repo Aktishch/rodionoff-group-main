@@ -39,6 +39,7 @@
   var subtitle = _.template(require('./components/subtitle.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
   var cases = _.template(require('./includes/cases.html').default)({icon, subtitle})
+  var team = _.template(require('./includes/team.html').default)({icon, picture, loader, subtitle})
   var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
 %>
 
@@ -451,34 +452,7 @@
 
 <!-- Команда -->
 
-<section class="container relative z-10">
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-    <div class="anim anim-up duration-500" data-anim>
-      <h2 class="font-black uppercase text-3xl mb-8 sm:mb-10 lg:mb-10">
-        Наша команда
-      </h2>
-      <p class="sm:text-lg lg:text-xl anim anim-up duration-500" data-anim>
-        Выпускники ведущих консалтинговых, инвестиционных, производственных и ИТ компаний. Носители лучших отраслевых практик для решения самых сложных задач.
-      </p>
-    </div>
-    <% for (var i = 0; i < 7; i++) { %>
-    <div class="anim anim-up duration-500" data-anim>
-      <div class="pack pack-xxl bg-grey rounded-lg">
-        <%= loader %>
-        <%= picture({src: 'img/pictures/test', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
-      </div>
-      <div class="relative bg-primary text-white rounded-lg shadow-2xl sm:min-h-36 -mt-10 sm:-mt-24 py-2 px-5 mx-4">
-        <h4 class="font-bold sm:text-lg lg:text-xl mb-2">
-          Иван Родионов
-        </h4>
-        <p class="text-sm sm:text-base">
-          Управляющий партнер, руководитель практики господдержки
-        </p>
-      </div>
-    </div>
-    <% } %>
-  </div>
-</section>
+<%= team %>
 
 <!-- Начните получать системную поддержку от государства -->
 

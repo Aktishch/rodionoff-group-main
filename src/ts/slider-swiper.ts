@@ -51,4 +51,40 @@ const createСasesSlider = (): void => {
   }) as Swiper
 }
 
-export default (): void => createСasesSlider()
+const createTeamSlider = (): void => {
+  const slider = document.querySelector('*[data-slider="team"]') as HTMLDivElement
+
+  if (!slider) return
+
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(`*[data-slider-swiper="${value}"]`) as HTMLDivElement
+  const prev = slider.querySelector(`*[data-slider-prev="${value}"]`) as HTMLButtonElement
+  const next = slider.querySelector(`*[data-slider-next="${value}"]`) as HTMLButtonElement
+
+  new window.Swiper(swiper, {
+    navigation: {
+      prevEl: prev,
+      nextEl: next,
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 16,
+    grabCursor: true,
+    watchSlidesProgress: true,
+    loop: true,
+    breakpoints: {
+      [media.md]: {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        grabCursor: false,
+        allowTouchMove: false,
+        loop: false,
+      },
+    },
+  }) as Swiper
+}
+
+export default (): void => {
+  createСasesSlider()
+  createTeamSlider()
+}

@@ -38,6 +38,7 @@
   var title = _.template(require('./components/title.html').default)
   var subtitle = _.template(require('./components/subtitle.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var contacts = _.template(require('./includes/contacts.html').default)({icon, loader, subtitle})
   var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
 %>
 
@@ -573,52 +574,8 @@
   </div>
 </section>
 
-<!-- Контакты для встреч и вопросов -->
+<!-- Наши контакты -->
 
-<section class="container">
-  <div class="grid lg:grid-cols-2 gap-10">
-    <div class="anim anim-up duration-500" data-anim>
-      <div class="pack pack-md lg:pack-[0] bg-grey rounded-xl h-full">
-        <%= loader %>
-        <div class="absolute inset-0 rounded-inherit" data-yandex-map="55.69212,37.516557"></div>
-      </div>
-    </div>
-    <div>
-      <%= subtitle({text: 'Контакты для встреч и вопросов', className: 'mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
-      <div class="flex flex-col items-start gap-5">
-        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="tel: +7-495-133-03-13">
-          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
-            <%= icon({id: 'telephone', className: 'icon text-white text-2xl', data: null}) %>
-          </div>
-          +7-495-133-03-13
-        </a>
-        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="mailto: ivan@rodionoff.biz">
-          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
-            <%= icon({id: 'email', className: 'icon text-white text-2xl', data: null}) %>
-          </div>
-          ivan@rodionoff.biz
-        </a>
-        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="" target="_blank">
-          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
-            <%= icon({id: 'telegram', className: 'icon text-white text-2xl', data: null}) %>
-          </div>
-          @marina_m_m_o
-        </a>
-        <a class="pr-2 text-lg text-left text-black rounded-lg lg:text-xl btn btn-primary font-normal" data-waved="dark" draggable="false" href="" target="_blank">
-          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
-            <%= icon({id: 'telegram', className: 'icon text-white text-2xl', data: null}) %>
-          </div>
-          rodionoff.biz
-        </a>
-        <address class="flex items-center justify-center lg:text-xl">
-          <div class="size-8 flex items-center justify-center gradient-main shrink-0 rounded-lg mr-3 sm:mr-5">
-            <%= icon({id: 'point', className: 'icon text-white text-2xl', data: null}) %>
-          </div>
-          ИНТЦ МГУ, Москва, Воробьёвы горы, ​Раменский бульвар 1, ​2 этаж
-        </address>
-      </div>
-    </div>
-  </div>
-</section>
+<%= contacts %>
 
 <%= footer %>

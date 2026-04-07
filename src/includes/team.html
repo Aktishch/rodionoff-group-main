@@ -1,0 +1,42 @@
+<section class="container relative z-10">
+  <div class="md:hidden mb-5">
+    <%= subtitle({text: 'Наша команда', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <p class="sm:text-lg anim anim-up duration-500" data-anim>
+      Выпускники ведущих консалтинговых, инвестиционных, производственных и ИТ компаний. Носители лучших отраслевых практик для решения самых сложных задач.
+    </p>
+  </div>
+  <div class="relative" data-slider="team">
+    <div class="swiper -mx-4 sm:mx-0 px-4 sm:px-0" data-slider-swiper="team">
+      <div class="swiper-wrapper md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-5 md:!transform-none">
+        <div class="swiper-slide hidden md:block">
+          <%= subtitle({text: 'Наша команда', className: 'mb-8 sm:mb-10 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+          <p class="text-lg lg:text-xl anim anim-up duration-500" data-anim>
+            Выпускники ведущих консалтинговых, инвестиционных, производственных и ИТ компаний. Носители лучших отраслевых практик для решения самых сложных задач.
+          </p>
+        </div>
+        <% for (var i = 0; i < 7; i++) { %>
+        <div class="swiper-slide">
+          <div class="pack pack-xxl bg-grey rounded-lg">
+            <%= loader %>
+            <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
+          </div>
+          <div class="relative bg-primary text-white rounded-lg shadow-2xl sm:min-h-36 -mt-10 sm:-mt-24 py-2 px-5 mx-4">
+            <h4 class="font-bold sm:text-lg lg:text-xl mb-2">
+              Иван Родионов
+            </h4>
+            <p class="text-sm sm:text-base">
+              Управляющий партнер, руководитель практики господдержки
+            </p>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <button class="absolute rounded-full left-3 size-8 lg:size-14 swiper-button-prev btn btn-second md:hidden" data-slider-prev="team" data-waved="dark">
+      <%= icon({id: 'arrow-left', className: 'text-2xl', data: null}) %>
+    </button>
+    <button class="absolute rounded-full right-3 size-8 lg:size-14 swiper-button-next btn btn-primary md:hidden" data-slider-next="team" data-waved="dark">
+      <%= icon({id: 'arrow-right', className: 'text-2xl', data: null}) %>
+    </button>
+  </div>
+</section>
