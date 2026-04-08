@@ -71,4 +71,9 @@
   ul {
     @apply list-outside list-disc pl-4;
   }
+
+  ul,
+  ol {
+    @apply flex flex-col gap-5;
+  }
 }
