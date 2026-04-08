@@ -52,3 +52,23 @@
     }
   }
 }
+
+.description {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-black uppercase text-2xl/tight;
+
+    @screen sm {
+      @apply text-3xl/tight;
+    }
+  }
+
+  ul {
+    @apply list-outside list-disc pl-4;
+  }
+}
