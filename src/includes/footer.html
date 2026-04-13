@@ -2,9 +2,14 @@
 <!-- Подвал -->
 
 <footer class="container flex sm:flex-wrap xl:flex-nowrap flex-col items-start gap-10 mt-auto bg-white sm:flex-row sm:justify-between">
-  <a class="w-32 shrink-0" data-waved="light" draggable="false" href="/">
-    <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
-  </a>
+  <div class="flex flex-col items-start">
+    <a class="w-32 shrink-0" data-waved="light" draggable="false" href="/">
+      <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
+    </a>
+    <div class="w-24 shrink-0 mt-5">
+      <%= picture({src: 'img/pictures/logo-partner', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
   <nav class="flex flex-col items-start gap-3 sm:gap-5">
     <% _.forEach((data.nav), (item) => { %>
     <% if (item.href) { %>

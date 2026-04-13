@@ -27,13 +27,20 @@
     <!-- Шапка документа -->
 
     <header class="container fixed top-0 left-0 right-0 z-30 flex items-center justify-between gap-5 pt-5 pb-5 transition-[background-color,_padding-top] duration-300 bg-white bg-opacity-0 lg:pt-10 xl:pt-20" data-header>
-      <button class="text-black rounded btn btn-primary lg:hidden" data-sidebar-open="menu" data-waved="dark">
+      <button class="text-black rounded btn btn-primary xl:hidden" data-sidebar-open="menu" data-waved="dark">
         <%= icon({id: 'burger', className: 'icon text-3xl', data: null}) %>
       </button>
       <a class="w-[84px] sm:w-28 lg:w-32 shrink-0" data-waved="light" draggable="false" href="/">
         <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
       </a>
-      <nav class="items-center hidden lg:flex  gap-6 xl:gap-11">
+      <div class="flex items-center gap-2 shrink-0">
+        <div class="shrink-0 w-14 sm:w-11">
+          <%= picture({src: 'img/pictures/logo-partner', format: 'png', className: 'block w-full', data: null}) %>
+        </div>
+        <span class="hidden sm:block bg-black shrink-0 w-px h-8"></span>
+        <span class="hidden sm:block font-semibold text-xs">Партнер</span>
+      </div>
+      <nav class="items-center hidden xl:flex  gap-6 xl:gap-11">
         <% _.forEach((data.nav), (item) => { %>
         <% if (item.href || item.href === null) { %>
         <a class="p-1 font-normal rounded btn hover:text-primary hover:bg-transparent" <%= item.href !== null ? 'data-scroll' : null %> data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
@@ -62,7 +69,7 @@
 
     <!-- Меню -->
 
-    <div class="fixed inset-0 z-40 bg-black/50 transition-[opacity,_visibility] duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
+    <div class="fixed inset-0 z-40 bg-black/50 transition-[opacity,_visibility] duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="xl" id="menu">
       <div class="flex flex-col bg-white overflow-auto w-full pt-5 px-4 pb-10 max-w-[375px] h-full transition-[opacity,_visibility,_transform] duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex items-center justify-between gap-5 mb-10">
           <button class="text-black rounded btn btn-primary" data-sidebar-close="menu" data-waved="dark">
@@ -71,6 +78,9 @@
           <a class="w-[84px] shrink-0" data-waved="light" draggable="false" href="/">
             <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
           </a>
+          <div class="shrink-0 w-14">
+            <%= picture({src: 'img/pictures/logo-partner', format: 'png', className: 'block w-full', data: null}) %>
+          </div>
           <a class="rounded-lg size-8 shrink-0 btn btn-primary btn-fill btn-gradient" data-waved="light" draggable="false" href="tel: +7-999-999-99-99">
             <%= icon({id: 'telephone', className: 'icon text-2xl', data: null}) %>
           </a>
