@@ -1,0 +1,118 @@
+<%
+  var data = {
+    title: 'Исследования',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var preloader = require('./components/preloader.html').default
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<section class="container lg:flex lg:items-end relative lg:min-h-[600px] pt-32">
+  <div class="absolute inset-0 overflow-hidden sm:overflow-visible">
+    <div class="absolute top-72 lg:top-28 xl:top-44 left-4 sm:left-1/2 lg:left-auto lg:right-0 xl:right-16 sm:-translate-x-1/2 lg:translate-x-0 w-[440px] lg:w-full lg:max-w-[630px]">
+      <%= picture({src: 'img/pictures/study-primal', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative w-full md:max-w-[600px]">
+    <div class="flex items-center mb-2 sm:mb-4 lg:mb-6 anim anim-up duration-500" data-anim>
+      <div class="shrink-0 w-4 mr-6">
+        <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <p class="font-bold sm:text-lg lg:text-xl">
+        Первое независимое исследование
+      </p>
+    </div>
+    <h1 class="text-2xl/tight sm:text-3xl/tight lg:text-4xl/tight uppercase font-black mb-80 sm:mb-96 lg:mb-6 anim anim-up duration-500 delay-100" data-anim>
+      Система прямой финансовой поддержки малого и среднего бизнеса
+    </h1>
+    <div class="flex anim anim-up duration-500 delay-200" data-anim>
+      <a class="text-2xl btn btn-primary btn-xl btn-fill btn-gradient w-full sm:w-auto" data-waved="light" draggable="false" href="" download>
+        <span class="hidden sm:block">Скачать исследование (PDF 5 Mb)</span>
+        <span class="sm:hidden">Скачать (PDF)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Ключевые выводы исследования -->
+
+<section class="container relative max-md:pb-80">
+  <div class="flex items-center justify-center absolute inset-0 pointer-events-none">
+    <div class="hidden md:block w-full">
+      <%= picture({src: 'img/pictures/study-line', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+    <div class="hidden md:block absolute top-0 left-0 w-full max-w-xl">
+      <%= picture({src: 'img/pictures/study-img-1', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+    <div class="absolute bottom-0 right-0 w-full max-w-80 md:max-w-xl">
+      <%= picture({src: 'img/pictures/study-img-2', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Ключевые выводы исследования', className: 'mb-10 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid xl:grid-cols-2 gap-4 sm:gap-8 lg:gap-12">
+      <% for (var i = 0; i < 6; i++) { %>
+      <div class="xl:min-h-64 anim anim-up duration-500" data-anim>
+        <div class="card shadow-2xl">
+          <div class="card-content flex-row justify-between p-5">
+            <div class="grow">
+              <div class="flex items-end gap-1 mb-5">
+                <h3 class="font-black text-2xl sm:text-3xl">
+                  101.4
+                </h3>
+                <h4 class="font-extrabold text-sm sm:text-base">
+                  млрд ₽
+                </h4>
+              </div>
+              <p class="sm:text-lg lg:text-xl">
+                Общий объем прямой финансовой поддержки государства <b>для малого и среднего бизнеса</b>, что на 6% меньше, чем годом ранее
+              </p>
+            </div>
+            <div class="flex flex-col justify-between shrink-0 w-10">
+              <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-full', data: null}) %>
+              <%= icon({id: 'arrow-right', className: 'block size-10 opacity-5 -rotate-90', data: null}) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%= footer %>
