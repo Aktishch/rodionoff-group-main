@@ -24,21 +24,21 @@ const formSubmitHandler = (event: Event): void => {
 
       const formData: FormData = new FormData(form)
       const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
-      const requestUrl: string = './ajax/submit-handler.php'
+      const requestUrl: string = '/ajax/submit-handler.php'
 
       submitBtn.disabled = true
-      dialog.notClosing('./dialogs/dialog-preloader.php')
+      dialog.notClosing('/dialogs/dialog-preloader.php')
 
       fetch(requestUrl, {
         method: 'POST',
         body: formData,
       })
-        .then((response: Response): void => {
-          response.text()
+        .then((response: Response): Promise<{ status: boolean }> => {
+          return response.json()
         })
-        .then((): void => {
+        .then((response): void => {
           dialog.close()
-          dialog.open('./dialogs/dialog-success.php')
+          dialog.open(response.status ? '/dialogs/dialog-success.php' : '/dialogs/dialog-error.php')
           if (window.metric) window.ym(window.metric, 'reachGoal', 'zayavka')
           form.reset()
           submitBtn.disabled = false
