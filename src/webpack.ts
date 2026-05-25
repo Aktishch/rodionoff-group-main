@@ -13,6 +13,7 @@ import scrollTo from './ts/scroll-to'
 import sidebar from './ts/sidebar'
 import sliderSwiper from './ts/slider-swiper'
 import submitHandler from './ts/submit-handler'
+import utm from './ts/utm'
 import waved from './ts/waved'
 import yandexMap from './ts/yandex-map'
 
@@ -35,6 +36,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   sidebar()
   sliderSwiper()
   submitHandler()
+  utm()
   waved()
   yandexMap()
 }) as EventListener)
