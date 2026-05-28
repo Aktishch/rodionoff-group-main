@@ -1,0 +1,216 @@
+<%
+  var data = {
+    title: 'Сколково',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<% var primal = ['0% налог на прибыль и НДС', 'Гранты до 10 млн рублей ежегодно', '100% гарантия результата'] %>
+
+<section class="container relative pt-36 lg:pt-52">
+  <div class="absolute inset-0">
+    <div class="hidden sm:block absolute top-0 right-60 size-80 rounded-full bg-primary opacity-20 blur-3xl"></div>
+    <div class="absolute top-64 md:top-auto md:bottom-32 right-0 w-full max-w-80 md:max-w-xl lg:max-w-4xl">
+      <%= picture({src: 'img/sk/primal', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Станьте резидентом <br> <span class="font-normal">Сколково</span>', className: 'break-words mb-4 sm:mb-6 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex mb-28 md:mb-14 lg:mb-16 anim anim-up duration-500 delay-100" data-anim>
+      <div class="flex items-center justify-center border border-primary rounded-xl h-10 sm:h-16 lg:h-20 px-5 sm:px-10 lg:px-16">
+        <span class="font-black uppercase gradient-text text-center sm:text-xl lg:text-3xl">За 2 месяца</span>
+      </div>
+    </div>
+    <ul class="flex flex-col gap-2 mb-4 sm:mb-9 lg:mb-14 anim anim-up duration-500 delay-150" data-anim>
+      <% _.forEach((primal), (item) => { %>
+      <li class="flex items-center">
+        <div class="shrink-0 w-2 sm:w-4 mr-2 sm:mr-4 lg:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <p class="font-bold text-sm sm:text-lg lg:text-xl"><%= item %></p>
+      </li>
+      <% }) %>
+    </ul>
+    <div class="relative z-10 duration-500 delay-200 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-2xl w-full max-w-96 lg:max-w-full rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Проверим, подходит ли ваш бизнес – за 15 минут, бесплатно.</b>
+          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl shrink-0 sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Бесплатный аудит</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Рассчитайте вашу выгоду -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-0 bottom-0 bg-grey w-full max-w-3xl">
+    <%= loader %>
+    <%= picture({src: 'img/sk/chart', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative w-full lg:max-w-3xl">
+    <%= subtitle({text: 'Рассчитайте вашу выгоду', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm">
+      <div class="card-content py-6 sm:py-8 lg:py-10 px-4 sm:px-8 lg:px-12">
+        <div class="w-full lg:max-w-xl">
+          <div class="flex flex-col gap-4 mb-6 sm:mb-8 lg:mb-10">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
+              <p class="sm:text-lg lg:text-xl">
+                Прибыль компании в год
+              </p>
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+            </div>
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
+              <p class="sm:text-lg lg:text-xl">
+                Уплаченный НДС за год
+              </p>
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+            </div>
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
+              <p class="sm:text-lg lg:text-xl">
+                Количество сотрудников
+              </p>
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+            </div>
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
+              <p class="sm:text-lg lg:text-xl">
+                Средняя зарплата
+              </p>
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+            </div>
+          </div>
+          <div class="flex items-center justify-between gap-1 sm:gap-5 mb-4 sm:mb-7 lg:mb-10">
+            <b class="sm:text-lg lg:text-xl shrink-0 mr-auto">Ваша выгода:</b>
+            <span class="font-black uppercase sm:text-xl lg:text-3xl truncate max-w-full">Х ХХХ ХХХ</span>
+            <b class="sm:text-lg lg:text-xl shrink-0">₽ в год</b>
+          </div>
+          <p class="text-sm sm:text-base">
+            *сумма рассчитана как потенциальная экономия компании за счет права на освобождение от налога на прибыль и НДС согласно ст. 246.1 НК РФ и ст. 145.1 НК РФ.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-4 sm:mt-8 lg:mt-12">
+      <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient w-full px-4" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить детальный расчет</button>
+    </div>
+  </div>
+</section>
+
+<!-- Кому подходит Сколково? -->
+
+<section class="container relative">
+  <div class="hidden xl:block absolute left-40 bottom-0 top-40 blur-3xl bg-gradient-to-b from-primary to-second opacity-40 rounded-full w-full max-w-lg"></div>
+  <div class="relative">
+    <%= subtitle({text: 'Кому подходит Сколково?', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <p class="sm:text-lg lg:text-xl w-full xl:max-w-3xl xl:ml-auto mb-4 sm:mb-7 lg:mb-10 anim anim-up duration-500" data-anim>
+      Каждый год мы видим сотни проектов, поэтому точно знаем, кто может получить от резидентства «Сколково» максимум.
+    </p>
+    <div class="grid xl:grid-cols-3 gap-4 sm:gap-7 lg:gap-10">
+      <div class="flex items-center justify-center anim anim-up duration-500" data-anim>
+        <div class="card shadow-md bg-white border-2 border-solid border-primary w-full h-auto">
+          <div class="absolute bottom-0 right-0 w-full max-w-52 sm:max-w-64">
+            <%= picture({src: 'img/sk/like', format: 'png', className: 'block w-full', data: null}) %>
+          </div>
+          <div class="card-content relative py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <h3 class="font-extrabold text-center text-2xl mb-7 sm:mb-10">
+              Точно подойдет
+            </h3>
+            <ul class="flex flex-col gap-2">
+              <% for (var i = 0; i < 8; i++) { %>
+              <li class="flex items-center">
+                <%= picture({src: 'img/sk/check', format: 'svg', className: 'icon text-3xl sm:text-4xl', data: null}) %>
+                <p class="text-sm sm:text-base ml-2 sm:ml-4">
+                  Цифровые платформы
+                </p>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center anim anim-up duration-500" data-anim>
+        <div class="card shadow-md bg-white w-full h-auto">
+          <div class="card-content relative py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <h3 class="font-extrabold text-center text-2xl mb-7 sm:mb-10">
+              Нужно разобраться
+            </h3>
+            <ul class="flex flex-col gap-2">
+              <% for (var i = 0; i < 4; i++) { %>
+              <li class="flex items-center">
+                <%= picture({src: 'img/sk/plus', format: 'svg', className: 'icon text-3xl sm:text-4xl', data: null}) %>
+                <p class="text-sm sm:text-base ml-2 sm:ml-4">
+                  Услуги с технологиями
+                </p>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center anim anim-up duration-500" data-anim>
+        <div class="card shadow-md bg-black/10 w-full h-auto">
+          <div class="card-content relative py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <h3 class="font-extrabold text-center text-2xl mb-7 sm:mb-10">
+              Не подойдет
+            </h3>
+            <ul class="flex flex-col gap-2">
+              <% for (var i = 0; i < 2; i++) { %>
+              <li class="flex items-center">
+                <%= picture({src: 'img/sk/circle', format: 'svg', className: 'icon text-3xl sm:text-4xl', data: null}) %>
+                <p class="text-sm sm:text-base ml-2 sm:ml-4">
+                  Перепродажа товаров
+                </p>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= footer %>
