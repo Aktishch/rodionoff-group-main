@@ -38,6 +38,7 @@
   var title = _.template(require('./components/title.html').default)
   var subtitle = _.template(require('./components/subtitle.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var cases = _.template(require('./includes/cases.html').default)({icon, subtitle})
   var team = _.template(require('./includes/team.html').default)({icon, picture, loader, subtitle})
   var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
 %>
@@ -97,36 +98,36 @@
     <%= subtitle({text: 'Рассчитайте вашу выгоду', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
     <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm">
       <div class="card-content py-6 sm:py-8 lg:py-10 px-4 sm:px-8 lg:px-12">
-        <div class="w-full lg:max-w-xl">
+        <div class="w-full lg:max-w-xl" data-calc>
           <div class="flex flex-col gap-4 mb-6 sm:mb-8 lg:mb-10">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
               <p class="sm:text-lg lg:text-xl">
                 Прибыль компании в год
               </p>
-              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" data-calc-profit data-input="number" type="text">
             </div>
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
               <p class="sm:text-lg lg:text-xl">
                 Уплаченный НДС за год
               </p>
-              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" data-calc-taxes data-input="number" type="text">
             </div>
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
               <p class="sm:text-lg lg:text-xl">
                 Количество сотрудников
               </p>
-              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" data-calc-employees data-input="number" type="text">
             </div>
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
               <p class="sm:text-lg lg:text-xl">
                 Средняя зарплата
               </p>
-              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" type="text">
+              <input class="input input-grey input-md hover:bg-white w-full lg:max-w-56 shrink-0" data-calc-salary data-input="number" type="text">
             </div>
           </div>
           <div class="flex items-center justify-between gap-1 sm:gap-5 mb-4 sm:mb-7 lg:mb-10">
             <b class="sm:text-lg lg:text-xl shrink-0 mr-auto">Ваша выгода:</b>
-            <span class="font-black uppercase sm:text-xl lg:text-3xl truncate max-w-full">Х ХХХ ХХХ</span>
+            <span class="font-black uppercase sm:text-xl lg:text-3xl truncate max-w-full" data-calc-result></span>
             <b class="sm:text-lg lg:text-xl shrink-0">₽ в год</b>
           </div>
           <p class="text-sm sm:text-base">
@@ -214,6 +215,10 @@
     </div>
   </div>
 </section>
+
+<!-- Кейсы из практики -->
+
+<%= cases %>
 
 <!-- Скачайте презентацию про 45+ льгот Сколково для вашего бизнеса -->
 
@@ -452,6 +457,154 @@
           <p class="text-xs mt-5 sm:text-sm opacity-60">
             Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Сохраняем статус резидента на 10 лет -->
+
+<section class="container relative">
+  <div class="absolute sm:top-0 bottom-0 sm:bottom-auto right-0 w-full max-w-80 sm:max-w-md">
+    <%= picture({src: 'img/sk/shield', format: 'png', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="flex flex-col lg:flex-row lg:justify-between gap-8 relative">
+    <div class="w-full md:max-w-[460px]">
+      <%= subtitle({text: 'Сохраняем статус резидента на 10 лет', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-right duration-500', data: 'data-anim'}) %>
+      <p class="sm:text-lg lg:text-xl mb-4 sm:mb-6 anim anim-right duration-500" data-anim>
+        По статистике 10% компаний утрачивают статус резидента «Сколково» после первого отчета. Мы избавим вас от рисков и поможем сохранить льготы.
+      </p>
+      <div class="flex anim anim-right duration-500" data-anim>
+        <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient w-full" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Узнать больше</button>
+      </div>
+    </div>
+    <div class="w-full lg:max-w-xl">
+      <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm">
+        <ul class="card-content gap-4 sm:gap-7 lg:gap-10 py-4 sm:py-8 lg:py-12 px-4 sm:px-7 lg:px-10">
+          <% for (var i = 0; i < 4; i++) { %>
+          <li class="flex items-center">
+            <div class="shrink-0 w-8 sm:w-10 mr-2 sm:mr-5">
+              <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-full', data: null}) %>
+            </div>
+            <p class="text-sm sm:text-lg lg:text-xl">
+              Приводим деятельность компании в соответствии с правилами Фонда
+            </p>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Рассказываем о Сколково и Господдержке в СМИ -->
+
+<section class="container relative">
+  <div class="absolute top-0 left-0 bottom-0 hidden xl:block">
+    <%= picture({src: 'img/sk/articles-bg', format: 'png', className: 'block h-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Рассказываем о Сколково и Господдержке в СМИ', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm w-full xl:max-w-[820px] xl:ml-auto">
+      <div class="card-content grid md:grid-cols-2 gap-4 sm:gap-7 lg:gap-10 py-2 sm:py-5 lg:py-8 xl:py-11 px-2 sm:px-5 lg:px-8">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="anim anim-up duration-500" data-anim>
+          <a class="pack pack-sm bg-grey rounded-xl shadow-2xl" data-waved="light" draggable="false" href="" target="_blank">
+            <%= loader %>
+            <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'pack-image image', data: null}) %>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 flex items-end justify-between gap-4 text-white p-5">
+              <h4 class="text-xl sm:text-2xl font-extrabold">
+                Статья 1
+              </h4>
+              <%= icon({id: 'arrow-diagonal', className: 'icon text-2.5xl sm:text-3xl', data: null}) %>
+            </div>
+          </a>
+        </div>
+        <% } %>
+        <div class="anim anim-up duration-500" data-anim>
+          <a class="card bg-white shadow-2xl" data-waved="dark" draggable="false" href="">
+            <div class="card-content p-5">
+              <p class="font-bold sm:text-lg lg:text-xl mb-8 sm:mb-10 lg:mb-12">
+                TG-канал с инсайдами про господдержку
+              </p>
+              <div class="flex items-center justify-between gap-4 mt-auto">
+                <div class="w-full max-w-40 shrink-0 opacity-70">
+                  <%= picture({src: 'img/pictures/sber', format: 'svg', className: 'block w-full', data: null}) %>
+                </div>
+                <%= icon({id: 'arrow-diagonal', className: 'icon text-2.5xl sm:text-3xl opacity-10', data: null}) %>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Поговорите с экспертом -->
+
+<section class="container relative">
+  <div class="hidden lg:flex items-center justify-center absolute inset-0">
+    <div class="w-full">
+      <%= picture({src: 'img/sk/feedback-bg', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="grid xl:grid-cols-2 sm:gap-7 lg:gap-10 relative">
+    <div>
+      <%= subtitle({text: 'Поговорите с экспертом', className: 'mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500', data: 'data-anim'}) %>
+      <div class="flex items-center mb-4 sm:mb-8 lg:mb-12 anim anim-up duration-500" data-anim>
+        <div class="shrink-0 w-2 sm:w-4 mr-2 sm:mr-4 lg:mr-6">
+          <%= picture({src: 'img/pictures/lightning', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <p class="sm:text-lg lg:text-xl">
+          Марина Макарова, завела в Сколково более 30 проектов. За 15 минут скажет честно: подходит ваш проект или нет.
+        </p>
+      </div>
+      <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm h-auto">
+        <div class="card-content py-6 sm:py-9 lg:py-12 px-4 sm:px-9 lg:px-14">
+          <form data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 sm:gap-7">
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                  <%= error({text: 'Заполните это поле'}) %>
+                </div>
+              </label>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Отправить</button>
+            </div>
+          </form>
+          <p class="text-xs mt-5 sm:text-sm opacity-60">
+            Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative w-full sm:max-w-xl xl:max-w-full sm:mx-auto xl:mx-0">
+        <%= picture({src: 'img/sk/feedback-img', format: 'png', className: 'block w-full', data: null}) %>
+        <div class="card shadow-2xl absolute left-4 sm:left-12 right-4 sm:right-12 bottom-4 sm:bottom-8 rounded-xl h-auto">
+          <div class="card-content text-center py-4 sm:py-6 px-4">
+            <h4 class="font-extrabold text-xl sm:text-2xl mb-2">
+              Марина Макарова
+            </h4>
+            <p class="sm:text-xl">
+              Менеджер проектов
+            </p>
+          </div>
         </div>
       </div>
     </div>

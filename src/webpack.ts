@@ -1,5 +1,6 @@
 import accordion from './ts/accordion'
 import animation from './ts/animation'
+import calc from './ts/calc'
 import cookie from './ts/cookie'
 import currentTab from './ts/current-tab'
 import fancybox from './ts/fancybox'
@@ -24,6 +25,7 @@ import './scss/main.scss'
 window.addEventListener('DOMContentLoaded', ((): void => {
   accordion()
   animation()
+  calc()
   cookie()
   currentTab()
   fancybox()
