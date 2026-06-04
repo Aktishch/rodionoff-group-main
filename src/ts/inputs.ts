@@ -7,7 +7,20 @@ const onInputText = (input: HTMLInputElement): void => {
 }
 
 const onInputNumber = (input: HTMLInputElement): void => {
-  input.value = input.value.replace(/[^0-9.]/g, '')
+  const selection: number | null = input.selectionStart
+  const length: number = input.value.length
+  const value: string = input.value
+    .replace(/^\.|[^\d.]|\.(?=.*\.)|^0+(?=\d)/g, '')
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+
+  input.value = value
+
+  if (selection) {
+    const newLength: number = value.length
+    const cursorPosition: number = selection + (newLength - length)
+
+    input.setSelectionRange(cursorPosition, cursorPosition)
+  }
 }
 
 export default (): void => {
