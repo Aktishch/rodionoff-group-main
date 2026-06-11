@@ -20,4 +20,10 @@ export default (): void => {
   }
 }
 
-export const utmTags: Data = JSON.parse(sessionStorage.getItem('utm_tags') || '{}')
+export const getUtmTags = (): Data => {
+  try {
+    return JSON.parse(sessionStorage.getItem('utm_tags') || '{}')
+  } catch {
+    return {}
+  }
+}

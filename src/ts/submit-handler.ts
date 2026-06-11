@@ -1,6 +1,6 @@
 import { dialog } from './fancybox'
 import { validation } from './utils'
-import { utmTags } from './utm'
+import { getUtmTags } from './utm'
 
 declare global {
   interface Window {
@@ -24,13 +24,14 @@ const formSubmitHandler = (event: Event): void => {
       if (!validation(form)) return
 
       const formData: FormData = new FormData(form)
-      const utmKeys: string[] = Object.keys(utmTags)
+      const currentUtmTags = getUtmTags()
+      const utmKeys: string[] = Object.keys(currentUtmTags)
       const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
       const requestUrl: string = '/ajax/submit-handler.php'
 
       if (utmKeys.length !== 0) {
         utmKeys.forEach((utmKey: string): void => {
-          formData.append(utmKey, utmTags[utmKey])
+          formData.append(utmKey, currentUtmTags[utmKey])
         })
       }
 
