@@ -45,10 +45,19 @@ const formSubmitHandler = (event: Event): void => {
         .then((response: Response): Promise<{ status: boolean }> => {
           return response.json()
         })
-        .then((response): void => {
+        .then(({ status }): void => {
           dialog.close()
-          dialog.open(response.status ? '/dialogs/dialog-success.php' : '/dialogs/dialog-error.php')
-          if (window.metric) window.ym(window.metric, 'reachGoal', 'zayavka')
+
+          if (status) {
+            dialog.open('/dialogs/dialog-success.php')
+
+            if (window.metric) {
+              window.ym(window.metric, 'reachGoal', 'zayavka')
+            }
+          } else {
+            dialog.open('/dialogs/dialog-error.php')
+          }
+
           form.reset()
           submitBtn.disabled = false
         })
