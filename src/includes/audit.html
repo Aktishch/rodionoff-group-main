@@ -1,0 +1,75 @@
+<% var audit = [
+  {
+    style: null,
+    text: 'Оценим бизнес-модель'
+  },
+  {
+    style: 'xl:ml-12',
+    text: 'Подберем кластер'
+  },
+  {
+    style: 'xl:ml-24',
+    text: 'Рассчитаем выгоду'
+  },
+  {
+    style: 'xl:ml-36',
+    text: 'Составим план действий'
+  }
+] %>
+
+<section class="container relative">
+  <div class="hidden xl:block absolute top-0 left-0 bottom-0">
+    <%= picture({src: 'img/sk/audit', format: 'png', className: 'block h-full', data: null}) %>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-4 relative">
+    <div>
+      <%= subtitle({text: 'Проведем аудит вашего бизнеса на соответствие Сколково', className: 'mb-4 sm:mb-10 lg:mb-20 anim anim-right duration-500', data: 'data-anim'}) %>
+      <ul class="flex flex-col gap-2">
+        <% _.forEach((audit), (item, key) => { %>
+        <li class="flex items-center anim anim-right duration-500 <%= item.style %>" data-anim>
+          <div class="shrink-0 w-20 mr-4">
+            <%= picture({src: `img/numbers/${key + 1}`, format: 'svg', className: 'block w-full', data: null}) %>
+          </div>
+          <p class="text-lg sm:text-xl"><%= item.text %></p>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <div>
+      <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm">
+        <div class="card-content py-6 sm:py-8 lg:py-10 px-4 sm:px-7 lg:px-10 xl:px-14">
+          <h3 class="font-extrabold text-center text-xl sm:text-2xl mb-5">
+            Введите данные <br> для получения аудита
+          </h3>
+          <form data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 sm:gap-7">
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="opacity-50 input input-lg" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <textarea class="h-32 opacity-50 input input-lg" data-input="text" type="text" placeholder="Расскажите о вашей ситуации" name="text"></textarea>
+                  <%= error({text: 'Заполните это поле'}) %>
+                </div>
+              </label>
+              <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient" data-waved="light" type="submit">Получить аудит</button>
+            </div>
+          </form>
+          <p class="text-xs mt-5 sm:text-sm opacity-60">
+            Нажимая на кнопку, вы даете <a class="underline underline-offset-4" draggable="false" href="">согласие</a> на обработку персональных данных в соответствии с <a class="underline underline-offset-4" draggable="false" href="">Политикой</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,355 @@
+<%
+  var data = {
+    title: 'Оформляем гранты',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var audit = _.template(require('./includes/audit.html').default)({picture, error, subtitle})
+  var team = _.template(require('./includes/team.html').default)({icon, picture, loader, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<section class="container relative pt-32 lg:pt-60">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="hidden lg:block absolute top-20 right-20 -rotate-45 gradient-main rounded-full opacity-20 blur-3xl w-[700px] h-[445px]"></div>
+    <div class="absolute bottom-20 lg:bottom-0 -right-24 lg:right-24 opacity-45 lg:opacity-100 w-full max-w-60 lg:max-w-[500px]">
+      <%= picture({src: 'img/gr/primal', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative w-full max-w-[860px]">
+    <%= title({text: 'Оформляем гранты', className: 'break-words mb-6 sm:mb-2 anim anim-up duration-500', data: 'data-anim'}) %>
+    <p class="text-xl sm:text-2xl lg:text-3xl mb-6 sm:mb-10 lg:mb-14 anim anim-up duration-500 delay-75" data-anim>
+      для технологических <br class="hidden lg:block"> и инновационных компаний
+    </p>
+    <div class="flex mb-6 sm:mb-10 lg:mb-14 anim anim-up duration-500 delay-100" data-anim>
+      <div class="flex flex-col items-start rounded-xl border border-solid border-primary py-3 sm:py-5 px-6 sm:px-8 lg:px-10">
+        <span class="font-black uppercase gradient-text text-xl sm:text-2xl lg:text-3xl">500 000 — 250 000 000 ₽</span>
+        <span class="gradient-text text-xl">от государства</span>
+      </div>
+    </div>
+    <div class="relative z-10 duration-500 delay-200 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-2xl w-full max-w-96 lg:max-w-full rounded-xl overflow-hidden gradient-glass backdrop-blur-sm">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-7 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Консультация эксперта</b>
+          <div class="absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl shrink-0 sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Каждый 12-й -->
+
+<section class="container relative">
+  <div class="absolute top-28 sm:top-0 left-0 w-full max-w-60 sm:max-w-[450px]">
+    <%= picture({src: 'img/gr/support', format: 'png', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <div class="mb-4 sm:mb-10 lg:mb-16 xl:mb-24 w-full lg:max-w-xl lg:ml-auto anim anim-up duration-500" data-anim>
+      <h2 class="font-black uppercase gradient-text text-2xl sm:text-3xl lg:text-4xl xl:text-6xl mb-2">
+        Каждый 12-й
+      </h2>
+      <p class="font-extrabold text-xl sm:text-2xl">
+        предприниматель страны получил поддержку от государства
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-10">
+      <% for (var i = 0; i < 8; i++) { %>
+      <div class="md:min-h-64 anim anim-up duration-500" data-anim>
+        <div class="card rounded-xl <%= i % 2 === 0 ? 'bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm' : 'bg-transparent border border-solid border-black' %>">
+          <div class="card-content py-5 px-3 sm:px-5">
+            <% if (i % 2 === 0) { %>
+            <div class="pack pack-xl">
+              <%= picture({src: 'img/pictures/test', format: 'png', className: 'image object-scale-down', data: null}) %>
+            </div>
+            <% } else { %>
+            <p class="text-sm sm:text-lg lg:text-xl mt-auto mb-auto sm:mb-0">
+              <b>Господдержка</b> — эффективный инструмент развития и масштабирования вашего бизнеса.
+            </p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Грант -->
+
+<section class="container relative">
+  <div class="hidden lg:block absolute top-0 right-0 w-full max-w-xl">
+    <%= picture({src: 'img/gr/grant', format: 'png', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="flex flex-col gap-20 relative">
+    <div class="flex flex-col items-start">
+      <%= subtitle({text: 'Что такое грант?', className: 'gradient-text mb-10 anim anim-right duration-500', data: 'data-anim'}) %>
+      <div class="w-full lg:max-w-[720px] anim anim-right duration-500" data-anim>
+        <div class="card rounded-xl bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm border border-solid border-primary">
+          <div class="card-content p-8">
+            <div class="description sm:text-lg lg:text-xl">
+              <p>
+                <b>
+                  Государственный фонд или институт развития выделяет грант (безвозмездные средства) на реализацию проекта.
+                </b>
+              </p>
+              <br>
+              <p>
+                Грант выделяется на:
+              </p>
+              <br>
+              <ul>
+                <li>
+                  научную деятельность,
+                </li>
+                <li>
+                  создание прототипа,
+                </li>
+                <li>
+                  разработку новых продуктов,
+                </li>
+                <li>
+                  масштабирование уже действующих проектов.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-start">
+      <%= subtitle({text: 'На что можно потратить грант?', className: 'gradient-text mb-10 anim anim-right duration-500', data: 'data-anim'}) %>
+      <div class="w-full xl:max-w-[990px] anim anim-right duration-500" data-anim>
+        <div class="card rounded-xl bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm border border-solid border-primary">
+          <div class="card-content p-8">
+            <p class="font-bold sm:text-lg lg:text-xl mb-8 sm:mb-10">
+              Целевое использование средств гранта зависит от программы.
+            </p>
+            <ul class="grid md:grid-cols-2 gap-8 sm:gap-10">
+              <% for (var i = 0; i < 4; i++) { %>
+              <li class="flex items-center">
+                <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-6xl mr-8 sm:mr-4', data: null}) %>
+                <p class="sm:text-lg lg:text-xl">
+                  Оплата труда сотрудников
+                </p>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-start">
+      <%= subtitle({text: 'Какие условия получения гранта?', className: 'gradient-text mb-10 anim anim-right duration-500', data: 'data-anim'}) %>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6 lg:gap-10 xl:gap-16 w-full">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="anim anim-up duration-500" data-anim>
+          <div class="card bg-white border border-solid border-primary">
+            <div class="card-content p-8 sm:p-5">
+              <p class="sm:text-lg lg:text-xl mb-5 sm:mb-10 lg:mb-16">
+                Для увеличения шансов проект должен иметь <b>научно-технический потенциал и перспективы коммерциализации.</b>
+              </p>
+              <div class="font-black gradient-text text-4xl sm:text-5xl lg:text-6xl mt-auto ml-auto">01</div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Поможем получить грант на развитие вашего бизнеса -->
+
+<%= audit %>
+
+<!-- Делаем государственную поддержку доступной -->
+
+<section class="container">
+  <%= subtitle({text: 'Делаем государственную поддержку доступной', className: 'mb-12 sm:mb-16 lg:mb-20 anim anim-right duration-500', data: 'data-anim'}) %>
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+    <div class="flex items-center justify-center anim anim-up duration-500" data-anim>
+      <div class="w-full">
+        <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+    <% for (var i = 0; i < 5; i++) { %>
+    <div class="lg:min-h-[300px] anim anim-up duration-500" data-anim>
+      <div class="card rounded-xl bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm">
+        <div class="card-content py-5 px-8">
+          <h4 class="font-black uppercase gradient-text text-2xl sm:text-3xl mb-14">
+            13 специалистов
+          </h4>
+          <p class="sm:text-lg lg:text-xl mt-auto">
+            маркетологов, аналитиков, юристов, копирайтеров и финконсультантов работают над решением ваших задач
+          </p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Подбираем грантовую программу -->
+
+<section class="container">
+  <div class="relative">
+    <div class="absolute -top-10 lg:top-0 right-0 h-48 sm:h-72 lg:h-[350px]">
+      <%= picture({src: 'img/gr/numbers/1', format: 'png', className: 'block h-full', data: null}) %>
+    </div>
+    <div class="relative w-full lg:max-w-3xl">
+      <%= subtitle({text: 'Подбираем грантовую программу', className: 'mb-12 anim anim-right duration-500', data: 'data-anim'}) %>
+      <ul class="flex flex-col gap-4 mb-12">
+        <% for (var i = 0; i < 4; i++) { %>
+        <li class="flex items-center anim anim-right duration-500" data-anim>
+          <%= picture({src: 'img/gr/check', format: 'svg', className: 'icon text-3xl sm:text-4xl mr-2 sm:mr-5', data: null}) %>
+          <p class="sm:text-lg lg:text-xl">
+            Анализируем проект, профиль его деятельности и доступные программы государственной поддержки
+          </p>
+        </li>
+        <% } %>
+      </ul>
+      <div class="grid md:grid-cols-2 gap-5 sm:gap-7 lg:gap-10">
+        <% for (var i = 0; i < 2; i++) { %>
+        <div class="anim anim-up duration-500" data-anim>
+          <div class="card rounded-xl bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm">
+            <div class="card-content flex-row items-start justify-between gap-2 p-5">
+              <div class="grow">
+                <h4 class="font-bold text-xl mb-7">
+                  20 часов
+                </h4>
+                <p>
+                  в среднем уходит на погружение в область деятельности компании
+                </p>
+              </div>
+              <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl', data: null}) %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Готовим заявку и документацию -->
+
+<section class="container">
+  <div class="relative">
+    <div class="absolute -top-10 lg:top-0 left-0 h-48 sm:h-72 lg:h-[350px]">
+      <%= picture({src: 'img/gr/numbers/2', format: 'png', className: 'block h-full', data: null}) %>
+    </div>
+    <div class="relative">
+      <div class="w-full lg:max-w-3xl lg:ml-auto mb-12">
+        <%= subtitle({text: 'Готовим заявку и документацию', className: 'mb-12 anim anim-right duration-500', data: 'data-anim'}) %>
+        <ul class="flex flex-col gap-4">
+          <% for (var i = 0; i < 2; i++) { %>
+          <li class="flex items-center anim anim-right duration-500" data-anim>
+            <%= picture({src: 'img/gr/check', format: 'svg', className: 'icon text-3xl sm:text-4xl mr-2 sm:mr-5', data: null}) %>
+            <p class="sm:text-lg lg:text-xl">
+              Длительный и сложный процесс, который обязывает разбираться не только в сфере рынка, но и в технологиях социального проектирования, проведения исследований и аналитики, грантрайтинга и продуктового менеджмента.
+            </p>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+        <% for (var i = 0; i < 3; i++) { %>
+        <div class="anim anim-up duration-500" data-anim>
+          <div class="card rounded-xl bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm">
+            <div class="card-content flex-row items-start justify-between gap-2 p-5">
+              <div class="grow">
+                <h4 class="font-bold text-xl mb-7">
+                  20 часов
+                </h4>
+                <p>
+                  в среднем уходит на погружение в область деятельности компании
+                </p>
+              </div>
+              <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-4xl', data: null}) %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Предлагаем лучшие условия получения гранта для вашего бизнеса -->
+
+<section class="container">
+  <div class="gradient-main text-white rounded-2xl py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12 xl:px-16">
+    <%= subtitle({text: 'Предлагаем лучшие условия получения гранта для вашего бизнеса', className: 'text-center mb-9 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 text-black">
+      <% for (var i = 0; i < 2; i++) { %>
+      <div class="flex flex-col items-center anim anim-up duration-500" data-anim>
+        <div class="h-32 sm:h-44 mb-2 sm:mb-6">
+          <%= picture({src: `img/gr/conditions/${i + 1}`, format: 'png', className: 'block h-full', data: null}) %>
+        </div>
+        <div class="card w-full h-auto">
+          <div class="card-content py-8 px-4 sm:px-7 lg:px-10">
+            <h4 class="font-extrabold text-xl sm:text-2xl mb-5">
+              С премией за результат
+            </h4>
+            <p class="sm:text-lg lg:text-xl">
+              5-10% от суммы гранта по факту одобрения комиссией
+            </p>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Команда -->
+
+<%= team %>
+
+<!-- Поможем получить грант на развитие вашего бизнеса -->
+
+<%= audit %>
+
+<%= footer %>
