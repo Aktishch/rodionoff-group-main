@@ -18,7 +18,7 @@ const formSubmitHandler = (event: Event): void => {
       break
     }
 
-    case 'submit': {
+    default: {
       event.preventDefault()
 
       if (!validation(form)) return
@@ -38,30 +38,49 @@ const formSubmitHandler = (event: Event): void => {
       submitBtn.disabled = true
       dialog.notClosing('/dialogs/dialog-preloader.php')
 
-      fetch(requestUrl, {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response: Response): Promise<{ status: boolean }> => {
-          return response.json()
-        })
-        .then(({ status }): void => {
-          dialog.close()
+      switch (form.dataset.form) {
+        case 'submit': {
+          fetch(requestUrl, {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response: Response): Promise<{ status: boolean }> => {
+              return response.json()
+            })
+            .then(({ status }): void => {
+              dialog.close()
 
-          if (status) {
-            dialog.open('/dialogs/dialog-success.php')
+              if (status) {
+                dialog.open('/dialogs/dialog-success.php')
 
-            if (window.metric) {
-              window.ym(window.metric, 'reachGoal', 'zayavka')
-            }
-          } else {
-            dialog.open('/dialogs/dialog-error.php')
+                if (window.metric) {
+                  window.ym(window.metric, 'reachGoal', 'zayavka')
+                }
+              } else {
+                dialog.open('/dialogs/dialog-error.php')
+              }
+
+              form.reset()
+              submitBtn.disabled = false
+            })
+            .catch((error: string): void => console.log('The form has not been sent', error))
+
+          break
+        }
+
+        case 'params': {
+          const searchParams: URLSearchParams = new URLSearchParams()
+
+          for (const pair of formData.entries()) {
+            searchParams.append(pair[0], String(pair[1]))
           }
 
-          form.reset()
+          dialog.close()
           submitBtn.disabled = false
-        })
-        .catch((error: string): void => console.log('The form has not been sent', error))
+          dialog.open(`/dialogs/dialog-feedback.php?${searchParams.toString()}`)
+          break
+        }
+      }
 
       break
     }

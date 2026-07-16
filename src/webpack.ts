@@ -9,6 +9,7 @@ import loadMedia from './ts/load-media'
 import menu from './ts/menu'
 import phoneMask from './ts/phone-mask'
 import preloader from './ts/preloader'
+import quiz from './ts/quiz'
 import scrollHeader from './ts/scroll-header'
 import scrollTo from './ts/scroll-to'
 import sidebar from './ts/sidebar'
@@ -33,6 +34,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   menu()
   phoneMask()
   preloader()
+  quiz()
   scrollHeader()
   scrollTo()
   sidebar()

@@ -28,3 +28,15 @@
     @apply bg-clip-text;
   }
 }
+
+.quiz {
+  &__pagination {
+    .swiper-pagination-bullet {
+      @apply grow w-auto h-1;
+
+      &-active {
+        @apply bg-gradient-to-r from-second to-primary;
+      }
+    }
+  }
+}

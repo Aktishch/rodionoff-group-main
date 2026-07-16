@@ -116,6 +116,109 @@
   </div>
 </section>
 
+<!-- Квиз -->
+
+<% var quiz = [
+  {
+    top: 'Шаг 1 из 3',
+    title: 'В какой сфере ваш проект?',
+    radio: true
+  },
+  {
+    top: 'Шаг 2 из 3',
+    title: 'Получали ли вы господдержку ранее (выберите один или несколько вариантов)',
+    checkbox: true
+  },
+  {
+    top: 'Ваша выгода!',
+    title: 'Вы можете получить:',
+    end: true
+  },
+] %>
+
+<section class="quiz container relative">
+  <div class="absolute top-16 sm:top-0 right-0 w-full max-w-40 sm:max-w-80 lg:max-w-[500px]">
+    <%= picture({src: 'img/gr/quiz', format: 'png', className: 'block w-full', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Узнайте, какую сумму гранта <br class="hidden md:block"> вы можете получить <br class="hidden md:block"> <span class="gradient-text">за 60 секунд</span>', className: ' mb-8 sm:mb-12 lg:mb-16 xl:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <form data-form="params">
+      <input type="hidden" value="Тема" name="theme">
+      <div class="group/quiz" data-slider="quiz" data-quiz>
+        <div class="hidden sm:block w-full max-w-xl mb-12">
+          <div class="quiz__pagination swiper-pagination" data-slider-pagination="quiz"></div>
+        </div>
+        <div class="card rounded-xl bg-white/50 shadow-2xl gradient-glass backdrop-blur-sm">
+          <div class="card-content block py-8 sm:py-10 px-4 sm:px-8 lg:px-12">
+            <div class="swiper" data-slider-swiper="quiz">
+              <div class="swiper-wrapper">
+                <% _.forEach((quiz), (item, key) => { %>
+                <div class="swiper-slide" data-quiz-slide>
+                  <h4 class="font-bold text-xl mb-5"><%= item.top %></h4>
+                  <div class="flex sm:items-center mb-5">
+                    <% if (key !== quiz.length - 1) { %>
+                    <div class="shrink-0 w-8 sm:w-12 lg:w-20 mr-2">
+                      <%= picture({src: `img/numbers/${key + 1}`, format: 'svg', className: 'block w-full', data: null}) %>
+                    </div>
+                    <% } %>
+                    <h4 class="font-bold sm:text-lg lg:text-xl"><%= item.title %></h4>
+                  </div>
+                  <% if (item.radio) { %>
+                  <div class="grid lg:grid-cols-2 gap-4">
+                    <% for (var i = 0; i < 6; i++) { %>
+                    <label class="group flex items-center relative rounded-xl border border-solid border-primary cursor-pointer h-12 sm:h-16 px-4 has-[:checked]:pointer-events-none" data-waved="dark">
+                      <input hidden type="radio" value="Искусственный интеллект" name="radio" tabindex="-1">
+                      <div class="rounded-full border border-solid border-primary shrink-0 size-5 sm:size-8 mr-2 sm:mr-5 group-has-[:checked]:bg-gradient-to-r group-has-[:checked]:from-second group-has-[:checked]:to-primary"></div>
+                      <span class="text-sm sm:text-lg lg:text-xl">Искусственный интеллект</span>
+                    </label>
+                    <% } %>
+                  </div>
+                  <% } %>
+                  <% if (item.checkbox) { %>
+                  <div class="grid lg:grid-cols-2 gap-4">
+                    <% for (var i = 0; i < 6; i++) { %>
+                    <label class="group flex items-center relative rounded-xl border border-solid border-primary cursor-pointer h-12 sm:h-16 px-4" data-waved="dark">
+                      <input hidden type="checkbox" value="Есть статус резидента Сколково" name="checkbox" tabindex="-1">
+                      <div class="rounded-full border border-solid border-primary shrink-0 size-5 sm:size-8 mr-2 sm:mr-5 group-has-[:checked]:bg-gradient-to-r group-has-[:checked]:from-second group-has-[:checked]:to-primary"></div>
+                      <span class="text-sm sm:text-lg lg:text-xl">Есть статус резидента Сколково</span>
+                    </label>
+                    <% } %>
+                  </div>
+                  <% } %>
+                  <% if (item.end) { %>
+                  <div class="flex mb-12 sm:mb-16 lg:mb-20">
+                    <div class="font-black uppercase gradient-text text-4xl sm:text-5xl l:text-6xl">5 000 000 рублей</div>
+                  </div>
+                  <p class="sm:text-lg lg:text-xl">
+                    Пока ваш проект на начальной стадии, поэтому сумма гранта ограничена. <br class="hidden lg:block">
+                    Однако это может стать прекрасным первым шагом.
+                  </p>
+                  <% } %>
+                </div>
+                <% }) %>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-2 mt-14">
+              <button class="swiper-button-prev btn btn-glass btn-fill btn-xl inset-0 w-auto mt-0 group-[[data-quiz-end]]/quiz:hidden" data-slider-prev="quiz" data-waved="dark" type="button" tabindex="-1">
+                <div class="w-full max-w-20">
+                  <%= picture({src: 'img/gr/arrow-left', format: 'svg', className: 'block w-full', data: null}) %>
+                </div>
+              </button>
+              <button class="swiper-button-next btn btn-primary btn-xl btn-fill bg-gradient-to-r from-second to-transparent text-xl sm:text-2xl inset-0 w-auto mt-0 group-[[data-quiz=stop]]/quiz:opacity-50 group-[[data-quiz=stop]]/quiz:pointer-events-none group-[[data-quiz-end]]/quiz:hidden" data-slider-next="quiz" data-waved="light" type="button" tabindex="-1">
+                Далее
+                <div class="hidden sm:block w-full max-w-20 ml-10">
+                  <%= picture({src: 'img/gr/arrow-right', format: 'svg', className: 'block w-full', data: null}) %>
+                </div>
+              </button>
+              <button class="btn btn-primary btn-xl btn-fill btn-gradient hidden text-xl sm:text-2xl group-[[data-quiz-end]]/quiz:flex" data-waved="light" type="submit" tabindex="-1">Мне подходит!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
 <!-- Грант -->
 
 <section class="container relative">

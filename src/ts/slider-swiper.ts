@@ -1,5 +1,6 @@
 import Swiper from 'swiper'
 import { Autoplay, EffectCards, Grid, Navigation, Pagination, Scrollbar, Thumbs } from 'swiper/modules'
+import { checkQuizSlide } from './quiz'
 import { media } from './utils'
 
 declare global {
@@ -84,7 +85,62 @@ const createTeamSlider = (): void => {
   }) as Swiper
 }
 
+const createQuizSlider = (): void => {
+  const slider = document.querySelector('*[data-slider="quiz"]') as HTMLDivElement
+
+  if (!slider) return
+
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(`*[data-slider-swiper="${value}"]`) as HTMLDivElement
+  const pagination = slider.querySelector(`*[data-slider-pagination="${value}"]`) as HTMLDivElement
+  const prev = slider.querySelector(`*[data-slider-prev="${value}"]`) as HTMLButtonElement
+  const next = slider.querySelector(`*[data-slider-next="${value}"]`) as HTMLButtonElement
+
+  const checkSwiperSlide = (swiper: Swiper): void => {
+    const quiz = swiper.el.closest('[data-quiz]') as HTMLDivElement
+
+    if (!quiz) return
+
+    const visibleSlide = quiz.querySelector('.swiper-slide-visible') as HTMLDivElement
+
+    if (visibleSlide) {
+      checkQuizSlide(visibleSlide)
+
+      if (visibleSlide === swiper.slides[swiper.slides.length - 1]) {
+        quiz.setAttribute('data-quiz-end', '')
+      } else {
+        quiz.removeAttribute('data-quiz-end')
+      }
+    }
+  }
+
+  new window.Swiper(swiper, {
+    pagination: {
+      el: pagination,
+    },
+    navigation: {
+      prevEl: prev,
+      nextEl: next,
+    },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 16,
+    allowTouchMove: false,
+    watchSlidesProgress: true,
+    autoHeight: true,
+    on: {
+      init: (swiper: Swiper): void => {
+        checkSwiperSlide(swiper)
+      },
+      slideChange: (swiper: Swiper): void => {
+        checkSwiperSlide(swiper)
+      },
+    },
+  }) as Swiper
+}
+
 export default (): void => {
   createСasesSlider()
   createTeamSlider()
+  createQuizSlider()
 }
