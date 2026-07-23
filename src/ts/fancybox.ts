@@ -1,5 +1,6 @@
 import { Fancybox } from '@fancyapps/ui'
 import loadMedia from './load-media'
+import { setStateSubmitBtn } from './submit-handler'
 
 type FancyboxDialog = {
   open: (src: string) => void
@@ -66,7 +67,10 @@ export default (): void => {
   window.Fancybox.bind('[data-fancybox-dialog]', {
     dragToClose: false,
     on: {
-      done: (): void => loadMedia(),
+      done: (): void => {
+        loadMedia()
+        setStateSubmitBtn()
+      },
     },
   })
 }

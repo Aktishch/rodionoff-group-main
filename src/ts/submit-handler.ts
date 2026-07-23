@@ -9,6 +9,36 @@ declare global {
   }
 }
 
+export const setStateSubmitBtn = (): void => {
+  const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll('*[data-form]')
+
+  if (!forms.length) return
+
+  forms.forEach((form: HTMLFormElement): void => {
+    const submitBtn: HTMLButtonElement | null = form.querySelector('button[type="submit"]')
+
+    if (!submitBtn) return
+
+    const toggles: NodeListOf<HTMLInputElement> = form.querySelectorAll('*[data-form-toggle]')
+
+    const togglesChecked = (): void => {
+      const allChecked: boolean = ([...toggles] as HTMLInputElement[]).every((toggle: HTMLInputElement): boolean => {
+        return toggle.checked
+      })
+
+      submitBtn.disabled = !allChecked
+    }
+
+    togglesChecked()
+
+    if (toggles.length) {
+      toggles.forEach((toggle: HTMLInputElement): void => {
+        toggle.addEventListener('change', togglesChecked as EventListener)
+      })
+    }
+  })
+}
+
 const formSubmitHandler = (event: Event): void => {
   const form = event.target as HTMLFormElement
 
@@ -88,6 +118,8 @@ const formSubmitHandler = (event: Event): void => {
 }
 
 export default (): void => {
+  setStateSubmitBtn()
+
   document.addEventListener('submit', ((event: Event): void => {
     if ((event.target as HTMLFormElement).hasAttribute('data-form')) formSubmitHandler(event)
   }) as EventListener)
