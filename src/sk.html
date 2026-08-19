@@ -38,7 +38,6 @@
   var title = _.template(require('./components/title.html').default)
   var subtitle = _.template(require('./components/subtitle.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
-  var cases = _.template(require('./includes/cases.html').default)({icon, subtitle})
   var team = _.template(require('./includes/team.html').default)({icon, picture, loader, subtitle})
   var audit = _.template(require('./includes/audit.html').default)({picture, error, subtitle})
   var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
@@ -84,6 +83,39 @@
           <button class="text-xl shrink-0 sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Бесплатный аудит</button>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Какие льготы получает резидент? -->
+
+<section class="container relative">
+  <div class="hidden md:block absolute inset-0 bg-grey">
+    <%= loader %>
+    <%= picture({src: 'img/sk/resident-bg', format: 'jpg', className: 'image', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Какие льготы получает резидент?', className: 'mb-12 sm:mb-16 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 6; i++) { %>
+      <div class="anim anim-up duration-500" data-anim>
+        <div class="card bg-white/50 shadow-2xl rounded-xl gradient-glass backdrop-blur-sm">
+          <div class="card-content flex-row justify-center py-4 px-4 sm:px-6">
+            <div class="flex flex-col grow">
+              <h3 class="font-bold uppercase text-xl sm:text-2xl mb-6 sm:mb-8 lg:mb-10">
+                Доступ к льготному кредитованию и грантам
+              </h3>
+              <p class="sm:text-lg lg:text-xl mt-auto">
+                до 250 млн рублей
+              </p>
+            </div>
+            <div class="shrink-0 w-8 sm:w-10 ml-2">
+              <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-full', data: null}) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
     </div>
   </div>
 </section>
@@ -217,9 +249,82 @@
   </div>
 </section>
 
-<!-- Кейсы из практики -->
+<!-- Более 100 компаний -->
 
-<%= cases %>
+<section class="container overflow-hidden">
+  <div class="flex mb-2">
+    <%= subtitle({text: 'Более 100 компаний', className: 'gradient-text anim anim-up duration-500', data: 'data-anim'}) %>
+  </div>
+  <p class="font-bold uppercase sm:text-xl lg:text-2xl mb-10 anim anim-up duration-500" data-anim>
+    Получили статус резидента с нашей помощью
+  </p>
+  <div class="relative" data-slider="company">
+    <div class="swiper" data-slider-swiper="company">
+      <div class="swiper-wrapper">
+        <% for (var i = 0; i < 6; i++) { %>
+        <div class="swiper-slide">
+          <div class="card bg-white/50 rounded-xl gradient-glass backdrop-blur-sm">
+            <div class="card-content grid grid-cols-2 xl:grid-cols-3 gap-2 py-2 sm:py-6 lg:py-10 px-2 sm:px-5 lg:px-8">
+              <ul class="order-1 col-2 flex flex-col justify-between gap-6 xl:gap-2 p-4 sm:p-6 lg:p-8">
+                <% for (var j = 0; j < 2; j++) { %>
+                <li class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div class="flex items-center shrink-0 md:w-44">
+                    <div class="shrink-0 w-8 sm:w-10 mr-4 sm:mr-6">
+                      <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-full', data: null}) %>
+                    </div>
+                    <span class="text-xl">Задача</span>
+                  </div>
+                  <p class="sm:text-lg lg:text-xl grow">
+                    Автоматизированный сервис гиперлокальной экспресс-доставки ТопGO
+                  </p>
+                </li>
+                <% } %>
+              </ul>
+              <div class="order-2 xl:order-3 col-2 flex items-center justify-between bg-gradient-to-r from-second to-primary text-white rounded-xl p-4 sm:p-6 lg:p-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div class="flex items-center shrink-0 md:w-44">
+                    <div class="shrink-0 w-8 sm:w-10 mr-4 sm:mr-6">
+                      <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-full', data: null}) %>
+                    </div>
+                    <b class="text-xl">Результат</b>
+                  </div>
+                  <p class="sm:text-lg lg:text-xl grow">
+                    За 2025 год совокупная экономия за счет налоговых льгот составила более 120 млн рублей.
+                  </p>
+                </div>
+              </div>
+              <div class="order-3 xl:order-2">
+                <div class="pack pack-md bg-grey rounded-xl h-full">
+                  <%= loader %>
+                  <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
+                  <div class="flex items-end absolute inset-0 bg-gradient-to-t from-black to-transparent rounded-inherit p-2 sm:p-5">
+                    <span class="font-extrabold text-white text-sm sm:text-xl lg:text-2xl">Сервис для самозанятых</span>
+                  </div>
+                </div>
+              </div>
+              <div class="order-4">
+                <div class="pack pack-md bg-grey rounded-xl h-full">
+                  <%= loader %>
+                  <%= picture({src: 'img/pictures/article', format: 'jpg', className: 'image rounded-inherit', data: null}) %>
+                  <div class="flex items-end absolute inset-0 rounded-inherit p-2 sm:p-5">
+                    <span class="font-extrabold text-white text-sm sm:text-xl lg:text-2xl">Сервис для самозанятых</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <button class="absolute rounded-full left-0 lg:-left-10 size-8 lg:size-14 swiper-button-prev btn btn-second -top-4 lg:top-1/2 mt-0" data-slider-prev="company" data-waved="dark">
+      <%= icon({id: 'arrow-left', className: 'text-3xl lg:text-5xl', data: null}) %>
+    </button>
+    <button class="absolute rounded-full right-0 lg:-right-10 size-8 lg:size-14 swiper-button-next btn btn-primary -top-4 lg:top-1/2 mt-0" data-slider-next="company" data-waved="dark">
+      <%= icon({id: 'arrow-right', className: 'text-3xl lg:text-5xl', data: null}) %>
+    </button>
+  </div>
+</section>
 
 <!-- Скачайте презентацию про 45+ льгот Сколково для вашего бизнеса -->
 
@@ -334,6 +439,37 @@
         </div>
       </li>
       <% }) %>
+    </ul>
+  </div>
+</section>
+
+<!-- Сбор информации -->
+
+<section class="container relative">
+  <div class="relative">
+    <div class="flex items-start justify-between gap-10 mb-7 sm:mb-10">
+      <div class="w-full xl:max-w-3xl">
+        <div class="flex mb-2 anim anim-up duration-500" data-anim>
+          <div class="font-black uppercase gradient-text text-4xl sm:text-5xl lg:text-6xl">Шаг 1.</div>
+        </div>
+        <%= subtitle({text: 'Сбор информации', className: 'mb-8 sm:mb-11 lg:mb-14 anim anim-up duration-500', data: 'data-anim'}) %>
+        <p class="sm:text-xl lg:text-2xl anim anim-up duration-500" data-anim>
+          Вы озвучиваете свои цели. Мы анализируем информацию о вашем проекте, рынке и конкурентах. Глубоко изучаем российские и зарубежные исследования. Привлекаем сторонних экспертов и фокус-группы. В дальнейшем проводим 1-2 интервью с вами для уточнения вопросов.
+        </p>
+      </div>
+      <div class="hidden xl:block shrink-0 w-full max-w-60">
+        <%= picture({src: 'img/pictures/test', format: 'png', className: 'block w-full', data: null}) %>
+      </div>
+    </div>
+    <ul class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 3; i++) { %>
+      <li class="flex flex-col anim anim-up duration-500" data-anim>
+        <b class="text-xl sm:text-2xl mb-2 sm:mb-4">200 часов</b>
+        <p class="sm:text-lg lg:text-xl">
+          в среднем занимает анализ данных, подбор материалов, анализ конкурентных решений и дальнейшая проработка смыслов в текстовую часть заявки
+        </p>
+      </li>
+      <% } %>
     </ul>
   </div>
 </section>
