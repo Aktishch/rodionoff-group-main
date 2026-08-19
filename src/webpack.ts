@@ -14,6 +14,7 @@ import scrollHeader from './ts/scroll-header'
 import scrollTo from './ts/scroll-to'
 import sidebar from './ts/sidebar'
 import sliderSwiper from './ts/slider-swiper'
+import social from './ts/social'
 import submitHandler from './ts/submit-handler'
 import utm from './ts/utm'
 import waved from './ts/waved'
@@ -39,6 +40,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   scrollTo()
   sidebar()
   sliderSwiper()
+  social()
   submitHandler()
   utm()
   waved()
