@@ -163,9 +163,71 @@ const createCompanySlider = (): void => {
   }) as Swiper
 }
 
+const createCreditsSlider = (): void => {
+  const slider = document.querySelector('*[data-slider="credits"]') as HTMLDivElement
+
+  if (!slider) return
+
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(`*[data-slider-swiper="${value}"]`) as HTMLDivElement
+  const prev = slider.querySelector(`*[data-slider-prev="${value}"]`) as HTMLButtonElement
+  const next = slider.querySelector(`*[data-slider-next="${value}"]`) as HTMLButtonElement
+  const toggles = slider.querySelectorAll(`*[data-slider-toggle="${value}"]`) as NodeListOf<HTMLLabelElement>
+
+  const setActiveToggle = (swiper: Swiper): void => {
+    const toggle = toggles[swiper.activeIndex] as HTMLLabelElement
+    const input = toggle.querySelector('input') as HTMLInputElement
+
+    input.checked = true
+  }
+
+  const sliderSwiper = new window.Swiper(swiper, {
+    navigation: {
+      prevEl: prev,
+      nextEl: next,
+    },
+    effect: (document.documentElement as HTMLHtmlElement).clientWidth < media.lg ? 'slide' : 'cards',
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 16,
+    grabCursor: true,
+    watchSlidesProgress: true,
+    autoHeight: true,
+    cardsEffect: {
+      perSlideOffset: 8,
+      rotate: false,
+    },
+    breakpoints: {
+      [media.lg]: {
+        spaceBetween: 0,
+        grabCursor: false,
+        allowTouchMove: false,
+        autoHeight: false,
+      },
+    },
+    on: {
+      init: (swiper: Swiper): void => {
+        setActiveToggle(swiper)
+      },
+      slideChange: (swiper: Swiper): void => {
+        setActiveToggle(swiper)
+      },
+    },
+  }) as Swiper
+
+  toggles.forEach((toggle: HTMLLabelElement, key: number): void => {
+    if (!toggle) return
+
+    toggle.addEventListener('click', ((): void => {
+      sliderSwiper.slideTo(key)
+    }) as EventListener)
+  })
+}
+
 export default (): void => {
   createСasesSlider()
   createTeamSlider()
   createQuizSlider()
   createCompanySlider()
+  createCreditsSlider()
 }

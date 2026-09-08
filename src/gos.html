@@ -1,0 +1,264 @@
+<%
+  var data = {
+    title: 'Льготные займы с господдержкой',
+    status: true,
+    nav: [
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        listing: [
+          'Получение статуса резидента Сколково и других ИНТЦ',
+          'Решение налоговых споров',
+          'Цифровое право'
+        ],
+        text: 'Услуги'
+      },
+      {
+        href: '#cases',
+        text: 'Кейсы'
+      },
+      {
+        href: '#articles',
+        text: 'Статьи'
+      },
+      {
+        href: null,
+        text: 'Telegram-канал'
+      }
+    ]
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var title = _.template(require('./components/title.html').default)
+  var subtitle = _.template(require('./components/subtitle.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
+  var team = _.template(require('./includes/team.html').default)({icon, picture, loader, subtitle})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<section class="container relative overflow-hidden pt-64 lg:pt-52">
+  <div class="flex justify-end absolute inset-0">
+    <%= picture({src: 'img/gos/primal-bg', format: 'png', className: 'sm:image w-full min-w-[635px] sm:min-w-full', data: null}) %>
+  </div>
+  <div class="relative w-full lg:max-w-[800px]">
+    <%= title({text: 'Льготные займы с господдержкой', className: 'break-words mb-8 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex mb-8 anim anim-up duration-500 delay-100" data-anim>
+      <div class="flex items-center justify-center border border-solid border-primary rounded-xl w-full sm:w-auto py-2 sm:py-6 px-4 sm:px-6">
+        <span class="font-black uppercase text-center gradient-text text-xl sm:text-2xl lg:text-3xl">Ставка от 7% годовых</span>
+      </div>
+    </div>
+    <p class="sm:text-lg lg:text-xl mb-9 sm:mb-11 anim anim-up duration-500 delay-200" data-anim>
+      Подбираем программу господдержки под вашу компанию, <br class="hidden md:block">
+      готовим заявку и сопровождаем до одобрения
+    </p>
+    <div class="relative z-10 duration-500 delay-300 anim anim-up" data-anim>
+      <div class="card bg-white/20 md:bg-white/50 shadow-xl sm:shadow-2xl rounded-xl overflow-hidden gradient-glass backdrop-blur-sm w-full max-w-96 lg:max-w-full">
+        <div class="relative card-content lg:flex-row lg:gap-6 lg:items-center lg:justify-between">
+          <b class="hidden sm:block pt-5 sm:text-lg lg:text-xl lg:pt-0 pb-5 lg:pb-0 pl-7 lg:pl-10 pr-7 lg:pr-0">Программа господдержки</b>
+          <div class="hidden sm:block absolute right-0 w-12 rotate-90 lg:w-16 lg:h-0 lg:shrink-0 lg:relative -top-12 lg:-top-24 lg:rotate-0">
+            <%= icon({id: 'arrow-right', className: 'block w-full opacity-5', data: null}) %>
+          </div>
+          <button class="text-xl sm:text-2xl btn btn-primary btn-xl btn-fill btn-gradient shrink-0 active:transform-none" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить условия</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Варианты льготного кредитования -->
+
+<section class="container overflow-hidden">
+  <%= subtitle({text: 'Варианты льготного кредитования', className: 'mb-8 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="relative" data-slider="credits">
+    <div class="flex sm:flex-wrap items-center gap-4 md:gap-7 overflow-auto sm:overflow-visible mb-20 lg:mb-8 -mx-4 sm:mx-0 px-4 sm:px-0">
+      <% _.forEach((['Высокотех <br> от МСП', 'Льготный кредит <br> для МСП', 'Промышленная  <br> ипотека', 'Фонд развития <br>промышленности (ФРП)']), (item, key) => { %>
+      <label class="flex items-center justify-center relative gradient-glass rounded-xl border-2 border-solid border-grey shrink-0 cursor-pointer transition h-14 sm:h-16 lg:h-20 px-2 sm:px-4 lg:px-6 has-[:checked]:bg-gradient-to-r has-[:checked]:from-second has-[:checked]:to-primary has-[:checked]:text-white has-[:checked]:pointer-events-none" data-slider-toggle="credits" data-waved="dark">
+        <input hidden type="radio" name="credits">
+        <span class="text-sm sm:text-base lg:text-xl pointer-events-none"><%= item %></span>
+      </label>
+      <% }) %>
+    </div>
+    <div class="relative">
+      <div class="swiper -mx-4 sm:mx-0 px-4 sm:px-0" data-slider-swiper="credits">
+        <div class="swiper-wrapper">
+          <% for (var i = 0; i < 4; i++) { %>
+          <div class="h-auto overflow-hidden swiper-slide rounded-xl">
+            <div class="card">
+              <div class="card-content p-4 sm:p-7 lg:p-10 xl:p-14">
+                <div class="flex items-center mb-5 sm:mb-7 lg:mb-10">
+                  <div class="font-black gradient-text text-5xl sm:text-6xl shrink-0 mr-4 sm:mr-6 lg:mr-8">01</div>
+                  <h3 class="font-black uppercase text-xs sm:text-2xl lg:text-3xl grow">
+                    Льготный кредит для МСП
+                    <%= picture({src: 'img/pictures/test', format: 'svg', className: 'inline-block', data: null}) %>
+                  </h3>
+                </div>
+                <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
+                  <ul class="flex flex-col gap-2 sm:gap-4 lg:gap-6 shrink-0 w-full lg:max-w-md">
+                    <% for (var j = 0; j < 4; j++) { %>
+                    <li class="flex items-center">
+                      <%= picture({src: 'img/pictures/test', format: 'svg', className: 'icon text-3xl sm:text-4xl mr-4 sm:mr-6 lg:mr-8', data: null}) %>
+                      <div class="flex flex-col gap-1 grow sm:text-lg lg:text-xl">
+                        <b>Цель кредита:</b>
+                        <span>Инвестиционные цели/пополнение оборотных средств</span>
+                      </div>
+                    </li>
+                    <% } %>
+                  </ul>
+                  <div class="gradient-glass grow border-2 border-solid border-primary rounded-xl py-4 sm:py-7 lg:py-10 px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col w-full max-w-60 sm:max-w-full mx-auto sm:mx-0">
+                      <h4 class="font-bold text-center sm:text-left sm:text-lg lg:text-xl mb-6">
+                        Требования к получателю:
+                      </h4>
+                      <div class="hidden md:block">
+                        <div class="text-sm sm:text-base">
+                          <p>
+                            Срок деятельности компании: не менее 36 месяцев для заемщиков, не являющихся малыми технологическими компаниями; не менее 24 месяцев для заемщиков, являющихся малыми технологическими компаниями
+                          </p>
+                          <br>
+                          <p>
+                            Продукция компании входит в перечень высокотехнологичных направлений
+                          </p>
+                          <br>
+                          <p>
+                            С заемщиком не заключены кредитные договоры, по которым ставка кредитования субсидируется в соответствии с ПП РФ № 1764 или ПП РФ № 1598
+                          </p>
+                          <br>
+                          <p>
+                            Не входит в группу (в соответствии с МСФО), годовая выручка которой или, если применимо, доход которой согласно данным консолидированной финансовой отчетности составляет более 2 млрд рублей
+                          </p>
+                        </div>
+                      </div>
+                      <button class="text-xl btn btn-primary btn-xl btn-fill btn-gradient md:hidden" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-credit.html">Посмотреть</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <button class="absolute rounded-full left-3 lg:-left-16 -top-8 size-8 lg:size-14 swiper-button-prev btn btn-second lg:top-1/2" data-slider-prev="credits" data-waved="dark">
+        <%= icon({id: 'arrow-left', className: 'text-3xl lg:text-5xl', data: null}) %>
+      </button>
+      <button class="absolute rounded-full right-3 lg:-right-16 -top-8 size-8 lg:size-14 swiper-button-next btn btn-primary lg:top-1/2" data-slider-next="credits" data-waved="dark">
+        <%= icon({id: 'arrow-right', className: 'text-3xl lg:text-5xl', data: null}) %>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Работает напрямую с ведущими банками и фондами -->
+
+<section class="container relative">
+  <div class="flex md:items-end justify-end absolute inset-0">
+    <div class="w-full xl:max-w-6xl pt-32 md:pt-0">
+      <%= picture({src: 'img/gos/banks-bg', format: 'png', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Работает напрямую с ведущими банками и фондами', className: 'mb-3 sm:mb-6 lg:mb-10 w-full lg:max-w-xl anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="w-full lg:max-w-[845px]">
+      <p class="sm:text-lg lg:text-xl mb-8 sm:mb-12 lg:mb-16 xl:mb-20 w-full max-w-64 sm:max-w-full anim anim-up duration-500" data-anim>
+        Rodionoff Group взаимодействует с ведущими банками и институтами развития с целью получения актуальной информации о доступных финансовых инструментах и требованиях к компаниям.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 sn:gap-8 lg:gap-10">
+        <% for (var i = 0; i < 5; i++) { %>
+        <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+          <div class="anim anim-up duration-500" data-anim>
+            <div class="card-content p-4">
+              <div class="pack pack-xl">
+                <%= picture({src: 'img/pictures/test', format: 'svg', className: 'image object-scale-down p-4', data: null}) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Что мы делаем? -->
+
+<section class="container sm:overflow-hidden">
+  <%= subtitle({text: 'Что мы делаем?', className: 'mb-10 sm:mb-16 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+  <div class="flex flex-col gap-14 sm:gap-16">
+    <% for (var i = 0; i < 4; i++) { %>
+    <div class="relative xl:min-h-[350px] odd:pl-8 sm:odd:pl-16 lg:odd:pl-24 xl:odd:pl-32 even:pr-8 sm:even:pr-16 lg:even:pr-24 xl:even:pr-32 anim anim-right duration-500" data-anim>
+      <div class="absolute -top-4 sm:top-0 xl:bottom-0 h-24 sm:h-52 xl:h-auto <%= i % 2 === 0 ? '-left-4 sm:-left-10 lg:-left-16' : '-right-4 sm:-right-10 lg:-right-16' %>">
+        <%= picture({src: `img/gos/numbers/${i + 1}`, format: 'png', className: 'block h-full', data: null}) %>
+      </div>
+      <div class="border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20">
+        <div class="card-content gap-2 sm:gap-5 lg:gap-8 py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+          <h3 class="font-black text-xl sm:text-3xl">
+            Бесплатная диагностика — какие программы подходят и какая ставка реалистична
+          </h3>
+          <h4 class="font-bold sm:text-lg lg:text-xl">
+            Узнаете реальную картину за 1 - 2 дня - не через месяц хождений по банкам.
+          </h4>
+          <p class="text-sm sm:text-base">
+            Анализируем финансовые показатели, отрасль и историю компании, сверяем их с условиями действующих программ льготного кредитования и говорим прямо: какая программа подходит, по какой ставке и на какую сумму реально рассчитывать.
+          </p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Команда -->
+
+<%= team %>
+
+<!-- Частые страхи — и честные ответы -->
+
+<section class="container relative">
+  <div class="absolute inset-0">
+    <%= picture({src: 'img/gos/questions-bg', format: 'png', className: 'image object-bottom', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= subtitle({text: 'Частые страхи — <span class="gradient-text">и честные ответы</span>', className: 'mb-10 sm:mb-16 lg:mb-20 anim anim-up duration-500', data: 'data-anim'}) %>
+    <div class="flex flex-col gap-6 sm:gap-9 lg:gap-12">
+      <% for (var i = 0; i < 7; i++) { %>
+      <div class="group/accordion border border-solid shadow-2xl bg-white/20 card gradient-glass border-white/20" data-accordion data-close-click>
+        <div class="anim anim-right duration-500" data-anim>
+          <span class="gradient-main absolute top-0 bottom-0 opacity-0 transition-opacity w-1 sm:w-2 group-[[data-accordion=active]]/accordion:opacity-100"></span>
+          <div class="card-content relative py-5 sm:py-8 px-3 sm:px-6 lg:px-8">
+            <button class="flex sm:items-center justify-between gap-2 sm:gap-5 lg:gap-10 text-left w-full" data-accordion-toggle>
+              <div class="flex sm:items-center">
+                <div class="shrink-0 w-10 sm:w-16 lg:w-20">
+                  <%= picture({src: `img/numbers/${i + 1}`, format: 'svg', className: 'block w-full', data: null}) %>
+                </div>
+                <h3 class="font-bold sm:text-lg lg:text-xl">
+                  «Мы формально проходим по всем критериям, но банк уже один раз отказал — почему так бывает?»
+                </h3>
+              </div>
+              <div class="flex items-center justify-center relative rounded-full border-2 border-solid border-primary shrink-0 size-6 sm:size-8">
+                <span class="absolute top-1/2 left-1/2 -translate-y-0 -translate-x-1/2 bg-primary rounded-sm rotate-90 transition-transform w-4 sm:w-5 h-0.5 group-[[data-accordion=active]]/accordion:rotate-0"></span>
+                <span class="bg-primary rounded-sm w-4 sm:w-5 h-0.5"></span>
+              </div>
+            </button>
+            <div data-accordion-content>
+              <p class="text-sm sm:text-base pt-6 sm:pt-8 pl-10 sm:pl-16 lg:pl-20">
+                Обороты, долговую нагрузку и кредитную историю собственника банк проверяет как обычно. Часто дело не в бизнесе, а в том, как была подготовлена заявка и в какой банк она пошла. Разберём причину прошлого отказа и подадим туда, где у вас реальные шансы.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%= footer %>
