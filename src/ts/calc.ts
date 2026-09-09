@@ -37,7 +37,7 @@ export default (): void => {
       salary.value.length !== 0
     ) {
       flag = false
-      window.ym(111617441, 'reachGoal', 'calc')
+      window.ym(108247698, 'reachGoal', 'calc')
     }
   }
 
